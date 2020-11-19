@@ -1,0 +1,12 @@
+{
+  "name": "shooterGame",
+  "version": "1.0.0",
+  "description": "A Javascript shooter Game.",
+  "main": "index.js",
+  "repository": "git@github.com:tigamadou/shooterGame.git",
+  "author": "Amadou IBRAHIM",
+  "license": "MIT",
+  "dependencies": {
+    "phaser": "^3.24.1"
+  }
+}
