@@ -7,6 +7,7 @@ export default class OptionsScene extends Phaser.Scene {
   }
 
   create () {
+    this.add.image(400, 300, 'bgImg');
     this.model = this.sys.game.globals.model;
 
     this.text = this.add.text(300, 100, 'Options', { fontSize: 40 });
@@ -29,7 +30,7 @@ export default class OptionsScene extends Phaser.Scene {
       this.updateAudio();
     }.bind(this));
 
-    this.menuButton = new Button(this, 400, 500, 'blueButton1', 'blueButton2', 'Menu', 'Title');
+    this.menuButton = new Button(this,  150, 50, 'blueButton1', 'blueButton2', 'Menu', 'Title');
 
     this.updateAudio();
   }
