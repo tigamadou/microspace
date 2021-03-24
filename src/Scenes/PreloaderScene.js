@@ -16,17 +16,17 @@ export default class PreloaderScene extends Phaser.Scene {
     // display progress bar
     var progressBar = this.add.graphics();
     var progressBox = this.add.graphics();
-    progressBox.fillStyle(0x222222, 0.8);
-    progressBox.fillRect(240, 270, 320, 50);
-
+    progressBox.fillStyle(0x333333, 0.8);
+    progressBox.fillRect(0, 550, 800, 50);
+    
     var width = this.cameras.main.width;
     var height = this.cameras.main.height;
     var loadingText = this.make.text({
-      x: width / 2,
-      y: height / 2 - 50,
+      x:(width / 2) - ((width / 2 )/1.25),
+      y: 575,
       text: 'Loading...',
       style: {
-        font: '20px monospace',
+        font: '12px monospace',
         fill: '#ffffff'
       }
     });
@@ -34,21 +34,21 @@ export default class PreloaderScene extends Phaser.Scene {
 
     var percentText = this.make.text({
       x: width / 2,
-      y: height / 2 - 5,
+      y: 575,
       text: '0%',
       style: {
         font: '18px monospace',
-        fill: '#ffffff'
+        fill: '#fff'
       }
     });
     percentText.setOrigin(0.5, 0.5);
 
     var assetText = this.make.text({
-      x: width / 2,
-      y: height / 2 + 50,
+      x: (width / 2) + ((width / 2 )/1.25),
+      y: 575,
       text: '',
       style: {
-        font: '18px monospace',
+        font: '12px monospace',
         fill: '#ffffff'
       }
     });
@@ -59,7 +59,7 @@ export default class PreloaderScene extends Phaser.Scene {
       percentText.setText(parseInt(value * 100) + '%');
       progressBar.clear();
       progressBar.fillStyle(0xffffff, 1);
-      progressBar.fillRect(250, 280, 300 * value, 30);
+      progressBar.fillRect(0, 550, 800 * value, 50);
     });
 
     // update file progress text
@@ -69,11 +69,11 @@ export default class PreloaderScene extends Phaser.Scene {
 
     // remove progress bar when complete
     this.load.on('complete', function () {
-      progressBar.destroy();
-      progressBox.destroy();
-      loadingText.destroy();
-      percentText.destroy();
-      assetText.destroy();
+      // progressBar.destroy();
+      // progressBox.destroy();
+      // loadingText.destroy();
+      // percentText.destroy();
+      // assetText.destroy();
       this.ready();
     }.bind(this));
 
