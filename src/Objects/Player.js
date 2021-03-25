@@ -1,21 +1,10 @@
-
-export class Entity extends Phaser.GameObjects.Sprite{
-    constructor(scene, x, y, key, type) {
-        super(scene, x, y, key);
-        this.scene = scene;
-        this.scene.add.existing(this);
-        this.scene.physics.world.enableBody(this, 0);
-        
-        this.setData("type", type);
-        this.setData("isDead", false);
-    }
-}
-export class Player extends Entity {
+import Entity from './Entity'
+export default class Player extends Entity {
     constructor(scene, x, y, key) {
         super(scene, x, y, key, "Player");
-        this.setData("speed", 200);
+        this.setData("speed", 400);
         this.play("sprPlayer");
-        
+
     }
 
     moveUp() {
@@ -34,11 +23,10 @@ export class Player extends Entity {
         this.body.velocity.x = this.getData("speed");
     }
 
-    update(){
+    update() {
         this.body.setVelocity(0, 0);
 
         this.x = Phaser.Math.Clamp(this.x, 0, this.scene.game.config.width);
         this.y = Phaser.Math.Clamp(this.y, 0, this.scene.game.config.height);
     }
 }
-
