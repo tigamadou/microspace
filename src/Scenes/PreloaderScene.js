@@ -1,15 +1,15 @@
 import 'phaser';
 
 export default class PreloaderScene extends Phaser.Scene {
-  constructor () {
+  constructor() {
     super('Preloader');
   }
 
-  init () {
+  init() {
     this.readyCount = 0;
   }
 
-  preload () {
+  preload() {
     // add logo image
     this.add.image(400, 200, 'logo');
 
@@ -18,11 +18,11 @@ export default class PreloaderScene extends Phaser.Scene {
     var progressBox = this.add.graphics();
     progressBox.fillStyle(0x333333, 0.8);
     progressBox.fillRect(0, 550, 800, 50);
-    
+
     var width = this.cameras.main.width;
     var height = this.cameras.main.height;
     var loadingText = this.make.text({
-      x:(width / 2) - ((width / 2 )/1.25),
+      x: (width / 2) - ((width / 2) / 1.25),
       y: 575,
       text: 'Loading...',
       style: {
@@ -44,7 +44,7 @@ export default class PreloaderScene extends Phaser.Scene {
     percentText.setOrigin(0.5, 0.5);
 
     var assetText = this.make.text({
-      x: (width / 2) + ((width / 2 )/1.25),
+      x: (width / 2) + ((width / 2) / 1.25),
       y: 575,
       text: '',
       style: {
@@ -79,17 +79,45 @@ export default class PreloaderScene extends Phaser.Scene {
 
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
 
-    // load assets needed in our game
+    // load ui
     this.load.image('blueButton1', 'assets/ui/blue_button02.png');
     this.load.image('blueButton2', 'assets/ui/blue_button03.png');
     this.load.image('phaserLogo', 'assets/logo.png');
     this.load.image('box', 'assets/ui/grey_box.png');
     this.load.image('checkedBox', 'assets/ui/blue_boxCheckmark.png');
     this.load.image('bgImg', ['assets/background.jpg']);
+    // load game sprites
+    this.load.image("sprBg0", "assets/sprBg0.png");
+    this.load.image("sprBg1", "assets/sprBg1.png");
+    this.load.spritesheet("sprExplosion", "assets/sprExplosion.png", {
+      frameWidth: 32,
+      frameHeight: 32
+    });
+    this.load.spritesheet("sprEnemy0", "assets/sprEnemy0.png", {
+      frameWidth: 16,
+      frameHeight: 16
+    });
+    this.load.image("sprEnemy1", "assets/sprEnemy1.png");
+    this.load.spritesheet("sprEnemy2", "assets/sprEnemy2.png", {
+      frameWidth: 16,
+      frameHeight: 16
+    });
+    this.load.image("sprLaserEnemy0", "assets/sprLaserEnemy0.png");
+    this.load.image("sprLaserPlayer", "assets/sprLaserPlayer.png");
+    this.load.spritesheet("sprPlayer", "assets/sprPlayer.png", {
+      frameWidth: 16,
+      frameHeight: 16
+    });
+    //load audios
     this.load.audio('bgMusic', ['assets/TownTheme.mp3']);
+    this.load.audio("sndExplode0", "assets/sndExplode0.wav");
+    this.load.audio("sndExplode1", "assets/sndExplode1.wav");
+    this.load.audio("sndLaser", "assets/sndLaser.wav");
+
+
   }
 
-  ready () {
+  ready() {
     // this.scene.start('Title');
     this.readyCount++;
     if (this.readyCount === 2) {
