@@ -2,7 +2,8 @@ import 'phaser';
 import Player from '../Objects/Player'
 import GunShip from '../Objects/GunShip'
 import ChaserShip from '../Objects/ChaserShip'
-import CarrierShip  from '../Objects/CarrierShip'
+import CarrierShip from '../Objects/CarrierShip'
+import ScrollingBackground from '../Objects/ScrollingBackground'
 export default class GameScene extends Phaser.Scene {
   constructor() {
     super('Game');
@@ -48,10 +49,15 @@ export default class GameScene extends Phaser.Scene {
         this.sound.add("sndExplode0"),
         this.sound.add("sndExplode1")
       ],
-      laser: this.sound.add("sndLaser", {volume: 0.01})
+      laser: this.sound.add("sndLaser", { volume: 0.01 })
     };
 
-    this.add.image(400, 300, 'bgImg');
+    // this.add.image(400, 300, 'bgImg');
+    this.backgrounds = [];
+    for (var i = 0; i < 5; i++) { // create five scrolling backgrounds
+      var bg = new ScrollingBackground(this, "sprBg0", i * 10);
+      this.backgrounds.push(bg);
+    }
     this.player = new Player(
       this,
       this.game.config.width * 0.5,
@@ -75,7 +81,7 @@ export default class GameScene extends Phaser.Scene {
 
     this.time.addEvent({
       delay: 1000,
-      callback: function() {
+      callback: function () {
         var enemy = null;
 
         if (Phaser.Math.Between(0, 10) >= 3) {
@@ -87,7 +93,7 @@ export default class GameScene extends Phaser.Scene {
         }
         else if (Phaser.Math.Between(0, 10) >= 5) {
           if (this.getEnemiesByType("ChaserShip").length < 5) {
-    
+
             enemy = new ChaserShip(
               this,
               Phaser.Math.Between(0, this.game.config.width),
@@ -102,7 +108,7 @@ export default class GameScene extends Phaser.Scene {
             0
           );
         }
-    
+
         if (enemy !== null) {
           enemy.setScale(Phaser.Math.Between(10, 20) * 0.1);
           this.enemies.add(enemy);
@@ -112,28 +118,28 @@ export default class GameScene extends Phaser.Scene {
       loop: true
     });
 
-    this.physics.add.collider(this.playerLasers, this.enemies, function(playerLaser, enemy) {
+    this.physics.add.collider(this.playerLasers, this.enemies, function (playerLaser, enemy) {
       if (enemy) {
         if (enemy.onDestroy !== undefined) {
           enemy.onDestroy();
         }
-      
+
         enemy.explode(true);
         playerLaser.destroy();
       }
     });
 
-    this.physics.add.overlap(this.player, this.enemies, function(player, enemy) {
+    this.physics.add.overlap(this.player, this.enemies, function (player, enemy) {
       if (!player.getData("isDead") &&
-          !enemy.getData("isDead")) {
+        !enemy.getData("isDead")) {
         player.explode(false);
         enemy.explode(true);
       }
     });
 
-    this.physics.add.overlap(this.player, this.enemyLasers, function(player, laser) {
+    this.physics.add.overlap(this.player, this.enemyLasers, function (player, laser) {
       if (!player.getData("isDead") &&
-          !laser.getData("isDead")) {
+        !laser.getData("isDead")) {
         player.explode(false);
         laser.destroy();
       }
@@ -141,24 +147,27 @@ export default class GameScene extends Phaser.Scene {
   }
 
   update() {
-    if(!this.player.getData("isDead")){
+    for (var i = 0; i < this.backgrounds.length; i++) {
+      this.backgrounds[i].update();
+    }
+    if (!this.player.getData("isDead")) {
 
       this.player.update();
-  
+
       if (this.keyW.isDown || this.keyUp.isDown) {
         this.player.moveUp();
       }
       else if (this.keyS.isDown || this.keyDown.isDown) {
         this.player.moveDown();
       }
-  
+
       if (this.keyA.isDown || this.keyLeft.isDown) {
         this.player.moveLeft();
       }
       else if (this.keyD.isDown || this.keyRight.isDown) {
         this.player.moveRight();
       }
-  
+
       if (this.keySpace.isDown) {
         this.player.setData("isShooting", true);
       }
@@ -176,16 +185,16 @@ export default class GameScene extends Phaser.Scene {
         enemy.x > this.game.config.width + enemy.displayWidth ||
         enemy.y < -enemy.displayHeight * 4 ||
         enemy.y > this.game.config.height + enemy.displayHeight) {
-    
+
         if (enemy) {
           if (enemy.onDestroy !== undefined) {
             enemy.onDestroy();
           }
-    
+
           enemy.destroy();
         }
-    
-    }
+
+      }
     }
 
     for (var i = 0; i < this.enemyLasers.getChildren().length; i++) {
