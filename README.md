@@ -28,7 +28,7 @@ Run  `npm install` and then `npm run start` finally open your web browser at `ht
 [Hosted on Heroku](http://startrooper.herokuapp.com/)
 
 ## Screenshot
-![image](https://i.imgur.com/uRdiEVI.png)
+
 
 ## Instructions to run the tests
 
