@@ -4,10 +4,11 @@ export default class GunShip extends Entity {
     constructor(scene, x, y) {
         super(scene, x, y, "sprEnemy0", "GunShip");
         this.play("sprEnemy0");
-        this.body.velocity.y = Phaser.Math.Between(50, 100);
+        this.velocity = {x:0,y:Phaser.Math.Between(50, 100)}
+        this.body.velocity.y = this.velocity.y;
 
         this.shootTimer = this.scene.time.addEvent({
-            delay: 1000,
+            delay: 5000,
             callback: function() {
               var laser = new EnemyLaser(
                 this.scene,
@@ -21,7 +22,7 @@ export default class GunShip extends Entity {
             loop: true
           });
         this.score=10
-        this.life=10
+        this.life=100
 
     }
 
@@ -31,5 +32,10 @@ export default class GunShip extends Entity {
               this.shootTimer.remove(false);
             }
           }
+    }
+
+    update(){
+      this.body.velocity.x= this.velocity.x
+      this.body.velocity.y=this.velocity.y
     }
 }

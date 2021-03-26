@@ -67,23 +67,30 @@ export default class GameScene extends Phaser.Scene {
     score+=entity.score
   }
 
+  checkOverlap(spriteA, spriteB) {
+    var boundsA = spriteA.getBounds();
+    var boundsB = spriteB.getBounds();
+    return Phaser.Geom.Intersects.RectangleToRectangle(boundsA, boundsB);
+}
   createColisions(){
     let e = this
+    
     this.physics.add.collider(this.playerLasers, this.enemies, function (playerLaser, enemy) {
       if (enemy) {
-        if (enemy.onDestroy !== undefined) {
-          enemy.onDestroy();
-        }
+        
 
         playerLaser.destroy();
         
         enemy.life = enemy.life-playerLaser.fire;
-        console.log(enemy.life)
+        
         if(enemy.life<=0){
+          if (enemy.onDestroy !== undefined) {
+            enemy.onDestroy();
+          }
           enemy.explode(true);
 
           score+=enemy.score       
-          console.log(score)
+          
         }
       }
     });
@@ -138,7 +145,7 @@ export default class GameScene extends Phaser.Scene {
     this.playerLasers = this.add.group();
 
     this.time.addEvent({
-      delay: 2000,
+      delay: 500,
       callback: function () {
         var enemy = null;
 
@@ -168,7 +175,7 @@ export default class GameScene extends Phaser.Scene {
         }
 
         if (enemy !== null) {
-          enemy.setScale(Phaser.Math.Between(10, 20) * 0.1);
+          enemy.setScale(2);
           this.enemies.add(enemy);
         }
       },
