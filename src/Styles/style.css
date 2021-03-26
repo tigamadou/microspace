@@ -1,8 +1,14 @@
 body{
-    background-color: black;
+    background-color: #f1f1f1;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    /* background-image: url('../../assets/background.jpg'); */
+    
+}
+canvas{
+    border-radius: 30px;
+    box-shadow: 0px 10px 25px -5px #000;
 }

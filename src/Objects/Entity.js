@@ -8,6 +8,8 @@ export default class Entity extends Phaser.GameObjects.Sprite {
 
         this.setData("type", type);
         this.setData("isDead", false);
+        this.setData("score", 0);
+        this.setData("life", 0);
     }
 
     explode(canDestroy) {
