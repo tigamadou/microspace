@@ -5,7 +5,7 @@ export default class CarrierShip extends Entity {
         this.play("sprEnemy2");
         this.velocity = {x:0,y:Phaser.Math.Between(50, 100)}
         this.body.velocity.y = this.velocity.y;
-        this.score=50
+        this.score=100
         this.life=50
     }
 

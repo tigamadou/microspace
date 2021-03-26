@@ -10,7 +10,7 @@ export default class ChaserShip extends Entity {
           };
           this.state = this.states.MOVE_DOWN;
           this.score=20
-          this.life=100
+          this.life=10
     }
 
     update(){

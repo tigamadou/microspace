@@ -16,15 +16,15 @@ export default class GameScene extends Phaser.Scene {
     this.load.image('logo', 'assets/logo.png');
   }
 
-  createStats(){
+  createStats() {
     this.scoreText = this.add.text(16, 16, 'Score: 0', {
       fontSize: '16px',
       fill: '#fff',
     });
-    
+
   }
 
-  createAnimations(){
+  createAnimations() {
 
     this.anims.create({
       key: "sprEnemy0",
@@ -32,28 +32,28 @@ export default class GameScene extends Phaser.Scene {
       frameRate: 20,
       repeat: -1
     });
-  
+
     this.anims.create({
       key: "sprEnemy2",
       frames: this.anims.generateFrameNumbers("sprEnemy2"),
       frameRate: 20,
       repeat: -1
     });
-  
+
     this.anims.create({
       key: "sprExplosion",
       frames: this.anims.generateFrameNumbers("sprExplosion"),
       frameRate: 20,
       repeat: 0
     });
-  
+
     this.anims.create({
       key: "sprPlayer",
       frames: this.anims.generateFrameNumbers("sprPlayer"),
       frameRate: 20,
       repeat: -1
     });
-  
+
     this.sfx = {
       explosions: [
         this.sound.add("sndExplode0"),
@@ -63,34 +63,44 @@ export default class GameScene extends Phaser.Scene {
     };
   }
 
-  addScore(entity){
-    score+=entity.score
+  addScore(entity) {
+    score += entity.score
   }
 
   checkOverlap(spriteA, spriteB) {
     var boundsA = spriteA.getBounds();
     var boundsB = spriteB.getBounds();
     return Phaser.Geom.Intersects.RectangleToRectangle(boundsA, boundsB);
-}
-  createColisions(){
+  }
+  createColisions(player) {
     let e = this
-    
+
     this.physics.add.collider(this.playerLasers, this.enemies, function (playerLaser, enemy) {
       if (enemy) {
-        
 
+        console.log(playerLaser.fire)
         playerLaser.destroy();
-        
-        enemy.life = enemy.life-playerLaser.fire;
-        
-        if(enemy.life<=0){
+
+        enemy.life = enemy.life - playerLaser.fire;
+
+        if (enemy.life <= 0) {
           if (enemy.onDestroy !== undefined) {
             enemy.onDestroy();
           }
           enemy.explode(true);
 
-          score+=enemy.score       
-          
+          score += enemy.score
+
+          if (score >= 1000) {
+            player.levelUp(2)
+          }
+          if (score >= 5000) {
+            player.levelUp(3)
+          }
+
+          if (score >= 10000) {
+            player.levelUp(4)
+          }
         }
       }
     });
@@ -114,7 +124,7 @@ export default class GameScene extends Phaser.Scene {
 
   create() {
 
-    
+
     this.backgrounds = [];
     for (var i = 0; i < 5; i++) { // create five scrolling backgrounds
       var bg = new ScrollingBackground(this, "sprBg0", i * 10);
@@ -144,8 +154,12 @@ export default class GameScene extends Phaser.Scene {
     this.enemyLasers = this.add.group();
     this.playerLasers = this.add.group();
 
+    this.createEnemies()
+    this.createColisions(this.player)
+  }
+  createEnemies() {
     this.time.addEvent({
-      delay: 500,
+      delay: 1000,
       callback: function () {
         var enemy = null;
 
@@ -183,11 +197,10 @@ export default class GameScene extends Phaser.Scene {
       loop: true
     });
 
-    this.createColisions()
   }
-
   update() {
     this.scoreText.setText(`Score: ${score}`);
+
     for (var i = 0; i < this.backgrounds.length; i++) {
       this.backgrounds[i].update();
     }
@@ -277,4 +290,6 @@ export default class GameScene extends Phaser.Scene {
     }
     return arr;
   }
+
+
 };

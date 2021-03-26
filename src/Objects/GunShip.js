@@ -21,8 +21,8 @@ export default class GunShip extends Entity {
             callbackScope: this,
             loop: true
           });
-        this.score=10
-        this.life=100
+        this.score=100
+        this.life=10
 
     }
 
