@@ -5,11 +5,25 @@ export default class Model {
     this._bgMusicPlaying = false;
     this._score = 0;
     this._level = 0;
+    this._gameOver=false;
   }
   set score(value){
     this._score = value
   }get score(){
     return this._score
+  }
+
+  set level(value){
+    this._level = value
+  }get level(){
+    return this._level
+  }
+
+  set gameOver(value){
+    this.__gameOver = value
+  }
+  get gameOver(){
+    return this.__gameOver
   }
   set musicOn(value) {
     this._musicOn = value;

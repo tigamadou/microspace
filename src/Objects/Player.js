@@ -6,7 +6,7 @@ export default class Player extends Entity {
         this.setData("speed", 400);
         this.play("sprPlayer");
         this.setData("isShooting", false);
-        this.setData("timerShootDelay", 10);
+        this.setData("timerShootDelay", 5);
         this.setData("timerShootTick", this.getData("timerShootDelay") - 1);
         this.level = 1
     }
@@ -39,8 +39,7 @@ export default class Player extends Entity {
             }
             else { // when the "manual timer" is triggered:
                 this.fireWeapon()
-
-                this.scene.sfx.laser.play(); // play the laser sound effect
+                this.scene.globals.sfx.laser.play(); // play the laser sound effect
                 this.setData("timerShootTick", 0);
             }
         }

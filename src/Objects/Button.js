@@ -1,7 +1,7 @@
 import 'phaser';
 
 export default class Button extends Phaser.GameObjects.Container {
-  constructor(scene, x, y, key1, key2, text, targetScene) {
+  constructor(scene, x, y, key1, key2, text, targetScene,beforCallback=null) {
     super(scene);
     this.scene = scene;
     this.x = x;
@@ -15,6 +15,7 @@ export default class Button extends Phaser.GameObjects.Container {
     this.add(this.text);
 
     this.button.on('pointerdown', function () {
+      
       this.scene.scene.start(targetScene);
     }.bind(this));
 
@@ -23,6 +24,7 @@ export default class Button extends Phaser.GameObjects.Container {
     }.bind(this));
 
     this.button.on('pointerout', function () {
+      
       this.button.setTexture(key1);
     }.bind(this));
 

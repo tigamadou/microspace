@@ -1,14 +1,12 @@
 import Entity from './Entity'
+import EnemyLaser from './EnemyLaser'
 export default class ChaserShip extends Entity {
-  constructor(scene, x, y) {
+  constructor(scene, x, y,params) {
     super(scene, x, y, "sprEnemy1", "ChaserShip");
     this.velocity = { x: 0, y: 100 }
     this.body.velocity.y = this.velocity.y;
-    this.states = {
-      MOVE_DOWN: "MOVE_DOWN",
-      CHASE: "CHASE"
-    };
-    this.state = this.states.MOVE_DOWN;
+  
+    this.state = params.state;
 
     this.life = 20
     this.score = this.life / 2

@@ -9,9 +9,10 @@ export default class TitleScene extends Phaser.Scene {
 
   create () {
     this.add.image(400, 300, 'bgImg');
-  
+    this.game.sound.stopAll();
+    this.globals = this.sys.game.globals;
     // Game
-    this.gameButton = new Button(this, config.width-120, config.height-400, 'blueButton1', 'blueButton2', 'Play', 'Game');
+    this.gameButton = new Button(this, config.width-120, config.height-400, 'blueButton1', 'blueButton2', 'START', 'Intro');
 
     // Options
     this.optionsButton = new Button(this,  config.width-120, config.height-340, 'blueButton1', 'blueButton2', 'Options', 'Options');
@@ -23,12 +24,10 @@ export default class TitleScene extends Phaser.Scene {
     this.creditsButton = new Button(this,  config.width-120, config.height-220, 'blueButton1', 'blueButton2', 'Credits', 'Credits');
     
 
-    this.model = this.sys.game.globals.model;
-    if (this.model.musicOn === true && this.model.bgMusicPlaying === false) {
-      this.bgMusic = this.sound.add('bgMusic', { volume: 0.01, loop: true });
-      this.bgMusic.play();
-      this.model.bgMusicPlaying = true;
-      this.sys.game.globals.bgMusic = this.bgMusic;
+    if (APP.model.musicOn === true) {
+      this.globals.bgMusic = this.globals.sfx.music.title;
+      this.globals.bgMusic.play();
+      APP.model.bgMusicPlaying = true;
     }
   }
 

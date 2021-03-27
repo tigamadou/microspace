@@ -91,9 +91,9 @@ export default class PreloaderScene extends Phaser.Scene {
     // load game sprites
     this.load.image("sprBg0", "assets/sprBg0.png");
     this.load.image("sprBg1", "assets/sprBg1.png");
-    this.load.spritesheet("sprExplosion", "assets/sprExplosion.png", {
-      frameWidth: 32,
-      frameHeight: 32
+    this.load.spritesheet("sprExplosion", "assets/explode2.png", {
+      frameWidth: 16,
+      frameHeight: 13
     });
     this.load.spritesheet("sprEnemy0", "assets/sprEnemy0.png", {
       frameWidth: 16,
@@ -111,15 +111,69 @@ export default class PreloaderScene extends Phaser.Scene {
       frameHeight: 16
     });
     //load audios
-    this.load.audio('bgMusic', ['assets/TownTheme.mp3']);
+    this.load.audio('battleMusic', ['assets/battleThemeA.mp3']);
+    this.load.audio('GameMusic', ['assets/war.mp3']);
+    this.load.audio('gameOver', ['assets/gameOver.mp3']);
     this.load.audio("sndExplode0", "assets/sndExplode0.wav");
     this.load.audio("sndExplode1", "assets/sndExplode1.wav");
     this.load.audio("sndLaser", "assets/sndLaser.wav");
     this.load.audio("sndBtnOver",  "assets/sndBtnOver.wav");
     this.load.audio("sndBtnDown",  "assets/sndBtnDown.wav");
 
+    
   }
 
+  create(){
+  
+    this.sys.game.globals.sfx = {
+      explosions: [
+        this.sound.add("sndExplode0",{ volume: 0.1 }),
+        this.sound.add("sndExplode1",{ volume: 0.1 })
+      ],
+      laser: this.sound.add("sndLaser", { volume: 0.1}),
+      music:{
+        title: this.sound.add('battleMusic', { volume: 0.9, loop: true }),
+        gameMusic: this.sound.add('GameMusic', { volume: 0.5, loop: true }),
+        gameOver: this.sound.add('gameOver', { volume: 0.5, loop: true })
+      }
+    };
+
+    this.createAnimations()
+    
+  }
+
+  createAnimations() {
+
+    this.anims.create({
+      key: "sprEnemy0",
+      frames: this.anims.generateFrameNumbers("sprEnemy0"),
+      frameRate: 20,
+      repeat: -1
+    });
+
+    this.anims.create({
+      key: "sprEnemy2",
+      frames: this.anims.generateFrameNumbers("sprEnemy2"),
+      frameRate: 20,
+      repeat: -1
+    });
+
+    this.anims.create({
+      key: "sprExplosion",
+      frames: this.anims.generateFrameNumbers("sprExplosion"),
+      frameRate: 13,
+      repeat: 0
+    });
+
+    this.anims.create({
+      key: "sprPlayer",
+      frames: this.anims.generateFrameNumbers("sprPlayer"),
+      frameRate: 20,
+      repeat: -1
+    });
+
+   
+  }
   ready() {
     // this.scene.start('Title');
     this.readyCount++;
