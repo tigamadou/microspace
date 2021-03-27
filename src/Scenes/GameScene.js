@@ -9,13 +9,48 @@ let score = 0
 export default class GameScene extends Phaser.Scene {
   constructor() {
     super('Game');
+   
   }
 
   preload() {
     // load images
     this.load.image('logo', 'assets/logo.png');
   }
+  create() {
+    this.model = this.sys.game.globals.model;
+    
+    this.backgrounds = [];
+    for (var i = 0; i < 5; i++) { // create five scrolling backgrounds
+      var bg = new ScrollingBackground(this, "sprBg0", i * 10);
+      this.backgrounds.push(bg);
+    }
 
+    this.createStats()
+    this.createAnimations()
+    this.player = new Player(
+      this,
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.5,
+      "sprPlayer"
+    );
+    this.player.setScale(2)
+    this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+    this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+    this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+    this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+    this.keyUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
+    this.keyDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
+    this.keyLeft = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
+    this.keyRight = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+    this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+
+    this.enemies = this.add.group();
+    this.enemyLasers = this.add.group();
+    this.playerLasers = this.add.group();
+
+    this.createEnemies()
+    this.createColisions(this.player)
+  }
   createStats() {
     this.scoreText = this.add.text(16, 16, 'Score: 0', {
       fontSize: '16px',
@@ -63,9 +98,7 @@ export default class GameScene extends Phaser.Scene {
     };
   }
 
-  addScore(entity) {
-    score += entity.score
-  }
+
 
   checkOverlap(spriteA, spriteB) {
     var boundsA = spriteA.getBounds();
@@ -74,11 +107,11 @@ export default class GameScene extends Phaser.Scene {
   }
   createColisions(player) {
     let e = this
-
-    this.physics.add.collider(this.playerLasers, this.enemies, function (playerLaser, enemy) {
-      if (enemy) {
-
-        console.log(playerLaser.fire)
+    
+    this.physics.add.overlap(this.playerLasers, this.enemies, function (playerLaser, enemy) {
+      if (enemy && !enemy.getData('isDead')) {
+        
+        console.log(enemy.getData('isDead'))
         playerLaser.destroy();
 
         enemy.life = enemy.life - playerLaser.fire;
@@ -90,6 +123,7 @@ export default class GameScene extends Phaser.Scene {
           enemy.explode(true);
 
           score += enemy.score
+          e.model.score = score
 
           if (score >= 1000) {
             player.levelUp(2)
@@ -122,41 +156,7 @@ export default class GameScene extends Phaser.Scene {
     });
   }
 
-  create() {
-
-
-    this.backgrounds = [];
-    for (var i = 0; i < 5; i++) { // create five scrolling backgrounds
-      var bg = new ScrollingBackground(this, "sprBg0", i * 10);
-      this.backgrounds.push(bg);
-    }
-
-    this.createStats()
-    this.createAnimations()
-    this.player = new Player(
-      this,
-      this.game.config.width * 0.5,
-      this.game.config.height * 0.5,
-      "sprPlayer"
-    );
-    this.player.setScale(2)
-    this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-    this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
-    this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-    this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-    this.keyUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
-    this.keyDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
-    this.keyLeft = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
-    this.keyRight = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
-    this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-
-    this.enemies = this.add.group();
-    this.enemyLasers = this.add.group();
-    this.playerLasers = this.add.group();
-
-    this.createEnemies()
-    this.createColisions(this.player)
-  }
+  
   createEnemies() {
     this.time.addEvent({
       delay: 1000,
@@ -199,7 +199,7 @@ export default class GameScene extends Phaser.Scene {
 
   }
   update() {
-    this.scoreText.setText(`Score: ${score}`);
+    this.scoreText.setText(`Score: ${this.model.score}`);
 
     for (var i = 0; i < this.backgrounds.length; i++) {
       this.backgrounds[i].update();
@@ -229,6 +229,8 @@ export default class GameScene extends Phaser.Scene {
         this.player.setData("timerShootTick", this.player.getData("timerShootDelay") - 1);
         this.player.setData("isShooting", false);
       }
+    }else{
+      this.scene.start('GameOver');
     }
 
     for (var i = 0; i < this.enemies.getChildren().length; i++) {

@@ -63,15 +63,15 @@ export default class Player extends Entity {
     }
 
     laserOne() {
-        var laser = new PlayerLaser(this.scene, (this.x), (this.y - 30),25);
-        laser.body.velocity.y = -200
+        var laser = new PlayerLaser(this.scene, (this.x), (this.y - 30),10);
+        laser.body.velocity.y = -800
         this.scene.playerLasers.add(laser);
     }
 
     laserTwo() {
-        var laser = new PlayerLaser(this.scene, (this.x-30), (this.y - 30),50);
+        var laser = new PlayerLaser(this.scene, (this.x-30), (this.y - 30),10);
       
-        var laser2 = new PlayerLaser(this.scene, (this.x+30), (this.y - 30),50);
+        var laser2 = new PlayerLaser(this.scene, (this.x+30), (this.y - 30),10);
         laser.body.velocity.y = -400
         laser2.body.velocity.y = -400
         this.scene.playerLasers.add(laser);
@@ -79,9 +79,9 @@ export default class Player extends Entity {
     }
 
     laserTree() {
-        var laser = new PlayerLaser(this.scene, (this.x - 16), (this.y - 20),75);
-        var laser2 = new PlayerLaser(this.scene, (this.x), (this.y - 30),75);
-        var laser3 = new PlayerLaser(this.scene, (this.x + 16), (this.y - 20),75);
+        var laser = new PlayerLaser(this.scene, (this.x - 16), (this.y - 20),15);
+        var laser2 = new PlayerLaser(this.scene, (this.x), (this.y - 30),15);
+        var laser3 = new PlayerLaser(this.scene, (this.x + 16), (this.y - 20),15);
         var dx = -200;
         var dy = -200;
         var angle = Math.atan2(dy, dx);
@@ -105,11 +105,11 @@ export default class Player extends Entity {
 
     laserFour() {
         var velocityY = -800
-        var laser = new PlayerLaser(this.scene, this.x, (this.y - 12),75);
+        var laser = new PlayerLaser(this.scene, this.x, (this.y - 12),20);
         laser.body.velocity.y = velocityY
         this.scene.playerLasers.add(laser);
         // first couple
-        var laser = new PlayerLaser(this.scene, (this.x-26), (this.y - 12),75);
+        var laser = new PlayerLaser(this.scene, (this.x-26), (this.y - 12),20);
         laser.body.velocity.y = velocityY
         var dx = -300;
         var dy = -200;
@@ -121,7 +121,7 @@ export default class Player extends Entity {
         laser.angle = -60
         this.scene.playerLasers.add(laser);
 
-        var laser = new PlayerLaser(this.scene, (this.x+26), (this.y - 12),75);
+        var laser = new PlayerLaser(this.scene, (this.x+26), (this.y - 12),20);
         laser.body.velocity.y = velocityY
         var dx = 300;
         var dy = -200;
@@ -135,7 +135,7 @@ export default class Player extends Entity {
 
         // second couple
             
-        var laser = new PlayerLaser(this.scene, (this.x+16), (this.y - 12),75);
+        var laser = new PlayerLaser(this.scene, (this.x+16), (this.y - 12),20);
         laser.body.velocity.y = velocityY
         var dx = 150;
         var dy = -200;
@@ -147,7 +147,7 @@ export default class Player extends Entity {
         laser.angle = 40
         this.scene.playerLasers.add(laser);
         
-        var laser = new PlayerLaser(this.scene, (this.x-16), (this.y - 12),75);
+        var laser = new PlayerLaser(this.scene, (this.x-16), (this.y - 12),20);
         laser.body.velocity.y = velocityY
         var dx = -150;
         var dy = -200;
@@ -161,7 +161,7 @@ export default class Player extends Entity {
 
         // third couple
             
-        var laser = new PlayerLaser(this.scene, (this.x+8), (this.y - 12),75);
+        var laser = new PlayerLaser(this.scene, (this.x+8), (this.y - 12),20);
         laser.body.velocity.y = velocityY
         var dx = 75;
         var dy = -200;
@@ -173,7 +173,7 @@ export default class Player extends Entity {
         laser.angle = 20
         this.scene.playerLasers.add(laser);
         
-        var laser = new PlayerLaser(this.scene, (this.x-8), (this.y - 12),75);
+        var laser = new PlayerLaser(this.scene, (this.x-8), (this.y - 12),20);
         laser.body.velocity.y = velocityY
         var dx = -75;
         var dy = -200;
@@ -185,42 +185,6 @@ export default class Player extends Entity {
         laser.angle = -20
         this.scene.playerLasers.add(laser);
 
-        // var laser2 = new PlayerLaser(this.scene, (this.x), (this.y - 20),75);
-        // var laser3 = new PlayerLaser(this.scene, this.x, (this.y - 30),75);
-        // var laser4 = new PlayerLaser(this.scene, (this.x ), (this.y - 20),75);
-        // var laser5 = new PlayerLaser(this.scene, (this.x + 30), (this.y - 20),75);
-        // var dx = -200;
-        // var dy = -200;
-        // var angle = Math.atan2(dy, dx);
-        // var velocityY = -800
-
-        // laser.angle = -20
-        // laser2.angle = -20
-        // laser4.angle = 20
-        // laser5.angle = 20
-
-        // laser.body.setVelocity(
-        //     -Math.cos(Math.atan2(-200,-200)) * velocityY,
-        //     -Math.sin(Math.atan2(-200,-200)) * velocityY
-        // )
-        // laser2.body.setVelocity(
-        //     -Math.cos(Math.atan2(-0,-100)) * velocityY,
-        //     -Math.sin(Math.atan2(-0,-100)) * velocityY
-        // )
-        // laser3.body.velocity.y = velocityY
-        // laser4.body.setVelocity(
-        //     Math.cos(Math.atan2(-200,-200)) * velocityY,
-        //     -Math.sin(Math.atan2(-200,-200)) * velocityY
-        // )
-        // laser5.body.setVelocity(
-        //     Math.cos(Math.atan2(-50,-50)) * velocityY,
-        //     -Math.sin(Math.atan2(-200,-200)) * velocityY
-        // )
-
-        // this.scene.playerLasers.add(laser);
-        // this.scene.playerLasers.add(laser2);
-        // this.scene.playerLasers.add(laser3);
-        // this.scene.playerLasers.add(laser4);
-        // this.scene.playerLasers.add(laser5);
+        
     }
 }
