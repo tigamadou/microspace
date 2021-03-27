@@ -3,13 +3,14 @@ import EnemyLaser from './EnemyLaser'
 export default class ChaserShip extends Entity {
   constructor(scene, x, y,params) {
     super(scene, x, y, "sprEnemy1", "ChaserShip");
-    this.velocity = { x: 0, y: 100 }
+    this.params = params;
+    this.velocity = { x: 0, y: this.params.speed }
     this.body.velocity.y = this.velocity.y;
   
-    this.state = params.state;
 
     this.life = 20
     this.score = this.life / 2
+    this.setScale((params.rank/100)+2)
   }
 
   update() {
@@ -21,17 +22,16 @@ export default class ChaserShip extends Entity {
         this.scene.player.y
       ) < 320) {
 
-        this.state = this.states.CHASE;
+        this.params.state = this.states.CHASE;
       }
 
-      if (this.state == this.states.CHASE) {
+      if (this.params.state == this.states.CHASE) {
         var dx = this.scene.player.x - this.x;
         var dy = this.scene.player.y - this.y;
 
         var angle = Math.atan2(dy, dx);
 
-        var speed = 100;
-        this.velocity = { x: Math.cos(angle) * speed, y: Math.sin(angle) * speed }
+        this.velocity = { x: Math.cos(angle) * this.params.speed, y: Math.sin(angle) * this.params.speed }
         this.body.setVelocity(
           this.velocity.x,
           this.velocity.y

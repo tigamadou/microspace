@@ -35,9 +35,10 @@ export default class GameScene extends Phaser.Scene {
       this,
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
-      "sprPlayer"
+      "sprPlayer",
+      APP.player
     );
-    this.player.setScale(2)
+    
     this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
     this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -124,7 +125,6 @@ export default class GameScene extends Phaser.Scene {
   createEnemies() {
     APP.stage.enemies.forEach(stageEnemy => {
       stageEnemy = APP.getEnemies(stageEnemy)
-      console.log(stageEnemy)
     
       this.createEnemy(stageEnemy)
     });
@@ -188,7 +188,6 @@ export default class GameScene extends Phaser.Scene {
         if (enemy !== null) {
           // enemy.setScale(2);
           this.enemies.add(enemy);
-          console.log(this.enemies)
         }
       },
       callbackScope: this,
@@ -294,7 +293,6 @@ export default class GameScene extends Phaser.Scene {
   gameOver() {
     if (!APP.model.gameOver) {
       APP.model.gameOver = true
-      console.log('game over')
       setTimeout(() => {
         this.scene.start('GameOver');
       }, 3000)
@@ -304,8 +302,7 @@ export default class GameScene extends Phaser.Scene {
   checkScore(){
     
     if(APP.canLevelUp()){
-      console.log('can level up',APP)
-      this.scene.start('GameOver');
+      this.scene.start('Stage');
     }
   }
 

@@ -15,7 +15,7 @@ export default class App {
             weapon: {
                 name: 'Laser',
                 fire: 10,
-                timerShootDelay: 10
+                timerShootDelay: 25
             }
         }
         this.STATES= {
@@ -25,10 +25,10 @@ export default class App {
         this.enemies = [
             {
                 rank: 1,
-                createDelay: 1000,
+                createDelay: 1500,
                 life: 10,
                 score: null,
-                shootTimer: 1000,
+                shootTimer: 4000,
                 maxNumber: 10,                
                 state: this.STATES.MOVE_DOWN,
                 speed: 100,
@@ -39,26 +39,26 @@ export default class App {
             {
                 rank: 2,
                 createDelay: 1500,
-                life: 10,
+                life: 30,
                 score: null,
-                shootTimer: 500,
+                shootTimer: 1000,
                 maxNumber: 10,
                 
                 state: this.STATES.MOVE_DOWN,
-                speed: 200,
+                speed: 100,
                 weapon:{
                     speed:300
                 }
             },
             {
-                rank:4,
+                rank:3,
                 createDelay: 1000,
                 life: 100,
                 score: null,
                 shootTimer:500,
                 maxNumber: 10,               
                 state: this.STATES.MOVE_DOWN,
-                speed: 50,
+                speed: 125,
                 weapon:{
                     speed:100
                 }
@@ -69,16 +69,32 @@ export default class App {
         this.stages = [
             {
                 name:"stage 1",
-                enemyRanks:[1,2],
                 targetScore: 100,
                 enemies:[
-                    {name:'GunShip', rank:1,maxNumber:1,state:this.STATES.CHASE},
-                    {name:'ChaserShip', rank:2,state:this.STATES.CHASE}
+                    {name:'GunShip', rank:1,maxNumber:10,createDelay:1000},
+                ]
+            },
+            {
+                name:"stage 2",
+                targetScore: 200,
+                enemies:[
+                    {name:'GunShip', rank:1,maxNumber:30,createDelay:1000},
+                    {name:'GunShip', rank:1,maxNumber:10,createDelay:1000,speed:200}
+                ]
+            },
+            {
+                name:"stage 3",
+                targetScore: 300,
+                enemies:[
+                    {name:'GunShip', rank:1,maxNumber:15},
+                    {name:'ChaserShip', rank:1,maxNumber:2}
                 ]
             }
         ]
 
-        this.stage= this.stages[0]
+        
+        this.stageNumber = 0;
+        
     }
 
 
@@ -104,9 +120,15 @@ export default class App {
     canLevelUp(){
         
             if(this.stage.targetScore<= this.model.score){
+                this.stageNumber +=1
                 return true
             }
           return false
+    }
+
+    loadStage(){
+        this.stage = this.stages[this.stageNumber]
+        return true
     }
 
     updateEnemies(){

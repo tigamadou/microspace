@@ -4,7 +4,7 @@ export default class Model {
     this._musicOn = true;
     this._bgMusicPlaying = false;
     this._score = 0;
-    this._level = 0;
+    this._level = 1;
     this._gameOver=false;
   }
   set score(value){

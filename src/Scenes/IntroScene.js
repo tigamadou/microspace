@@ -41,6 +41,6 @@ export default class IntroScene extends Phaser.Scene {
     this.add.dom(this.game.config.width * 0.3, this.game.config.height * 0, div, 'background-color: transparent; width: 220px; height: 0; font: 48px Arial');
 
     const btn = document.getElementById('button');
-    btn.onclick = () => this.scene.start('Game');
+    btn.onclick = () => this.scene.start('Stage');
   }
 }
