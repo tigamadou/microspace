@@ -152,6 +152,9 @@ export default class GameScene extends Phaser.Scene {
         !laser.getData("isDead")) {
         player.explode(false);
         laser.destroy();
+        setTimeout(()=>{
+          e.scene.start('GameOver');
+        },3000)
       }
     });
   }
@@ -229,8 +232,6 @@ export default class GameScene extends Phaser.Scene {
         this.player.setData("timerShootTick", this.player.getData("timerShootDelay") - 1);
         this.player.setData("isShooting", false);
       }
-    }else{
-      this.scene.start('GameOver');
     }
 
     for (var i = 0; i < this.enemies.getChildren().length; i++) {
