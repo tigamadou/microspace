@@ -54,9 +54,12 @@ export default class GameOverScene extends Phaser.Scene {
 
    
     
-
+    
     
   }
 
+  saveScore(){
+    
+  }
  
 };

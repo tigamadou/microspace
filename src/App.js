@@ -2,11 +2,12 @@
 import Model from './Model';
 import config from './Config/config';
 import Game from './Game';
+import Api from './Api'
 export default class App {
     constructor() {
         this.scenesFolder = './Scenes/'
         this.model = new Model();
-
+        this.NAME = 'bFYJWLw9zLaONu9WlWxb'
         this.player = {
             name: this.model.name,
             score: this.model.score,
@@ -97,7 +98,13 @@ export default class App {
 
 
         this.stageNumber = 0;
+        this.api = new Api(this.NAME)
+        this.createGame()
 
+    }
+
+     createGame(){
+        this.api.createGame();
     }
 
 
@@ -158,6 +165,7 @@ export default class App {
     }
 
     gameOver() {
+        this.api.saveScrore(this.player.name)
         this.model.score = 0
         this.model.gameOver = false
         this.stageNumber = 0;
@@ -166,4 +174,7 @@ export default class App {
         this.player.name = name
     }
 
+    getScores(){
+
+    }
 }
