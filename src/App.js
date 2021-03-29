@@ -1,11 +1,11 @@
 import Model from './Model';
-import config from './Config/config';
-import Game from './Game';
+
+
 import Api from './Api';
 
 export default class App {
   constructor() {
-    this.scenesFolder = './Scenes/';
+    
     this.model = new Model();
     this.NAME = 'MicroSpace';
     this.GAMEID = undefined;
@@ -60,8 +60,8 @@ export default class App {
     this.ranks = 4;
     this.lasers = [];
     this.stages = [];
-    for (var rank = 1; rank <= this.ranks; rank++) {
-      for (var level = 1; level <= 5; level++) {
+    for (var rank = 1; rank <= this.ranks; rank += 1) {
+      for (var level = 1; level <= 5; level += 1) {
         const laser = {
           name: 'Laser',
           rank,
@@ -82,9 +82,9 @@ export default class App {
       weapon: this.getLaser(1),
     };
     let nRanks = 0;
-    for (var rank = 1; rank <= this.ranks; rank++) {
-      for (var level = 1; level <= 5; level++) {
-        nRanks++;
+    for (var rank = 1; rank <= this.ranks; rank += 1) {
+      for (var level = 1; level <= 5; level += 1) {
+        nRanks += 1;
         const stage = {
           name: `Stage ${nRanks}`,
           targetScore: 300 + (500 * (1 + (nRanks * 2.5))),
@@ -114,10 +114,10 @@ export default class App {
     this.leaders = null;
 
     this.stageNumber = 0;
-    this.api = new Api(this.NAME);
+    
 
     this.createGame();
-    this.getScores();
+    
   }
 
   getLaser(level) {
@@ -127,14 +127,12 @@ export default class App {
     return {};
   }
 
-  createGame() {
-    this.GAME = this.api.createGame(this.NAME);
+  async createGame() {
+    this.api = await new Api(this.NAME);
+    this.getScores();
   }
 
-  runGame() {
-    this.game = new Game(config);
-    this.game.runGame();
-  }
+  
 
   score(value) {
     this.model.score += value;

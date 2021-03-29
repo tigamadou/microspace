@@ -3,6 +3,7 @@ export default class Api {
     this.baseProject = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games';
     this.baseMe = 'https://60615099ac47190017a70a98.mockapi.io/api/games';
     this.base = this.baseProject;
+    this.createGame()
   }
 
   async createGame(name) {
@@ -10,11 +11,11 @@ export default class Api {
       method: 'POST', mode: 'cors', body: JSON.stringify({ name }), headers: new Headers(),
     });
 
-    const game = await fetch(request)
+    await fetch(request)
       .then((resp) => resp.json())
-      .then((data) => data.result)
+      .then((data) => this.game = data.result)
       .catch((e) => false);
-    return game;
+    
   }
 
   async saveScrore(id, user, score) {

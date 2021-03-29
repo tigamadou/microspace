@@ -19,7 +19,7 @@ export default class GameScene extends Phaser.Scene {
     this.globals = this.sys.game.globals;
 
     this.backgrounds = [];
-    for (let i = 0; i < 5; i++) { // create five scrolling backgrounds
+    for (let i = 0; i < 5; i += 1) { // create five scrolling backgrounds
       const bg = new ScrollingBackground(this, 'sprBg0', i * 10);
       this.backgrounds.push(bg);
     }
@@ -64,7 +64,7 @@ export default class GameScene extends Phaser.Scene {
     this.time.addEvent({
       delay: 1000,
       callback: () => {
-        this.timeLimit++;
+        this.timeLimit += 1;
         if (APP.canLevelUp(this.timeLimit) && !this.player.getData('isDead')) {
           this.scene.start('Stage');
         }
@@ -177,7 +177,7 @@ export default class GameScene extends Phaser.Scene {
   update() {
     this.scoreText.setText(`Score: ${APP.model.score}`);
 
-    for (var i = 0; i < this.backgrounds.length; i++) {
+    for (var i = 0; i < this.backgrounds.length; i += 1) {
       this.backgrounds[i].update();
     }
     if (!this.player.getData('isDead')) {
@@ -205,7 +205,7 @@ export default class GameScene extends Phaser.Scene {
       this.gameOver();
     }
 
-    for (var i = 0; i < this.enemies.getChildren().length; i++) {
+    for (var i = 0; i < this.enemies.getChildren().length; i += 1) {
       const enemy = this.enemies.getChildren()[i];
 
       enemy.update();
@@ -223,7 +223,7 @@ export default class GameScene extends Phaser.Scene {
       }
     }
 
-    for (var i = 0; i < this.enemyLasers.getChildren().length; i++) {
+    for (var i = 0; i < this.enemyLasers.getChildren().length; i += 1) {
       var laser = this.enemyLasers.getChildren()[i];
       laser.update();
 
@@ -237,7 +237,7 @@ export default class GameScene extends Phaser.Scene {
       }
     }
 
-    for (var i = 0; i < this.playerLasers.getChildren().length; i++) {
+    for (var i = 0; i < this.playerLasers.getChildren().length; i += 1) {
       var laser = this.playerLasers.getChildren()[i];
       laser.update();
 
@@ -254,7 +254,7 @@ export default class GameScene extends Phaser.Scene {
 
   getEnemiesByType(type) {
     const arr = [];
-    for (let i = 0; i < this.enemies.getChildren().length; i++) {
+    for (let i = 0; i < this.enemies.getChildren().length; i += 1) {
       const enemy = this.enemies.getChildren()[i];
       if (enemy.getData('type') == type) {
         arr.push(enemy);

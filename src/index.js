@@ -1,7 +1,11 @@
 import 'phaser';
 import './Styles/style.css';
-
+import config from './Config/config';
 import App from './App';
+import Game from './Game';
 
-window.APP = new App();
-APP.runGame();
+const APP = new App();
+console.log(APP)
+const MyGame = new Game(config,APP)
+
+

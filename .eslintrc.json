@@ -18,7 +18,8 @@
     },
     "ignorePatterns": [
       "dist/",
-      "build/"
+      "build/",
+      "webpack/"
     ]
   }
   

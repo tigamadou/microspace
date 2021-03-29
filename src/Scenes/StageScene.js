@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import Button from '../Objects/Button';
 import ScrollingBackground from '../Objects/ScrollingBackground';
 import Player from '../Objects/Player';
@@ -12,22 +12,22 @@ export default class StageScene extends Phaser.Scene {
     this.game.sound.stopAll();
     this.globals = this.sys.game.globals;
     this.backgrounds = [];
-    for (let i = 0; i < 5; i++) { // create five scrolling backgrounds
+    for (let i = 0; i < 5; i += 1) { // create five scrolling backgrounds
       const bg = new ScrollingBackground(this, 'sprBg0', i * 10);
       this.backgrounds.push(bg);
     }
-    if (APP.model.musicOn === true) {
+    if (window.APP.model.musicOn === true) {
       this.globals.bgMusic = this.globals.sfx.music.gameMusic;
       this.globals.bgMusic.play();
-      APP.model.bgMusicPlaying = true;
+      window.APP.model.bgMusicPlaying = true;
     }
 
-    if (!APP.loadStage()) {
-      APP.gameOver();
+    if (!window.APP.loadStage()) {
+      window.APP.gameOver();
       this.scene.start('Credits');
     }
 
-    this.title = this.add.text(this.game.config.width * 0.5, 100, `${APP.stage.name}`, {
+    this.title = this.add.text(this.game.config.width * 0.5, 100, `${window.APP.stage.name}`, {
       fontFamily: 'monospace',
       fontSize: 48,
       fontStyle: 'bold',
@@ -42,7 +42,7 @@ export default class StageScene extends Phaser.Scene {
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
       'sprPlayer',
-      APP.stage.player,
+      window.APP.stage.player,
     );
   }
 }
