@@ -59,7 +59,7 @@ export default class Player extends Entity {
         }else{
             laser= this.laserFour()
         }
-        console.log(this.weapon)
+        
     }
 
     laserOne() {

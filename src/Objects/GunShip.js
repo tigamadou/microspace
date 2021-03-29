@@ -25,7 +25,6 @@ export default class GunShip extends Entity {
     this.life = params.life
     this.score = params.score
     this.setScale((params.rank/100)+2)
-    console.log(params.shootTimer)
   }
 
   onDestroy() {
