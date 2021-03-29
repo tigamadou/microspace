@@ -7,7 +7,9 @@ export default class StageScene extends Phaser.Scene {
   constructor() {
     super('Stage');
   }
-
+  preload(){
+    this.APP = this.game.APP
+  }
   create() {
     this.game.sound.stopAll();
     this.globals = this.sys.game.globals;
@@ -16,18 +18,18 @@ export default class StageScene extends Phaser.Scene {
       const bg = new ScrollingBackground(this, 'sprBg0', i * 10);
       this.backgrounds.push(bg);
     }
-    if (window.APP.model.musicOn === true) {
+    if (this.APP.model.musicOn === true) {
       this.globals.bgMusic = this.globals.sfx.music.gameMusic;
       this.globals.bgMusic.play();
-      window.APP.model.bgMusicPlaying = true;
+      this.APP.model.bgMusicPlaying = true;
     }
 
-    if (!window.APP.loadStage()) {
-      window.APP.gameOver();
+    if (!this.APP.loadStage()) {
+      this.APP.gameOver();
       this.scene.start('Credits');
     }
 
-    this.title = this.add.text(this.game.config.width * 0.5, 100, `${window.APP.stage.name}`, {
+    this.title = this.add.text(this.game.config.width * 0.5, 100, `${this.APP.stage.name}`, {
       fontFamily: 'monospace',
       fontSize: 48,
       fontStyle: 'bold',
@@ -42,7 +44,7 @@ export default class StageScene extends Phaser.Scene {
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
       'sprPlayer',
-      window.APP.stage.player,
+      this.APP.stage.player,
     );
   }
 }

@@ -29,7 +29,7 @@ export default class Game extends Phaser.Game {
     this.scene.add('GameOver', GameOverScene);
     this.APP = app
     this.scene.start('Boot');
-    console.log(this)
+    
   }
 
   

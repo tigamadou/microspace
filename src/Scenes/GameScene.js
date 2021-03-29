@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import Player from '../Objects/Player';
 import GunShip from '../Objects/GunShip';
 import ChaserShip from '../Objects/ChaserShip';
@@ -13,6 +13,7 @@ export default class GameScene extends Phaser.Scene {
   preload() {
     // load images
     this.load.image('logo', 'assets/logo.png');
+    this.APP = this.game.APP
   }
 
   create() {
@@ -30,7 +31,7 @@ export default class GameScene extends Phaser.Scene {
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
       'sprPlayer',
-      APP.stage.player,
+      this.APP.stage.player,
     );
 
     this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
@@ -65,7 +66,7 @@ export default class GameScene extends Phaser.Scene {
       delay: 1000,
       callback: () => {
         this.timeLimit += 1;
-        if (APP.canLevelUp(this.timeLimit) && !this.player.getData('isDead')) {
+        if (this.APP.canLevelUp(this.timeLimit) && !this.player.getData('isDead')) {
           this.scene.start('Stage');
         }
       },
@@ -89,7 +90,7 @@ export default class GameScene extends Phaser.Scene {
           }
           enemy.explode(true);
 
-          APP.score(enemy.score);
+          this.APP.score(enemy.score);
 
           if (score >= 1000) {
             player.levelUp(2);
@@ -123,8 +124,8 @@ export default class GameScene extends Phaser.Scene {
   }
 
   createEnemies() {
-    APP.stage.enemies.forEach((stageEnemy) => {
-      stageEnemy = APP.getEnemies(stageEnemy);
+    this.APP.stage.enemies.forEach((stageEnemy) => {
+      stageEnemy = this.APP.getEnemies(stageEnemy);
 
       this.time.addEvent({
         delay: stageEnemy.createDelay,
@@ -175,7 +176,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   update() {
-    this.scoreText.setText(`Score: ${APP.model.score}`);
+    this.scoreText.setText(`Score: ${this.APP.model.score}`);
 
     for (var i = 0; i < this.backgrounds.length; i += 1) {
       this.backgrounds[i].update();
@@ -264,8 +265,8 @@ export default class GameScene extends Phaser.Scene {
   }
 
   gameOver() {
-    if (!APP.model.gameOver) {
-      APP.model.gameOver = true;
+    if (!this.APP.model.gameOver) {
+      this.APP.model.gameOver = true;
       setTimeout(() => {
         this.scene.start('GameOver');
       }, 3000);

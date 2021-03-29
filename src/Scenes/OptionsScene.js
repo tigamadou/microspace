@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import Button from '../Objects/Button';
 
 export default class OptionsScene extends Phaser.Scene {
@@ -6,7 +6,11 @@ export default class OptionsScene extends Phaser.Scene {
     super('Options');
   }
 
+  preload(){
+    this.APP = this.game.APP
+  }
   create() {
+    
     this.add.image(400, 300, 'bgImg');
 
     this.text = this.add.text(80, 100, 'Options', { fontSize: 40 });
@@ -20,12 +24,12 @@ export default class OptionsScene extends Phaser.Scene {
     this.soundButton.setInteractive();
 
     this.musicButton.on('pointerdown', () => {
-      APP.model.musicOn = !APP.model.musicOn;
+      this.APP.model.musicOn = !this.APP.model.musicOn;
       this.updateAudio();
     });
 
     this.soundButton.on('pointerdown', () => {
-      APP.model.soundOn = !APP.model.soundOn;
+      this.APP.model.soundOn = !this.APP.model.soundOn;
       this.updateAudio();
     });
 
@@ -35,23 +39,23 @@ export default class OptionsScene extends Phaser.Scene {
   }
 
   updateAudio() {
-    if (APP.model.musicOn === false) {
+    if (this.APP.model.musicOn === false) {
       this.musicButton.setTexture('box');
       this.sys.game.globals.bgMusic.stop();
-      APP.model.bgMusicPlaying = false;
+      this.APP.model.bgMusicPlaying = false;
     } else {
       this.musicButton.setTexture('checkedBox');
-      if (APP.model.bgMusicPlaying === false) {
+      if (this.APP.model.bgMusicPlaying === false) {
         this.sys.game.globals.bgMusic.play();
-        APP.model.bgMusicPlaying = true;
+        this.APP.model.bgMusicPlaying = true;
       }
     }
 
-    if (APP.model.soundOn === false) {
-      APP.game.sound.mute = true;
+    if (this.APP.model.soundOn === false) {
+      this.game.sound.mute = true;
       this.soundButton.setTexture('box');
     } else {
-      APP.game.sound.mute = false;
+      this.game.sound.mute = false;
       this.soundButton.setTexture('checkedBox');
     }
   }

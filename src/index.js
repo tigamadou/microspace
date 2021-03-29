@@ -5,7 +5,7 @@ import App from './App';
 import Game from './Game';
 
 const APP = new App();
-console.log(APP)
+
 const MyGame = new Game(config,APP)
 
 

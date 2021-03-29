@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import Button from '../Objects/Button';
 import ScrollingBackground from '../Objects/ScrollingBackground';
 
@@ -9,10 +9,13 @@ export default class LeaderBoardScene extends Phaser.Scene {
   }
 
   preload() {
-    APP.getScores();
+    this.APP = this.game.APP
+    this.APP.getScores();
+    console.log(this.APP)
   }
 
   async create() {
+    
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) { // create five scrolling backgrounds
       const bg = new ScrollingBackground(this, 'sprBg0', i * 10);
@@ -23,7 +26,7 @@ export default class LeaderBoardScene extends Phaser.Scene {
     const ul = document.createElement('ul');
     ul.classList.add('leaders');
 
-    APP.model.leaders.forEach((leader, index) => {
+    this.APP.model.leaders.forEach((leader, index) => {
       const element = document.createElement('li');
       element.classList.add('leader');
       element.innerHTML = `        

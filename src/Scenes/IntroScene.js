@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import Button from '../Objects/Button';
 import ScrollingBackground from '../Objects/ScrollingBackground';
 
@@ -6,7 +6,9 @@ export default class IntroScene extends Phaser.Scene {
   constructor() {
     super('Intro');
   }
-
+  preload(){
+    this.APP = this.game.APP
+  }
   create() {
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) { // create five scrolling backgrounds
@@ -16,7 +18,7 @@ export default class IntroScene extends Phaser.Scene {
     const div = document.createElement('div');
     div.innerHTML = `<p
     style=" color: white;font-size: 15px;text-align:justify;width: 420px;line-height: 1.25rem;font-weight: bold;margin: 15px 0 0px 0;"/>
-    Greetings ${APP.player.name},
+    Greetings ${this.APP.player.name},
     <br/><br/>
     Welcome to the BattleField
     <br/>

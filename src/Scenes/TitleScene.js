@@ -6,11 +6,13 @@ import ScrollingBackground from '../Objects/ScrollingBackground';
 export default class TitleScene extends Phaser.Scene {
   constructor() {
     super('Title');
+    
   }
-
+  preload(){
+    this.APP = this.game.APP
+  }
   create() {
-    // this.add.image(400, 300, 'bgImg');
-
+   
     this.game.sound.stopAll();
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) { // create five scrolling backgrounds
@@ -31,17 +33,17 @@ export default class TitleScene extends Phaser.Scene {
     // // Credits
     this.creditsButton = new Button(this, this.game.config.width * 0.5 + 160, this.game.config.height - 80, 'blueButton1', 'blueButton2', 'Credits', 'Credits');
 
-    if (APP.model.musicOn === true) {
+    if (this.APP.model.musicOn === true) {
       this.globals.bgMusic = this.globals.sfx.music.title;
       this.globals.bgMusic.play();
-      APP.model.bgMusicPlaying = true;
+      this.APP.model.bgMusicPlaying = true;
     }
     this.player = new Player(
       this,
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
       'sprPlayer',
-      APP.player,
+      this.APP.player,
     );
   }
 }
