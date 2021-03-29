@@ -59,7 +59,7 @@ export default class Player extends Entity {
         }else{
             laser= this.laserFour()
         }
-        
+        console.log(this.weapon)
     }
 
     laserOne() {
@@ -77,10 +77,10 @@ export default class Player extends Entity {
     }
 
     laserTree() {
-        var laser = new PlayerLaser(this.scene, (this.x - 16), (this.y - 20),this.weapon);
+        var laser = new PlayerLaser(this.scene, (this.x - 8), (this.y - 12),this.weapon);
         var laser2 = new PlayerLaser(this.scene, (this.x), (this.y - 30),this.weapon);
-        var laser3 = new PlayerLaser(this.scene, (this.x + 16), (this.y - 20),this.weapon);
-        var dx = -200;
+        var laser3 = new PlayerLaser(this.scene, (this.x +8), (this.y - 12),this.weapon);
+        var dx = -75;
         var dy = -200;
         var angle = Math.atan2(dy, dx);
         laser.body.setVelocity(

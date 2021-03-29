@@ -90,120 +90,26 @@ export default class App {
                 var stage = {
                     name: `Stage ${nRanks}`,
                     targetScore: 300+ (500*(1+(nRanks*2.5))),
-                    time:300+ (500*(1+(nRanks*2.5))),
+                    timeLimit: 1+ (30*(1+(nRanks*0.1))),
                     enemies: [
-                        { name: 'GunShip', rank: 1, maxNumber: (20*(1+(level*25/100))), createDelay: 500 },
-                        { name: 'GunShip', rank: 1, maxNumber: 5, createDelay: 1000, speed: 250 }
+                        { name: 'GunShip', rank: 1, maxNumber: (20*(1+(nRanks*25/100))), createDelay: 500,speed: (75*(1+(level*5/100))),life:(20*(1+(level*25/100))),shootTimer: Phaser.Math.Between(2000, 5000) },
+                        { name: 'GunShip', rank: 2, maxNumber: Math.ceil((nRanks/2)- (1*(1+(level*0.5)))), createDelay: 1000-(1000*0.04*nRanks), speed: (200*(1+(level*5/100))),life:(20*(1+(level*25/100))),shootTimer:Phaser.Math.Between(1500, 2000) },
+                        { name: 'ChaserShip', rank: 3, maxNumber: Math.ceil((nRanks/2.5)- (1*(1+(level*0.5)))), createDelay: 1000-(1000*0.04*nRanks), speed: (150*(1+(level*5/100))),life:(20*(1+(level*25/100))) },
+                        { name: 'CarrierShip', rank: 4, maxNumber: Math.ceil((nRanks/4)- (1*(1+(level*0.5)))), createDelay: 1000-(1000*0.06*nRanks), speed: (100*(1+(level*5/100))),life:(20*(1+(level*25/100))) }
                     ],
-                    player:{...this.player,weapon:this.getLaser(level)}
+                    player:{...this.player,weapon:this.getLaser(nRanks)}
                 };
                 this.stages.push(stage)
             }
         }
-        console.log(this.stages)
-        // this.stages = [
-        //     {
-        //         name: "Stage 1",
-        //         targetScore: 10,
-        //         enemies: [
-        //             { name: 'GunShip', rank: 1, maxNumber: 20, createDelay: 500 },
-        //         ],
-        //         player:this.player
-        //     },
-        //     {
-        //         name: "Stage 2",
-        //         targetScore: 10,
-        //         enemies: [
-        //             { name: 'GunShip', rank: 1, maxNumber: 20, createDelay: 500 },
-        //             { name: 'GunShip', rank: 1, maxNumber: 5, createDelay: 1000, speed: 250 }
-        //         ],
-        //         player:{...this.player,weapon:this.getLaser(2)}
-        //     },
-        //     {
-        //         name: "Stage 3",
-        //         targetScore: 10,
-        //         enemies: [
-        //             { name: 'GunShip', rank: 1, maxNumber: 60 },
-        //             { name: 'ChaserShip', rank: 1, maxNumber: 2 }
-        //         ],
-        //         player:{...this.player,weapon:this.getLaser(3)}
-                
-        //     },
-        //     {
-        //         name: "Stage 4",
-        //         targetScore: 10,
-        //         enemies: [
-        //             { name: 'GunShip', rank: 1, maxNumber: 60 },
-        //             { name: 'ChaserShip', rank: 1, maxNumber: 2 }
-        //         ],
-        //         player:{...this.player,weapon:this.getLaser(4)}
-                
-        //     },
-        //     {
-        //         name: "Stage 5",
-        //         targetScore: 10,
-        //         enemies: [
-        //             { name: 'GunShip', rank: 1, maxNumber: 60 },
-        //             { name: 'ChaserShip', rank: 1, maxNumber: 2 }
-        //         ],
-        //         player:{...this.player,weapon:this.getLaser(5)}
-                
-        //     },
-        //     {
-        //         name: "Stage 6",
-        //         targetScore: 10,
-        //         enemies: [
-        //             { name: 'GunShip', rank: 1, maxNumber: 60 },
-        //             { name: 'ChaserShip', rank: 1, maxNumber: 2 }
-        //         ],
-        //         player:{...this.player,weapon:this.getLaser(6)}
-                
-        //     },
-        //     {
-        //         name: "Stage 7",
-        //         targetScore: 10,
-        //         enemies: [
-        //             { name: 'GunShip', rank: 1, maxNumber: 60 },
-        //             { name: 'ChaserShip', rank: 1, maxNumber: 2 }
-        //         ],
-        //         player:{...this.player,weapon:this.getLaser(7)}
-                
-        //     },
-        //     {
-        //         name: "Stage 8",
-        //         targetScore: 10,
-        //         enemies: [
-        //             { name: 'GunShip', rank: 1, maxNumber: 60 },
-        //             { name: 'ChaserShip', rank: 1, maxNumber: 2 }
-        //         ],
-        //         player:{...this.player,weapon:this.getLaser(8)}
-                
-        //     },
-        //     {
-        //         name: "Stage 9",
-        //         targetScore: 10,
-        //         enemies: [
-        //             { name: 'GunShip', rank: 1, maxNumber: 60 },
-        //             { name: 'ChaserShip', rank: 1, maxNumber: 2 }
-        //         ],
-        //         player:{...this.player,weapon:this.getLaser(9)}
-                
-        //     },
-        //     {
-        //         name: "Stage 10",
-        //         targetScore: 10,
-        //         enemies: [
-        //             { name: 'GunShip', rank: 1, maxNumber: 60 },
-        //             { name: 'ChaserShip', rank: 1, maxNumber: 2 }
-        //         ],
-        //         player:{...this.player,weapon:this.getLaser(10)}
-                
-        //     }
+
+        
+        
         // ]
 
         this.leaders= null
 
-        this.stageNumber = 7;
+        this.stageNumber = 0;
         this.api = new Api(this.NAME)
         
         this.createGame()
@@ -239,9 +145,9 @@ export default class App {
         // this.updateEnemies()
     }
 
-    canLevelUp() {
+    canLevelUp(time) {
 
-        if (this.stage.targetScore <= this.model.score) {
+        if (this.stage.timeLimit <= time) {
             this.stageNumber += 1
             return true
         }

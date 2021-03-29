@@ -16,14 +16,9 @@ export default class GameScene extends Phaser.Scene {
     this.load.image('logo', 'assets/logo.png');
   }
   create() {
-    this.game.sound.stopAll();
     this.globals = this.sys.game.globals;
 
-    if (APP.model.musicOn === true) {
-      this.globals.bgMusic = this.globals.sfx.music.gameMusic;
-      this.globals.bgMusic.play();
-      APP.model.bgMusicPlaying = true;
-    }
+   
     this.backgrounds = [];
     for (var i = 0; i < 5; i++) { // create five scrolling backgrounds
       var bg = new ScrollingBackground(this, "sprBg0", i * 10);
@@ -55,6 +50,7 @@ export default class GameScene extends Phaser.Scene {
 
     this.createEnemies()
     this.createColisions(this.player)
+    this.runTimer()
   }
   createStats() {
     this.scoreText = this.add.text(16, 16, 'Score: 0', {
@@ -65,7 +61,23 @@ export default class GameScene extends Phaser.Scene {
   }
 
 
+  runTimer(){
+    this.timeLimit = 0
+    this.time.addEvent({
+      delay: 1000,
+      callback:()=>{
+        this.timeLimit++
+        if(APP.canLevelUp(this.timeLimit) && !this.player.getData('isDead')){
 
+          this.scene.start('Stage');
+          return
+        }
+        
+      },
+      callbackScope: this,
+        loop: true
+    })
+  }
 
 
 
@@ -87,7 +99,7 @@ export default class GameScene extends Phaser.Scene {
 
 
           APP.score(enemy.score)
-          e.checkScore()
+          
           
           if (score >= 1000) {
             player.levelUp(2)
@@ -126,73 +138,63 @@ export default class GameScene extends Phaser.Scene {
     APP.stage.enemies.forEach(stageEnemy => {
       stageEnemy = APP.getEnemies(stageEnemy)
     
-      this.createEnemy(stageEnemy)
+      this.time.addEvent({
+        delay: stageEnemy.createDelay,
+        callback: function () {
+          var enemy = null;
+          if(stageEnemy.name=="GunShip"){
+            if (this.getEnemiesByType("GunShip").length < stageEnemy.maxNumber){
+  
+              enemy = new GunShip(
+                this,
+                Phaser.Math.Between(0, this.game.config.width),
+                0,
+                stageEnemy
+              );
+
+              
+            }
+          }
+  
+          else if (stageEnemy.name=="ChaserShip") {
+              if (this.getEnemiesByType("ChaserShip").length < stageEnemy.maxNumber) {
+    
+                enemy = new ChaserShip(
+                  this,
+                  Phaser.Math.Between(0, this.game.config.width),
+                  0,
+                  stageEnemy
+                );
+              }
+            }
+            else if (stageEnemy.name=="CarrierShip") {
+              if (this.getEnemiesByType("CarrierShip").length < stageEnemy.maxNumber) {
+    
+                enemy = new CarrierShip(
+                  this,
+                  Phaser.Math.Between(0, this.game.config.width),
+                  0,
+                  stageEnemy
+                );
+              }
+            }
+    
+  
+          if (enemy !== null) {
+            // enemy.setScale(2);
+            this.enemies.add(enemy);
+          }
+        },
+        callbackScope: this,
+        loop: true
+      });
     });
     
 
   }
 
   createEnemy(stageEnemy){
-    this.time.addEvent({
-      delay: stageEnemy.createDelay,
-      callback: function () {
-        var enemy = null;
-        if(stageEnemy.name=="GunShip"){
-          if (this.getEnemiesByType("GunShip").length < stageEnemy.maxNumber){
-
-            enemy = new GunShip(
-              this,
-              Phaser.Math.Between(0, this.game.config.width),
-              0,
-              stageEnemy
-            );
-          }
-        }
-
-        else if (stageEnemy.name=="ChaserShip") {
-            if (this.getEnemiesByType("ChaserShip").length < stageEnemy.maxNumber) {
-  
-              enemy = new ChaserShip(
-                this,
-                Phaser.Math.Between(0, this.game.config.width),
-                0,
-                stageEnemy
-              );
-            }
-          }
-        // if (Phaser.Math.Between(0, 10) >= 3) {
-        //   enemy = new GunShip(
-        //     this,
-        //     Phaser.Math.Between(0, this.game.config.width),
-        //     0
-        //   );
-        // }
-        // else if (Phaser.Math.Between(0, 10) >= 5) {
-        //   if (this.getEnemiesByType("ChaserShip").length < 5) {
-
-        //     enemy = new ChaserShip(
-        //       this,
-        //       Phaser.Math.Between(0, this.game.config.width),
-        //       0
-        //     );
-        //   }
-        // }
-        // else {
-        //   enemy = new CarrierShip(
-        //     this,
-        //     Phaser.Math.Between(0, this.game.config.width),
-        //     0
-        //   );
-        // }
-
-        if (enemy !== null) {
-          // enemy.setScale(2);
-          this.enemies.add(enemy);
-        }
-      },
-      callbackScope: this,
-      loop: true
-    });
+    
 
   }
   update() {
@@ -299,11 +301,6 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  checkScore(){
-    
-    if(APP.canLevelUp()){
-      this.scene.start('Stage');
-    }
-  }
+  
 
 };

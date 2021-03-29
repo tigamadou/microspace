@@ -4,9 +4,9 @@ export default class GunShip extends Entity {
   constructor(scene, x, y,params) {
     super(scene, x, y, "sprEnemy0", "GunShip");
     this.play("sprEnemy0");
-    this.velocity = { x: 0, y: params.speed }
+    this.velocity = { x: 0, y: Phaser.Math.Between(params.speed-50, params.speed) }
     this.body.velocity.y = this.velocity.y;
-
+    params.weapon.speed = params.speed*2
     this.shootTimer = this.scene.time.addEvent({
       delay: params.shootTimer,
       callback: function () {
@@ -25,6 +25,7 @@ export default class GunShip extends Entity {
     this.life = params.life
     this.score = params.score
     this.setScale((params.rank/100)+2)
+    console.log(params.shootTimer)
   }
 
   onDestroy() {
@@ -35,10 +36,7 @@ export default class GunShip extends Entity {
     }
   }
 
-  update() {
-    this.body.velocity.x = this.velocity.x
-    this.body.velocity.y = this.velocity.y
-  }
+ 
 
   
 }

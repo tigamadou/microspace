@@ -127,14 +127,14 @@ export default class PreloaderScene extends Phaser.Scene {
   
     this.sys.game.globals.sfx = {
       explosions: [
-        this.sound.add("sndExplode0",{ volume: 0.1 }),
-        this.sound.add("sndExplode1",{ volume: 0.1 })
+        this.sound.add("sndExplode0",{ volume: 0.4 }),
+        this.sound.add("sndExplode1",{ volume: 0.4 })
       ],
-      laser: this.sound.add("sndLaser", { volume: 0.1}),
+      laser: this.sound.add("sndLaser", { volume: 0.2}),
       music:{
-        title: this.sound.add('battleMusic', { volume: 0.9, loop: true }),
-        gameMusic: this.sound.add('GameMusic', { volume: 0.5, loop: true }),
-        gameOver: this.sound.add('gameOver', { volume: 0.5, loop: true })
+        title: this.sound.add('battleMusic', { volume: 0.3, loop: true }),
+        gameMusic: this.sound.add('GameMusic', { volume: 0.3, loop: true }),
+        gameOver: this.sound.add('gameOver', { volume: 0.3, loop: true })
       }
     };
 

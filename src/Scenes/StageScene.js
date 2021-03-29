@@ -16,6 +16,11 @@ export default class StageScene extends Phaser.Scene {
       var bg = new ScrollingBackground(this, "sprBg0", i * 10);
       this.backgrounds.push(bg);
     }
+    if (APP.model.musicOn === true) {
+      this.globals.bgMusic = this.globals.sfx.music.gameMusic;
+      this.globals.bgMusic.play();
+      APP.model.bgMusicPlaying = true;
+    }
     
     if(!APP.loadStage()){
       APP.gameOver()

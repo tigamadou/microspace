@@ -13,7 +13,7 @@ export default class LeaderBoardScene extends Phaser.Scene{
     }
 
     async create(){
-        this.add.image(400, 300, 'bgImg');
+        
         
         this.backgrounds = [];
         for (var i = 0; i < 5; i++) { // create five scrolling backgrounds
