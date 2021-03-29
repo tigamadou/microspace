@@ -72,7 +72,8 @@ export default class App {
                 targetScore: 100,
                 enemies: [
                     { name: 'GunShip', rank: 1, maxNumber: 10, createDelay: 1000 },
-                ]
+                ],
+                player:this.player
             },
             {
                 name: "stage 2",
@@ -80,7 +81,8 @@ export default class App {
                 enemies: [
                     { name: 'GunShip', rank: 1, maxNumber: 30, createDelay: 1000 },
                     { name: 'GunShip', rank: 1, maxNumber: 10, createDelay: 1000, speed: 200 }
-                ]
+                ],
+                player:this.player
             },
             {
                 name: "stage 3",
@@ -88,7 +90,8 @@ export default class App {
                 enemies: [
                     { name: 'GunShip', rank: 1, maxNumber: 15 },
                     { name: 'ChaserShip', rank: 1, maxNumber: 2 }
-                ]
+                ],
+                player:this.player
             }
         ]
 

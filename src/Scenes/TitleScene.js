@@ -40,7 +40,7 @@ export default class TitleScene extends Phaser.Scene {
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
       "sprPlayer",
-      APP.player
+      APP.stage.player
     );
   }
 
