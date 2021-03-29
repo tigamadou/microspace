@@ -24,18 +24,21 @@ export default class Api {
             });
         return game
     }
-    saveScrore(id, user, score) {
+    async saveScrore(id, user, score) {
         let data = { user, score }
         let url = `${this.base}/${id}/${user}`
         var request = new Request(url, { method: 'POST', body: JSON.stringify(data), headers: new Headers() });
-        this.request(
-            request,
-            (data) => {
+       
+        await fetch(request)
+            .then((resp) => resp.json())
+            .then((data) => {
+
+
                 return true
-            }, (e) => {
+            })
+            .catch((e) => {
                 return false
-            }
-        )
+            });
     }
 
     async getScores(id) {

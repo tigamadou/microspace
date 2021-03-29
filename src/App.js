@@ -72,9 +72,9 @@ export default class App {
         this.stages = [
             {
                 name: "stage 1",
-                targetScore: 100,
+                targetScore: 2000,
                 enemies: [
-                    { name: 'GunShip', rank: 1, maxNumber: 10, createDelay: 1000 },
+                    { name: 'GunShip', rank: 1, maxNumber: 20, createDelay: 500 },
                 ],
                 player:this.player
             },
@@ -82,7 +82,7 @@ export default class App {
                 name: "stage 2",
                 targetScore: 200,
                 enemies: [
-                    { name: 'GunShip', rank: 1, maxNumber: 30, createDelay: 1000 },
+                    { name: 'GunShip', rank: 1, maxNumber: 40, createDelay: 800 },
                     { name: 'GunShip', rank: 1, maxNumber: 10, createDelay: 1000, speed: 200 }
                 ],
                 player:this.player
@@ -91,7 +91,7 @@ export default class App {
                 name: "stage 3",
                 targetScore: 300,
                 enemies: [
-                    { name: 'GunShip', rank: 1, maxNumber: 15 },
+                    { name: 'GunShip', rank: 1, maxNumber: 60 },
                     { name: 'ChaserShip', rank: 1, maxNumber: 2 }
                 ],
                 player:this.player
@@ -166,7 +166,7 @@ export default class App {
     }
 
     gameOver() {
-        this.api.saveScrore(this.player.name,this.model.score)
+        this.api.saveScrore(this.GAMEID,this.player.name,this.model.score)
         this.model.score = 0
         this.model.gameOver = false
         this.stageNumber = 0;
