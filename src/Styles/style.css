@@ -43,3 +43,31 @@ canvas{
     display: block;
     font-size: 14px;
 }
+.leaderboard{
+    color: #fff;
+    font-size: .9rem;   
+    padding: 16px;
+}
+.leaderboard .leaders{
+    padding:0px;
+    margin:0px;
+    width: 100%;
+}
+
+.leaderboard .leaders .leader{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 6px 16px;
+    border-bottom: 1px solid #fff;
+}
+.leaderboard .leaders .leader .rank{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.leaderboard .leaders .leader .name{
+    margin: 0px 16px;
+}
+.leaderboard .leaders .leader .score{
+    margin-left: auto;
+}

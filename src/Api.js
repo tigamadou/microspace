@@ -44,5 +44,17 @@ export default class Api {
         )
     }
 
+    getScores(){
+        let leaders = []
+        for (let index = 0; index < 10; index++) {
+            
+            leaders.push({
+                user: `User ${index+1}`,
+                score: 1500+index*10,
+            })
+        }
+
+        return leaders
+    }
     
 }

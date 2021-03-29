@@ -10,7 +10,6 @@ export default class Player extends Entity {
         this.setData("timerShootTick", this.getData("timerShootDelay") - 1);
         this.level = params.level
         this.weapon = params.weapon
-        console.log(params)
         this.setScale(2)
     }
 

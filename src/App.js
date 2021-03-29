@@ -96,6 +96,7 @@ export default class App {
             }
         ]
 
+        this.leaders= null
 
         this.stageNumber = 0;
         this.api = new Api(this.NAME)
@@ -175,6 +176,6 @@ export default class App {
     }
 
     getScores(){
-
+        return this.api.getScores()
     }
 }

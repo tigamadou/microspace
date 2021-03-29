@@ -1,17 +1,12 @@
 import 'phaser';
 import Button from '../Objects/Button';
-import ScrollingBackground from '../Objects/ScrollingBackground'
 export default class OptionsScene extends Phaser.Scene {
   constructor () {
     super('Options');
   }
 
   create () {
-    this.backgrounds = [];
-    for (var i = 0; i < 5; i++) { // create five scrolling backgrounds
-      var bg = new ScrollingBackground(this, "sprBg0", i * 10);
-      this.backgrounds.push(bg);
-    }
+    this.add.image(400, 300, 'bgImg');
 
     this.text = this.add.text(80, 100, 'Options', { fontSize: 40 });
     this.musicButton = this.add.image(80, 200, 'checkedBox');
