@@ -6,6 +6,14 @@ export default class Model {
     this._score = 0;
     this._level = 1;
     this._gameOver=false;
+    this._leaders = []
+  }
+
+  set leaders(value){
+    this._leaders = value
+  }
+  get leaders(){
+    return this._leaders
   }
   set score(value){
     this._score = value

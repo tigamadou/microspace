@@ -9,6 +9,7 @@ export default class TitleScene extends Phaser.Scene {
 
   create () {
     // this.add.image(400, 300, 'bgImg');
+    
     this.game.sound.stopAll();
     this.backgrounds = [];
     for (var i = 0; i < 5; i++) { // create five scrolling backgrounds
@@ -42,6 +43,7 @@ export default class TitleScene extends Phaser.Scene {
       "sprPlayer",
       APP.player
     );
+    
   }
 
 };
