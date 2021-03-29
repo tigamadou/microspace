@@ -1,30 +1,31 @@
-import Entity from './Entity'
-import EnemyLaser from './EnemyLaser'
+import Entity from './Entity';
+import EnemyLaser from './EnemyLaser';
+
 export default class GunShip extends Entity {
-  constructor(scene, x, y,params) {
-    super(scene, x, y, "sprEnemy0", "GunShip");
-    this.play("sprEnemy0");
-    this.velocity = { x: 0, y: Phaser.Math.Between(params.speed-50, params.speed) }
+  constructor(scene, x, y, params) {
+    super(scene, x, y, 'sprEnemy0', 'GunShip');
+    this.play('sprEnemy0');
+    this.velocity = { x: 0, y: Phaser.Math.Between(params.speed - 50, params.speed) };
     this.body.velocity.y = this.velocity.y;
-    params.weapon.speed = params.speed*2
+    params.weapon.speed = params.speed * 2;
     this.shootTimer = this.scene.time.addEvent({
       delay: params.shootTimer,
-      callback: function () {
-        var laser = new EnemyLaser(
+      callback() {
+        const laser = new EnemyLaser(
           this.scene,
           this.x,
           this.y,
-          params.weapon
+          params.weapon,
         );
         laser.setScale(this.scaleX);
         this.scene.enemyLasers.add(laser);
       },
       callbackScope: this,
-      loop: true
+      loop: true,
     });
-    this.life = params.life
-    this.score = params.score
-    this.setScale((params.rank/100)+2)
+    this.life = params.life;
+    this.score = params.score;
+    this.setScale((params.rank / 100) + 2);
   }
 
   onDestroy() {
@@ -34,8 +35,4 @@ export default class GunShip extends Entity {
       }
     }
   }
-
- 
-
-  
 }

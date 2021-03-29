@@ -13,26 +13,23 @@ import IntroScene from './Scenes/IntroScene';
 import StageScene from './Scenes/StageScene';
 
 export default class Game extends Phaser.Game {
-    constructor (config) {
-      super(config);
-      this.globals = { music:{},bgMusic: null };
-      this.scene.add('Boot', BootScene);
-      this.scene.add('Preloader', PreloaderScene);
-      this.scene.add('Registration', RegistrationScene);
-      this.scene.add('Title', TitleScene);
-      this.scene.add('Intro', IntroScene);
-      this.scene.add('Stage', StageScene);
-      this.scene.add('Options', OptionsScene);
-      this.scene.add('Credits', CreditsScene);
-      this.scene.add('Game', GameScene);
-      this.scene.add('LeaderBoard', LeaderBoardScene);
-      this.scene.add('GameOver', GameOverScene);
-      
-    }
-    
-
-    runGame(){
-        this.scene.start('Boot');
-    }
+  constructor(config) {
+    super(config);
+    this.globals = { music: {}, bgMusic: null };
+    this.scene.add('Boot', BootScene);
+    this.scene.add('Preloader', PreloaderScene);
+    this.scene.add('Registration', RegistrationScene);
+    this.scene.add('Title', TitleScene);
+    this.scene.add('Intro', IntroScene);
+    this.scene.add('Stage', StageScene);
+    this.scene.add('Options', OptionsScene);
+    this.scene.add('Credits', CreditsScene);
+    this.scene.add('Game', GameScene);
+    this.scene.add('LeaderBoard', LeaderBoardScene);
+    this.scene.add('GameOver', GameOverScene);
   }
-  
+
+  runGame() {
+    this.scene.start('Boot');
+  }
+}

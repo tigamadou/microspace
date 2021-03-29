@@ -1,11 +1,12 @@
-import Entity from './Entity'
+import Entity from './Entity';
+
 export default class PlayerLaser extends Entity {
-    constructor(scene, x, y,params) {
-      super(scene, x, y, "sprLaserPlayer");
-      this.velocity = {x: 0,y: params.speed}
-      this.body.velocity.y = this.velocity.y;
-      this.setScale(2)
-      
-      this.fire=params.fire
-    }
+  constructor(scene, x, y, params) {
+    super(scene, x, y, 'sprLaserPlayer');
+    this.velocity = { x: 0, y: params.speed };
+    this.body.velocity.y = this.velocity.y;
+    this.setScale(2);
+
+    this.fire = params.fire;
   }
+}

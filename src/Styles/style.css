@@ -1,73 +1,83 @@
-body{
-    background-color: #f1f1f1;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    /* background-image: url('../../assets/background.jpg'); */
-    
-}
-*{
-    box-sizing: border-box;
-}
-canvas{
-    border-radius: 30px;
-    box-shadow: 0px 10px 25px -5px #000;
+body {
+  background-color: #f1f1f1;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  /* background-image: url('../../assets/background.jpg'); */
 }
 
-.startBtn{
-    background-image: url('../../assets/ui/blue_button03.png');
-    background-size: cover;
-    border-radius: 5px;
-    color: white;
-    padding: 8px 16px;
-    width: 101;
-    height: 26px;
-    text-transform: uppercase;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 14px;
-}
-.registration{
-    color: #fff;
-    font-size: 24px;
-}
-.input,.input:focus{
-    padding: 8px;
-    background: transparent;
-    border: 2px solid #fff;
-    color: #fff;
-    margin-bottom: 30px;
-    width: 100%;
-    display: block;
-    font-size: 14px;
-}
-.leaderboard{
-    color: #fff;
-    font-size: .9rem;   
-    padding: 16px;
-}
-.leaderboard .leaders{
-    padding:0px;
-    margin:0px;
-    width: 100%;
+* {
+  box-sizing: border-box;
 }
 
-.leaderboard .leaders .leader{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 6px 16px;
-    border-bottom: 1px solid #fff;
+canvas {
+  border-radius: 30px;
+  box-shadow: 0 10px 25px -5px #000;
 }
-.leaderboard .leaders .leader .rank{
-    font-size: 1.2rem;
-    font-weight: bold;
+
+.startBtn {
+  background-image: url('../../assets/ui/blue_button03.png');
+  background-size: cover;
+  border-radius: 5px;
+  color: white;
+  padding: 8px 16px;
+  width: 101px;
+  height: 26px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
 }
-.leaderboard .leaders .leader .name{
-    margin: 0px 16px;
+
+.registration {
+  color: #fff;
+  font-size: 24px;
 }
-.leaderboard .leaders .leader .score{
-    margin-left: auto;
+
+.input,
+.input:focus {
+  padding: 8px;
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  margin-bottom: 30px;
+  width: 100%;
+  display: block;
+  font-size: 14px;
+}
+
+.leaderboard {
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 16px;
+}
+
+.leaderboard .leaders {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.leaderboard .leaders .leader {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 6px 16px;
+  border-bottom: 1px solid #fff;
+}
+
+.leaderboard .leaders .leader .rank {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.leaderboard .leaders .leader .name {
+  margin: 0 16px;
+}
+
+.leaderboard .leaders .leader .score {
+  margin-left: auto;
 }

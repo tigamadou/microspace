@@ -6,12 +6,12 @@ export default {
   width: 480,
   height: 640,
   physics: {
-    default: "arcade",
+    default: 'arcade',
     arcade: {
-      gravity: { x: 0, y: 0 }
-    }
+      gravity: { x: 0, y: 0 },
+    },
   },
   dom: {
-    createContainer: true
-  }
+    createContainer: true,
+  },
 };

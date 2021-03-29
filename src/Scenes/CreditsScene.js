@@ -1,29 +1,30 @@
 import 'phaser';
 import config from '../Config/config';
-import ScrollingBackground from '../Objects/ScrollingBackground'
+import ScrollingBackground from '../Objects/ScrollingBackground';
+
 export default class CreditsScene extends Phaser.Scene {
-  constructor () {
+  constructor() {
     super('Credits');
   }
 
-  create () {
+  create() {
     this.backgrounds = [];
-    for (var i = 0; i < 5; i++) { // create five scrolling backgrounds
-      var bg = new ScrollingBackground(this, "sprBg0", i * 10);
+    for (let i = 0; i < 5; i++) { // create five scrolling backgrounds
+      const bg = new ScrollingBackground(this, 'sprBg0', i * 10);
       this.backgrounds.push(bg);
     }
     this.creditsText = this.add.text(0, 0, 'Credits', { fontSize: '32px', fill: '#fff' });
     this.madeByText = this.add.text(0, 0, 'Created By: Amadou IBRAHIM', { fontSize: '26px', fill: '#fff' });
-    this.zone = this.add.zone(config.width/2, config.height/2, config.width, config.height);
+    this.zone = this.add.zone(config.width / 2, config.height / 2, config.width, config.height);
 
     Phaser.Display.Align.In.Center(
       this.creditsText,
-      this.zone
+      this.zone,
     );
 
     Phaser.Display.Align.In.Center(
       this.madeByText,
-      this.zone
+      this.zone,
     );
 
     this.madeByText.setY(1000);
@@ -34,9 +35,9 @@ export default class CreditsScene extends Phaser.Scene {
       ease: 'Power1',
       duration: 3000,
       delay: 1000,
-      onComplete: function () {
+      onComplete() {
         this.destroy;
-      }
+      },
     });
 
     this.madeByTween = this.tweens.add({
@@ -48,7 +49,7 @@ export default class CreditsScene extends Phaser.Scene {
       onComplete: function () {
         this.madeByTween.destroy;
         this.scene.start('Title');
-      }.bind(this)
+      }.bind(this),
     });
   }
-};
+}

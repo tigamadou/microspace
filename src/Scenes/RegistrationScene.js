@@ -1,7 +1,8 @@
 import 'phaser';
 import App from '../App';
 import Button from '../Objects/Button';
-import ScrollingBackground from '../Objects/ScrollingBackground'
+import ScrollingBackground from '../Objects/ScrollingBackground';
+
 export default class RegistrationScene extends Phaser.Scene {
   constructor() {
     super('Registration');
@@ -9,13 +10,13 @@ export default class RegistrationScene extends Phaser.Scene {
 
   create() {
     this.backgrounds = [];
-    for (var i = 0; i < 5; i++) { // create five scrolling backgrounds
-      var bg = new ScrollingBackground(this, "sprBg0", i * 10);
+    for (let i = 0; i < 5; i++) { // create five scrolling backgrounds
+      const bg = new ScrollingBackground(this, 'sprBg0', i * 10);
       this.backgrounds.push(bg);
     }
     const div = document.createElement('div');
-    div.classList.add('registration')
-    let pname = APP.player.name ? APP.player.name : ''
+    div.classList.add('registration');
+    const pname = APP.player.name ? APP.player.name : '';
     div.innerHTML = `<p>
     
     First, let's get your name
@@ -35,9 +36,9 @@ export default class RegistrationScene extends Phaser.Scene {
     const name = document.getElementById('name');
 
     btn.onclick = () => {
-      if(name.value.trim() !=''){
-        APP.setPlayerName(name.value.trim())
-        this.scene.start('Intro')
+      if (name.value.trim() != '') {
+        APP.setPlayerName(name.value.trim());
+        this.scene.start('Intro');
       }
     };
     // this.creditsButton = new Button(this,  this.game.config.width*0.5, this.game.config.height-100, 'blueButton1', 'blueButton2', 'CONTINUE', 'Intro');

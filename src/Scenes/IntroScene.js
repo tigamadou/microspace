@@ -1,6 +1,7 @@
 import 'phaser';
 import Button from '../Objects/Button';
-import ScrollingBackground from '../Objects/ScrollingBackground'
+import ScrollingBackground from '../Objects/ScrollingBackground';
+
 export default class IntroScene extends Phaser.Scene {
   constructor() {
     super('Intro');
@@ -8,8 +9,8 @@ export default class IntroScene extends Phaser.Scene {
 
   create() {
     this.backgrounds = [];
-    for (var i = 0; i < 5; i++) { // create five scrolling backgrounds
-      var bg = new ScrollingBackground(this, "sprBg0", i * 10);
+    for (let i = 0; i < 5; i++) { // create five scrolling backgrounds
+      const bg = new ScrollingBackground(this, 'sprBg0', i * 10);
       this.backgrounds.push(bg);
     }
     const div = document.createElement('div');
@@ -41,7 +42,6 @@ export default class IntroScene extends Phaser.Scene {
     </p>`;
     this.add.dom(this.game.config.width * 0.3, this.game.config.height * 0, div, 'background-color: transparent; width: 220px; height: 0; font: 48px Arial');
 
-   
-    this.creditsButton = new Button(this,  this.game.config.width*0.5, this.game.config.height-100, 'blueButton1', 'blueButton2', 'CONTINUE', 'Stage');
+    this.creditsButton = new Button(this, this.game.config.width * 0.5, this.game.config.height - 100, 'blueButton1', 'blueButton2', 'CONTINUE', 'Stage');
   }
 }
