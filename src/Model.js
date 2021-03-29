@@ -3,7 +3,7 @@ export default class Model {
     this._soundOn = true;
     this._musicOn = true;
     this._bgMusicPlaying = false;
-    this._score = 0;
+    this._score = 200;
     this._level = 1;
     this._gameOver=false;
   }

@@ -1,27 +1,33 @@
 import 'phaser';
-import config from '../Config/config';
 import Button from '../Objects/Button';
-
+import Player from '../Objects/Player'
+import ScrollingBackground from '../Objects/ScrollingBackground'
 export default class TitleScene extends Phaser.Scene {
   constructor () {
     super('Title');
   }
 
   create () {
-    this.add.image(400, 300, 'bgImg');
+    // this.add.image(400, 300, 'bgImg');
     this.game.sound.stopAll();
+    this.backgrounds = [];
+    for (var i = 0; i < 5; i++) { // create five scrolling backgrounds
+      var bg = new ScrollingBackground(this, "sprBg0", i * 10);
+      this.backgrounds.push(bg);
+    }
     this.globals = this.sys.game.globals;
+    this.text = this.add.text(80, 100, 'MicroShooter', { fontSize: 40 });
     // Game
-    this.gameButton = new Button(this, config.width-120, config.height-400, 'blueButton1', 'blueButton2', 'START', 'Intro');
+    this.gameButton = new Button(this, this.game.config.width*0.5, this.game.config.height-150, 'blueButton1', 'blueButton2', 'START', 'Intro');
 
     // Options
-    this.optionsButton = new Button(this,  config.width-120, config.height-340, 'blueButton1', 'blueButton2', 'Options', 'Options');
+    this.optionsButton = new Button(this,  this.game.config.width*0.5-160, this.game.config.height-80, 'blueButton1', 'blueButton2', 'Options', 'Options');
 
     // // Leaderboard
-    this.leaderBoardButton = new Button(this,  config.width-120, config.height-280, 'blueButton1', 'blueButton2', 'LeaderBoard', 'LeaderBoard');
+    this.leaderBoardButton = new Button(this,  this.game.config.width*0.5, this.game.config.height-80, 'blueButton1', 'blueButton2', 'LeaderBoard', 'LeaderBoard');
 
     // // Credits
-    this.creditsButton = new Button(this,  config.width-120, config.height-220, 'blueButton1', 'blueButton2', 'Credits', 'Credits');
+    this.creditsButton = new Button(this, this.game.config.width*0.5+160, this.game.config.height-80, 'blueButton1', 'blueButton2', 'Credits', 'Credits');
     
 
     if (APP.model.musicOn === true) {
@@ -29,19 +35,13 @@ export default class TitleScene extends Phaser.Scene {
       this.globals.bgMusic.play();
       APP.model.bgMusicPlaying = true;
     }
-  }
-
-  centerButton (gameObject, offset = 0) {
-    Phaser.Display.Align.In.Center(
-      gameObject,
-      this.add.zone(config.width/2, config.height/2 - offset * 100, config.width, config.height)
+    this.player = new Player(
+      this,
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.5,
+      "sprPlayer",
+      APP.player
     );
   }
 
-  centerButtonText (gameText, gameButton) {
-    Phaser.Display.Align.In.Center(
-      gameText,
-      gameButton
-    );
-  }
 };

@@ -6,7 +6,7 @@ export default class App {
     constructor() {
         this.scenesFolder = './Scenes/'
         this.model = new Model();
-        
+
         this.player = {
             name: this.model.name,
             score: this.model.score,
@@ -18,9 +18,9 @@ export default class App {
                 timerShootDelay: 25
             }
         }
-        this.STATES= {
+        this.STATES = {
             MOVE_DOWN: "MOVE_DOWN",
-                    CHASE: "CHASE"
+            CHASE: "CHASE"
         }
         this.enemies = [
             {
@@ -29,11 +29,11 @@ export default class App {
                 life: 10,
                 score: null,
                 shootTimer: 4000,
-                maxNumber: 10,                
+                maxNumber: 10,
                 state: this.STATES.MOVE_DOWN,
                 speed: 100,
-                weapon:{
-                    speed:150
+                weapon: {
+                    speed: 150
                 }
             },
             {
@@ -43,24 +43,24 @@ export default class App {
                 score: null,
                 shootTimer: 1000,
                 maxNumber: 10,
-                
+
                 state: this.STATES.MOVE_DOWN,
                 speed: 100,
-                weapon:{
-                    speed:300
+                weapon: {
+                    speed: 300
                 }
             },
             {
-                rank:3,
+                rank: 3,
                 createDelay: 1000,
                 life: 100,
                 score: null,
-                shootTimer:500,
-                maxNumber: 10,               
+                shootTimer: 500,
+                maxNumber: 10,
                 state: this.STATES.MOVE_DOWN,
                 speed: 125,
-                weapon:{
-                    speed:100
+                weapon: {
+                    speed: 100
                 }
             }
 
@@ -68,33 +68,33 @@ export default class App {
 
         this.stages = [
             {
-                name:"stage 1",
+                name: "stage 1",
                 targetScore: 100,
-                enemies:[
-                    {name:'GunShip', rank:1,maxNumber:10,createDelay:1000},
+                enemies: [
+                    { name: 'GunShip', rank: 1, maxNumber: 10, createDelay: 1000 },
                 ]
             },
             {
-                name:"stage 2",
+                name: "stage 2",
                 targetScore: 200,
-                enemies:[
-                    {name:'GunShip', rank:1,maxNumber:30,createDelay:1000},
-                    {name:'GunShip', rank:1,maxNumber:10,createDelay:1000,speed:200}
+                enemies: [
+                    { name: 'GunShip', rank: 1, maxNumber: 30, createDelay: 1000 },
+                    { name: 'GunShip', rank: 1, maxNumber: 10, createDelay: 1000, speed: 200 }
                 ]
             },
             {
-                name:"stage 3",
+                name: "stage 3",
                 targetScore: 300,
-                enemies:[
-                    {name:'GunShip', rank:1,maxNumber:15},
-                    {name:'ChaserShip', rank:1,maxNumber:2}
+                enemies: [
+                    { name: 'GunShip', rank: 1, maxNumber: 15 },
+                    { name: 'ChaserShip', rank: 1, maxNumber: 2 }
                 ]
             }
         ]
 
-        
+
         this.stageNumber = 0;
-        
+
     }
 
 
@@ -103,10 +103,10 @@ export default class App {
         this.game.runGame()
 
     }
-    score(value){
-        this.model.score+=value
+    score(value) {
+        this.model.score += value
     }
-    getStage(){
+    getStage() {
         return this.stage
     }
 
@@ -117,37 +117,47 @@ export default class App {
         // this.updateEnemies()
     }
 
-    canLevelUp(){
-        
-            if(this.stage.targetScore<= this.model.score){
-                this.stageNumber +=1
-                return true
-            }
-          return false
+    canLevelUp() {
+
+        if (this.stage.targetScore <= this.model.score) {
+            this.stageNumber += 1
+            return true
+        }
+        return false
     }
 
-    loadStage(){
-        this.stage = this.stages[this.stageNumber]
-        return true
+    loadStage() {
+        if (this.stages[this.stageNumber]) {
+
+            this.stage = this.stages[this.stageNumber]
+            return true
+        }
+        return false
     }
 
-    updateEnemies(){
+    updateEnemies() {
         this.enemies.forEach(enemy => {
-            enemy.createDelay = enemy.createDelay-(enemy.createDelay/0.01)
+            enemy.createDelay = enemy.createDelay - (enemy.createDelay / 0.01)
         });
 
         console.log(this.enemies)
     }
 
-    getEnemies(stageEnemy){
-        
+    getEnemies(stageEnemy) {
+
         this.enemies.forEach(enemy => {
-            if(stageEnemy.rank === enemy.rank){
-                stageEnemy= {...enemy,...stageEnemy}
-                
+            if (stageEnemy.rank === enemy.rank) {
+                stageEnemy = { ...enemy, ...stageEnemy }
+
             }
         });
         return stageEnemy
+    }
+
+    gameOver() {
+        this.model.score = 0
+        this.model.gameOver = false
+        this.stageNumber = 0;
     }
 
 }

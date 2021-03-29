@@ -1,13 +1,17 @@
 import 'phaser';
 import config from '../Config/config';
-
+import ScrollingBackground from '../Objects/ScrollingBackground'
 export default class CreditsScene extends Phaser.Scene {
   constructor () {
     super('Credits');
   }
 
   create () {
-    this.add.image(400, 300, 'bgImg');
+    this.backgrounds = [];
+    for (var i = 0; i < 5; i++) { // create five scrolling backgrounds
+      var bg = new ScrollingBackground(this, "sprBg0", i * 10);
+      this.backgrounds.push(bg);
+    }
     this.creditsText = this.add.text(0, 0, 'Credits', { fontSize: '32px', fill: '#fff' });
     this.madeByText = this.add.text(0, 0, 'Created By: Amadou IBRAHIM', { fontSize: '26px', fill: '#fff' });
     this.zone = this.add.zone(config.width/2, config.height/2, config.width, config.height);

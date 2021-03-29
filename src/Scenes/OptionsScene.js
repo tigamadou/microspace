@@ -1,13 +1,17 @@
 import 'phaser';
 import Button from '../Objects/Button';
-
+import ScrollingBackground from '../Objects/ScrollingBackground'
 export default class OptionsScene extends Phaser.Scene {
   constructor () {
     super('Options');
   }
 
   create () {
-    this.add.image(400, 300, 'bgImg');
+    this.backgrounds = [];
+    for (var i = 0; i < 5; i++) { // create five scrolling backgrounds
+      var bg = new ScrollingBackground(this, "sprBg0", i * 10);
+      this.backgrounds.push(bg);
+    }
 
     this.text = this.add.text(80, 100, 'Options', { fontSize: 40 });
     this.musicButton = this.add.image(80, 200, 'checkedBox');
@@ -29,8 +33,8 @@ export default class OptionsScene extends Phaser.Scene {
       this.updateAudio();
     }.bind(this));
 
-    this.menuButton = new Button(this,  150, 50, 'blueButton1', 'blueButton2', 'Menu', 'Title');
-    console.log(this.bgMusic)
+    this.menuButton = new Button(this,  this.game.config.width*0.5, this.game.config.height-80, 'blueButton1', 'blueButton2', 'Menu', 'Title');
+    
     this.updateAudio();
   }
 
