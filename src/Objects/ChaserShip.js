@@ -8,8 +8,8 @@ export default class ChaserShip extends Entity {
     this.body.velocity.y = this.velocity.y;
   
 
-    this.life = 20
-    this.score = this.life / 2
+    this.life = params.life
+    this.score = params.score
     this.setScale((params.rank/100)+2)
   }
 

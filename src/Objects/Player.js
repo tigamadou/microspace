@@ -49,50 +49,49 @@ export default class Player extends Entity {
 
     
     fireWeapon() {
-        if (this.level == 1) {
-            this.laserOne()
-        } else if (this.level == 2) {
-            this.laserTwo()
-        } else if (this.level == 3) {
-            this.laserTree()
+        let laser = null
+        if (this.weapon.rank == 1) {
+            laser= this.laserOne()
+        } else if (this.weapon.rank == 2) {
+            laser= this.laserTwo()
+        } else if (this.weapon.rank == 3) {
+            laser= this.laserTree()
         }else{
-            this.laserFour()
+            laser= this.laserFour()
         }
+        
     }
 
     laserOne() {
-        var laser = new PlayerLaser(this.scene, (this.x), (this.y - 30),this.weapon.fire);
-        laser.body.velocity.y = -800
+        var laser = new PlayerLaser(this.scene, (this.x), (this.y - 30),this.weapon);
         this.scene.playerLasers.add(laser);
+        return laser
     }
 
     laserTwo() {
-        var laser = new PlayerLaser(this.scene, (this.x-30), (this.y - 30),this.weapon.fire);
+        var laser = new PlayerLaser(this.scene, (this.x-16), (this.y - 16),this.weapon);
       
-        var laser2 = new PlayerLaser(this.scene, (this.x+30), (this.y - 30),this.weapon.fire);
-        laser.body.velocity.y = -400
-        laser2.body.velocity.y = -400
+        var laser2 = new PlayerLaser(this.scene, (this.x+16), (this.y - 16),this.weapon);
         this.scene.playerLasers.add(laser);
         this.scene.playerLasers.add(laser2);
     }
 
     laserTree() {
-        var laser = new PlayerLaser(this.scene, (this.x - 16), (this.y - 20),this.weapon.fire);
-        var laser2 = new PlayerLaser(this.scene, (this.x), (this.y - 30),this.weapon.fire);
-        var laser3 = new PlayerLaser(this.scene, (this.x + 16), (this.y - 20),this.weapon.fire);
+        var laser = new PlayerLaser(this.scene, (this.x - 16), (this.y - 20),this.weapon);
+        var laser2 = new PlayerLaser(this.scene, (this.x), (this.y - 30),this.weapon);
+        var laser3 = new PlayerLaser(this.scene, (this.x + 16), (this.y - 20),this.weapon);
         var dx = -200;
         var dy = -200;
         var angle = Math.atan2(dy, dx);
-        var velocityY = -800
         laser.body.setVelocity(
-            -Math.cos(angle) * velocityY,
-            -Math.sin(angle) * velocityY
+            -Math.cos(angle) * laser.body.velocity.y,
+            -Math.sin(angle) * laser.body.velocity.y
         )
         laser.angle = -20
-        laser2.body.velocity.y = velocityY
+
         laser3.body.setVelocity(
-            Math.cos(angle) * velocityY,
-            -Math.sin(angle) * velocityY
+            Math.cos(angle) * laser3.body.velocity.y,
+            -Math.sin(angle) * laser3.body.velocity.y
         )
         laser3.angle = 20
        
@@ -103,82 +102,75 @@ export default class Player extends Entity {
 
     laserFour() {
         var velocityY = -800
-        var laser = new PlayerLaser(this.scene, this.x, (this.y - 12),this.weapon.fire);
-        laser.body.velocity.y = velocityY
+        var laser = new PlayerLaser(this.scene, this.x, (this.y - 12),this.weapon);
         this.scene.playerLasers.add(laser);
         // first couple
-        var laser = new PlayerLaser(this.scene, (this.x-26), (this.y - 12),this.weapon.fire);
-        laser.body.velocity.y = velocityY
+        var laser = new PlayerLaser(this.scene, (this.x-26), (this.y - 12),this.weapon);
         var dx = -300;
         var dy = -200;
         var angle = Math.atan2(dy, dx);
         laser.body.setVelocity(
-            -Math.cos(Math.atan2(dy,dx)) * velocityY,
-            -Math.sin(Math.atan2(dy,dx)) * velocityY
+            -Math.cos(Math.atan2(dy,dx)) * laser.body.velocity.y,
+            -Math.sin(Math.atan2(dy,dx)) * laser.body.velocity.y
         )
         laser.angle = -60
         this.scene.playerLasers.add(laser);
 
-        var laser = new PlayerLaser(this.scene, (this.x+26), (this.y - 12),this.weapon.fire);
-        laser.body.velocity.y = velocityY
+        var laser = new PlayerLaser(this.scene, (this.x+26), (this.y - 12),this.weapon);
         var dx = 300;
         var dy = -200;
         var angle = Math.atan2(dy, dx);
         laser.body.setVelocity(
-            -Math.cos(Math.atan2(dy,dx)) * velocityY,
-            -Math.sin(Math.atan2(dy,dx)) * velocityY
+            -Math.cos(Math.atan2(dy,dx)) * laser.body.velocity.y,
+            -Math.sin(Math.atan2(dy,dx)) * laser.body.velocity.y
         )
         laser.angle = 60
         this.scene.playerLasers.add(laser);
 
         // second couple
             
-        var laser = new PlayerLaser(this.scene, (this.x+16), (this.y - 12),this.weapon.fire);
-        laser.body.velocity.y = velocityY
+        var laser = new PlayerLaser(this.scene, (this.x+16), (this.y - 12),this.weapon);
         var dx = 150;
         var dy = -200;
         var angle = Math.atan2(dy, dx);
         laser.body.setVelocity(
-            -Math.cos(Math.atan2(dy,dx)) * velocityY,
-            -Math.sin(Math.atan2(dy,dx)) * velocityY
+            -Math.cos(Math.atan2(dy,dx)) * laser.body.velocity.y,
+            -Math.sin(Math.atan2(dy,dx)) * laser.body.velocity.y
         )
         laser.angle = 40
         this.scene.playerLasers.add(laser);
         
-        var laser = new PlayerLaser(this.scene, (this.x-16), (this.y - 12),this.weapon.fire);
-        laser.body.velocity.y = velocityY
+        var laser = new PlayerLaser(this.scene, (this.x-16), (this.y - 12),this.weapon);
         var dx = -150;
         var dy = -200;
         var angle = Math.atan2(dy, dx);
         laser.body.setVelocity(
-            -Math.cos(Math.atan2(dy,dx)) * velocityY,
-            -Math.sin(Math.atan2(dy,dx)) * velocityY
+            -Math.cos(Math.atan2(dy,dx)) * laser.body.velocity.y,
+            -Math.sin(Math.atan2(dy,dx)) * laser.body.velocity.y
         )
         laser.angle = -40
         this.scene.playerLasers.add(laser);
 
         // third couple
             
-        var laser = new PlayerLaser(this.scene, (this.x+8), (this.y - 12),this.weapon.fire);
-        laser.body.velocity.y = velocityY
+        var laser = new PlayerLaser(this.scene, (this.x+8), (this.y - 12),this.weapon);
         var dx = 75;
         var dy = -200;
         var angle = Math.atan2(dy, dx);
         laser.body.setVelocity(
-            -Math.cos(Math.atan2(dy,dx)) * velocityY,
-            -Math.sin(Math.atan2(dy,dx)) * velocityY
+            -Math.cos(Math.atan2(dy,dx)) * laser.body.velocity.y,
+            -Math.sin(Math.atan2(dy,dx)) * laser.body.velocity.y
         )
         laser.angle = 20
         this.scene.playerLasers.add(laser);
         
-        var laser = new PlayerLaser(this.scene, (this.x-8), (this.y - 12),this.weapon.fire);
-        laser.body.velocity.y = velocityY
+        var laser = new PlayerLaser(this.scene, (this.x-8), (this.y - 12),this.weapon);
         var dx = -75;
         var dy = -200;
         var angle = Math.atan2(dy, dx);
         laser.body.setVelocity(
-            -Math.cos(Math.atan2(dy,dx)) * velocityY,
-            -Math.sin(Math.atan2(dy,dx)) * velocityY
+            -Math.cos(Math.atan2(dy,dx)) * laser.body.velocity.y,
+            -Math.sin(Math.atan2(dy,dx)) * laser.body.velocity.y
         )
         laser.angle = -20
         this.scene.playerLasers.add(laser);

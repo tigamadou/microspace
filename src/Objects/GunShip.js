@@ -23,7 +23,7 @@ export default class GunShip extends Entity {
       loop: true
     });
     this.life = params.life
-    this.score = this.life / 2
+    this.score = params.score
     this.setScale((params.rank/100)+2)
   }
 
