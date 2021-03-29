@@ -8,19 +8,38 @@ body{
     /* background-image: url('../../assets/background.jpg'); */
     
 }
+*{
+    box-sizing: border-box;
+}
 canvas{
     border-radius: 30px;
     box-shadow: 0px 10px 25px -5px #000;
 }
 
 .startBtn{
-    background-color: transparent;
-    border: 2px solid red;
+    background-image: url('../../assets/ui/blue_button03.png');
+    background-size: cover;
     border-radius: 5px;
     color: white;
-    padding: 0 7rem;
-    margin-left: 3.5rem;
+    padding: 8px 16px;
+    width: 101;
+    height: 26px;
     text-transform: uppercase;
     font-weight: bold;
-    display: flex;
+    cursor: pointer;
+    font-size: 14px;
+}
+.registration{
+    color: #fff;
+    font-size: 24px;
+}
+.input,.input:focus{
+    padding: 8px;
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    margin-bottom: 30px;
+    width: 100%;
+    display: block;
+    font-size: 14px;
 }

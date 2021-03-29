@@ -1,46 +1,47 @@
 import 'phaser';
-
+import Button from '../Objects/Button';
+import ScrollingBackground from '../Objects/ScrollingBackground'
 export default class IntroScene extends Phaser.Scene {
   constructor() {
     super('Intro');
   }
 
   create() {
-    this.add.image(400, 300, 'bgImg');
+    this.backgrounds = [];
+    for (var i = 0; i < 5; i++) { // create five scrolling backgrounds
+      var bg = new ScrollingBackground(this, "sprBg0", i * 10);
+      this.backgrounds.push(bg);
+    }
     const div = document.createElement('div');
     div.innerHTML = `<p
     style=" color: white;font-size: 15px;text-align:justify;width: 420px;line-height: 1.25rem;font-weight: bold;margin: 15px 0 0px 0;"/>
-    Greetings Commander,
-    <br/>
-    As a member of the Distant Worlds Expedition Unit (DWEU), you have the responsibility to protect and secure the expeditionary fleet from any pirate, mercenary, or enemy of the federation.
-    <br/>
-    <br/>
-    The mission will take place in the Oevasy SG-Y d0 system at a distance of 65,647.34 LYs from the solar system.
+    Greetings ${APP.player.name},
+    <br/><br/>
+    Welcome to the BattleField
     <br/>
     <br/>
-    These create an impossible situation to support your mission with ammunition supplies or reinforcements.
+    The universe is in danger. Billions of life are in danger.
     <br/>
     <br/>
-    You have to be thoughtful when choosing your targets, and once you decided an objective, shoot with your laser cannons.
+    You are their only hope.
+    <br/>
+    
+   
+    <br/>
+    I wish you good luck on your mission
     <br/>
     <br/>
-    Remember Commander that your ship will be flying at supercruise speed, so there's no reason to eliminate all the targets in space, you still keep the control of your spaceship to pitch and yaw during supercruise.
+    Spock,
     <br/>
-    <br/>
-    I wish you good luck on your mission, and god bless the federation with your success.
-    <br/>
-    John Cruze,
-    <br/>
-    Rear Admiral Of The Federation
+    Universe Admiral
     <br/>
     
     <br/>
     Pitch/Yaw: [W] [S] [A] [D] - Laser: [SPACEBAR]
-    </p>
-    <button type='submit' id='button' class="startBtn">START</button>`;
+    </p>`;
     this.add.dom(this.game.config.width * 0.3, this.game.config.height * 0, div, 'background-color: transparent; width: 220px; height: 0; font: 48px Arial');
 
-    const btn = document.getElementById('button');
-    btn.onclick = () => this.scene.start('Stage');
+   
+    this.creditsButton = new Button(this,  this.game.config.width*0.5, this.game.config.height-100, 'blueButton1', 'blueButton2', 'CONTINUE', 'Stage');
   }
 }

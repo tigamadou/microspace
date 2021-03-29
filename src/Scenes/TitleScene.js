@@ -18,7 +18,7 @@ export default class TitleScene extends Phaser.Scene {
     this.globals = this.sys.game.globals;
     this.text = this.add.text(80, 100, 'MicroShooter', { fontSize: 40 });
     // Game
-    this.gameButton = new Button(this, this.game.config.width*0.5, this.game.config.height-150, 'blueButton1', 'blueButton2', 'START', 'Intro');
+    this.gameButton = new Button(this, this.game.config.width*0.5, this.game.config.height-150, 'blueButton1', 'blueButton2', 'START', 'Registration');
 
     // Options
     this.optionsButton = new Button(this,  this.game.config.width*0.5-160, this.game.config.height-80, 'blueButton1', 'blueButton2', 'Options', 'Options');

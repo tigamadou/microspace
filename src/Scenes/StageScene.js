@@ -1,5 +1,4 @@
 import 'phaser';
-import config from '../Config/config';
 import Button from '../Objects/Button';
 import ScrollingBackground from '../Objects/ScrollingBackground'
 import Player from '../Objects/Player'
@@ -31,7 +30,7 @@ export default class StageScene extends Phaser.Scene {
       align: 'center'
     });
     this.title.setOrigin(0.5);
-    this.creditsButton = new Button(this,  config.width*0.5, config.height-100, 'blueButton1', 'blueButton2', 'CONTINUE', 'Game');
+    this.creditsButton = new Button(this,  this.game.config.width*0.5, this.game.config.height-100, 'blueButton1', 'blueButton2', 'CONTINUE', 'Game');
     
     this.player = new Player(
       this,

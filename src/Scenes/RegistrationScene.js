@@ -1,0 +1,46 @@
+import 'phaser';
+import App from '../App';
+import Button from '../Objects/Button';
+import ScrollingBackground from '../Objects/ScrollingBackground'
+export default class RegistrationScene extends Phaser.Scene {
+  constructor() {
+    super('Registration');
+  }
+
+  create() {
+    this.backgrounds = [];
+    for (var i = 0; i < 5; i++) { // create five scrolling backgrounds
+      var bg = new ScrollingBackground(this, "sprBg0", i * 10);
+      this.backgrounds.push(bg);
+    }
+    const div = document.createElement('div');
+    div.classList.add('registration')
+    let pname = APP.player.name ? APP.player.name : ''
+    div.innerHTML = `<p>
+    
+    First, let's get your name
+    <br/>
+    <br/>
+    <input id="name" type="text" class="input" value="${pname}"/>
+    <span  id='button' class="startBtn">Save</span>
+    <br/>
+    <br/>
+    
+    <br/>
+
+    </p>`;
+    this.add.dom(this.game.config.width * 0.5, this.game.config.height * 0.5, div, 'background-color: transparent; width: 220px; height: 220;');
+
+    const btn = document.getElementById('button');
+    const name = document.getElementById('name');
+
+    btn.onclick = () => {
+      console.log(name.value);
+      if(name.value.trim() !=''){
+        APP.setPlayerName(name.value.trim())
+        this.scene.start('Intro')
+      }
+    };
+    // this.creditsButton = new Button(this,  this.game.config.width*0.5, this.game.config.height-100, 'blueButton1', 'blueButton2', 'CONTINUE', 'Intro');
+  }
+}

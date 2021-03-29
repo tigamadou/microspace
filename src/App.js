@@ -159,5 +159,8 @@ export default class App {
         this.model.gameOver = false
         this.stageNumber = 0;
     }
+    setPlayerName(name){
+        this.player.name = name
+    }
 
 }

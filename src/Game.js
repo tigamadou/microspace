@@ -1,5 +1,6 @@
 import 'phaser';
 
+import RegistrationScene from './Scenes/RegistrationScene';
 import GameScene from './Scenes/GameScene';
 import GameOverScene from './Scenes/GameOverScene';
 import BootScene from './Scenes/BootScene';
@@ -17,9 +18,10 @@ export default class Game extends Phaser.Game {
       this.globals = { music:{},bgMusic: null };
       this.scene.add('Boot', BootScene);
       this.scene.add('Preloader', PreloaderScene);
+      this.scene.add('Registration', RegistrationScene);
+      this.scene.add('Title', TitleScene);
       this.scene.add('Intro', IntroScene);
       this.scene.add('Stage', StageScene);
-      this.scene.add('Title', TitleScene);
       this.scene.add('Options', OptionsScene);
       this.scene.add('Credits', CreditsScene);
       this.scene.add('Game', GameScene);
