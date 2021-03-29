@@ -9,6 +9,7 @@ export default class App {
         this.scenesFolder = './Scenes/'
         this.model = new Model();
         this.NAME = 'MicroSpace'
+        this.GAMEID = undefined
         this.player = {
             name: this.model.name,
             score: this.model.score,
@@ -105,9 +106,9 @@ export default class App {
         this.createGame()
         this.getScores()
     }
-
+    
      createGame(){
-        this.api.createGame();
+        this.GAME = this.api.createGame(this.NAME);
     }
 
 
@@ -124,9 +125,7 @@ export default class App {
     }
 
     levelUp() {
-        console.log('level up')
         this.model.level += 1
-        console.log(this.model)
         // this.updateEnemies()
     }
 
@@ -153,7 +152,6 @@ export default class App {
             enemy.createDelay = enemy.createDelay - (enemy.createDelay / 0.01)
         });
 
-        console.log(this.enemies)
     }
 
     getEnemies(stageEnemy) {
@@ -178,13 +176,11 @@ export default class App {
     }
 
     async getScores(){
-        this.model.leaders = await this.api.getScores()
+        this.model.leaders = await this.api.getScores(this.GAMEID)
         this.model.leaders.sort((a,b)=> b.score - a.score)
         this.model.leaders = this.model.leaders.slice(0, 10)
         return this.model.leaders
     }
 
-    filterLeaders(){
-        
-    }
+    
 }

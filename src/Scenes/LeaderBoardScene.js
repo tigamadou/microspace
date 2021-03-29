@@ -9,8 +9,7 @@ export default class LeaderBoardScene extends Phaser.Scene{
     }
 
     preload(){
-       
-        console.log(APP.model.leaders)
+       APP.getScores()
     }
 
     async create(){
@@ -40,7 +39,6 @@ export default class LeaderBoardScene extends Phaser.Scene{
         this.add.dom(this.game.config.width * 0.5, this.game.config.height * 0.5, div, 'background-color: rgba(255,255,255,.1); width: 400px; height: 400px;');
         
         this.menuButton = new Button(this, this.game.config.width*0.5, this.game.config.height-80, 'blueButton1', 'blueButton2', 'Menu', 'Title');
-        console.log(APP.model.leaders)
     }
     
 }

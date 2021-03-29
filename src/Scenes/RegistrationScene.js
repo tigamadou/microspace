@@ -35,7 +35,6 @@ export default class RegistrationScene extends Phaser.Scene {
     const name = document.getElementById('name');
 
     btn.onclick = () => {
-      console.log(name.value);
       if(name.value.trim() !=''){
         APP.setPlayerName(name.value.trim())
         this.scene.start('Intro')
