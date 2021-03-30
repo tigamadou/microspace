@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import Player from '../Objects/Player';
 import GunShip from '../Objects/GunShip';
 import ChaserShip from '../Objects/ChaserShip';
+import CarrierShip from '../Objects/CarrierShip';
 import ScrollingBackground from '../Objects/ScrollingBackground';
 
 const score = 0;
@@ -13,7 +14,7 @@ export default class GameScene extends Phaser.Scene {
   preload() {
     // load images
     this.load.image('logo', 'assets/logo.png');
-    this.APP = this.game.APP
+    this.APP = this.game.APP;
   }
 
   create() {
@@ -76,8 +77,6 @@ export default class GameScene extends Phaser.Scene {
   }
 
   createColisions(player) {
-    const e = this;
-
     this.physics.add.overlap(this.playerLasers, this.enemies, (playerLaser, enemy) => {
       if (enemy && !enemy.getData('isDead')) {
         playerLaser.destroy();
@@ -131,7 +130,7 @@ export default class GameScene extends Phaser.Scene {
         delay: stageEnemy.createDelay,
         callback() {
           let enemy = null;
-          if (stageEnemy.name == 'GunShip') {
+          if (stageEnemy.name === 'GunShip') {
             if (this.getEnemiesByType('GunShip').length < stageEnemy.maxNumber) {
               enemy = new GunShip(
                 this,
@@ -140,7 +139,7 @@ export default class GameScene extends Phaser.Scene {
                 stageEnemy,
               );
             }
-          } else if (stageEnemy.name == 'ChaserShip') {
+          } else if (stageEnemy.name === 'ChaserShip') {
             if (this.getEnemiesByType('ChaserShip').length < stageEnemy.maxNumber) {
               enemy = new ChaserShip(
                 this,
@@ -149,7 +148,7 @@ export default class GameScene extends Phaser.Scene {
                 stageEnemy,
               );
             }
-          } else if (stageEnemy.name == 'CarrierShip') {
+          } else if (stageEnemy.name === 'CarrierShip') {
             if (this.getEnemiesByType('CarrierShip').length < stageEnemy.maxNumber) {
               enemy = new CarrierShip(
                 this,
@@ -171,14 +170,10 @@ export default class GameScene extends Phaser.Scene {
     });
   }
 
-  createEnemy(stageEnemy) {
-
-  }
-
   update() {
     this.scoreText.setText(`Score: ${this.APP.model.score}`);
 
-    for (var i = 0; i < this.backgrounds.length; i += 1) {
+    for (let i = 0; i < this.backgrounds.length; i += 1) {
       this.backgrounds[i].update();
     }
     if (!this.player.getData('isDead')) {
@@ -206,8 +201,8 @@ export default class GameScene extends Phaser.Scene {
       this.gameOver();
     }
 
-    for (var i = 0; i < this.enemies.getChildren().length; i += 1) {
-      const enemy = this.enemies.getChildren()[i];
+    for (let z = 0; z < this.enemies.getChildren().length; z += 1) {
+      const enemy = this.enemies.getChildren()[z];
 
       enemy.update();
       if (enemy.x < -enemy.displayWidth
@@ -224,8 +219,8 @@ export default class GameScene extends Phaser.Scene {
       }
     }
 
-    for (var i = 0; i < this.enemyLasers.getChildren().length; i += 1) {
-      var laser = this.enemyLasers.getChildren()[i];
+    for (let i = 0; i < this.enemyLasers.getChildren().length; i += 1) {
+      const laser = this.enemyLasers.getChildren()[i];
       laser.update();
 
       if (laser.x < -laser.displayWidth
@@ -238,16 +233,16 @@ export default class GameScene extends Phaser.Scene {
       }
     }
 
-    for (var i = 0; i < this.playerLasers.getChildren().length; i += 1) {
-      var laser = this.playerLasers.getChildren()[i];
-      laser.update();
+    for (let y = 0; y < this.playerLasers.getChildren().length; y += 1) {
+      const playerLaser = this.playerLasers.getChildren()[y];
+      playerLaser.update();
 
-      if (laser.x < -laser.displayWidth
-        || laser.x > this.game.config.width + laser.displayWidth
-        || laser.y < -laser.displayHeight * 4
-        || laser.y > this.game.config.height + laser.displayHeight) {
-        if (laser) {
-          laser.destroy();
+      if (playerLaser.x < -playerLaser.displayWidth
+        || playerLaser.x > this.game.config.width + playerLaser.displayWidth
+        || playerLaser.y < -playerLaser.displayHeight * 4
+        || playerLaser.y > this.game.config.height + playerLaser.displayHeight) {
+        if (playerLaser) {
+          playerLaser.destroy();
         }
       }
     }
@@ -257,7 +252,7 @@ export default class GameScene extends Phaser.Scene {
     const arr = [];
     for (let i = 0; i < this.enemies.getChildren().length; i += 1) {
       const enemy = this.enemies.getChildren()[i];
-      if (enemy.getData('type') == type) {
+      if (enemy.getData('type') === type) {
         arr.push(enemy);
       }
     }

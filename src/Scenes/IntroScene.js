@@ -6,9 +6,11 @@ export default class IntroScene extends Phaser.Scene {
   constructor() {
     super('Intro');
   }
-  preload(){
-    this.APP = this.game.APP
+
+  preload() {
+    this.APP = this.game.APP;
   }
+
   create() {
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) { // create five scrolling backgrounds

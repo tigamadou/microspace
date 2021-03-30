@@ -7,9 +7,11 @@ export default class GameOverScene extends Phaser.Scene {
   constructor() {
     super('GameOver');
   }
-  preload(){
-    this.APP = this.game.APP
+
+  preload() {
+    this.APP = this.game.APP;
   }
+
   create() {
     this.game.sound.stopAll();
     // this.add.image(400, 300, 'bgImg');
@@ -53,9 +55,5 @@ export default class GameOverScene extends Phaser.Scene {
     this.APP.gameOver();
     this.btnRestart = new Button(this, this.game.config.width * 0.5, config.height - 220, 'blueButton1', 'blueButton2', 'Restart', 'Stage');
     this.btnMenu = new Button(this, this.game.config.width * 0.5, config.height - 150, 'blueButton1', 'blueButton2', 'Quit', 'Title', () => { this.game.sound.stopAll(); });
-  }
-
-  saveScore() {
-
   }
 }

@@ -1,3 +1,5 @@
+import Phaser from 'phaser';
+
 export default class Entity extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, key, type) {
     super(scene, x, y, key);
@@ -19,7 +21,9 @@ export default class Entity extends Phaser.GameObjects.Sprite {
     if (!this.getData('isDead')) {
       this.setTexture('sprExplosion');
       this.play('sprExplosion');
-      this.scene.globals.sfx.explosions[Phaser.Math.Between(0, this.scene.globals.sfx.explosions.length - 1)].play();
+      this.scene.globals.sfx.explosions[
+        Phaser.Math.Between(0, this.scene.globals.sfx.explosions.length - 1)
+      ].play();
       if (this.shootTimer !== undefined) {
         if (this.shootTimer) {
           this.shootTimer.remove(false);
@@ -27,7 +31,7 @@ export default class Entity extends Phaser.GameObjects.Sprite {
       }
       this.setAngle(0);
       this.body.setVelocity(0, 0);
-      this.on('animationcomplete', function () {
+      this.on('animationcomplete', () => {
         if (canDestroy) {
           this.destroy();
         } else {

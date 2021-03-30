@@ -1,3 +1,4 @@
+import Phaser from 'phaser';
 import Entity from './Entity';
 
 export default class CarrierShip extends Entity {

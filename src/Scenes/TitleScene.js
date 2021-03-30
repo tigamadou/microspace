@@ -6,13 +6,13 @@ import ScrollingBackground from '../Objects/ScrollingBackground';
 export default class TitleScene extends Phaser.Scene {
   constructor() {
     super('Title');
-    
   }
-  preload(){
-    this.APP = this.game.APP
+
+  preload() {
+    this.APP = this.game.APP;
   }
+
   create() {
-   
     this.game.sound.stopAll();
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) { // create five scrolling backgrounds

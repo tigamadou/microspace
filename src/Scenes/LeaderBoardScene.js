@@ -9,13 +9,11 @@ export default class LeaderBoardScene extends Phaser.Scene {
   }
 
   preload() {
-    this.APP = this.game.APP
+    this.APP = this.game.APP;
     this.APP.getScores();
-    console.log(this.APP)
   }
 
   async create() {
-    
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) { // create five scrolling backgrounds
       const bg = new ScrollingBackground(this, 'sprBg0', i * 10);

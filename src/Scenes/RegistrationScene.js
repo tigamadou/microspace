@@ -5,9 +5,11 @@ export default class RegistrationScene extends Phaser.Scene {
   constructor() {
     super('Registration');
   }
-  preload(){
-    this.APP = this.game.APP
+
+  preload() {
+    this.APP = this.game.APP;
   }
+
   create() {
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) { // create five scrolling backgrounds
@@ -36,11 +38,10 @@ export default class RegistrationScene extends Phaser.Scene {
     const name = document.getElementById('name');
 
     btn.onclick = () => {
-      if (name.value.trim() != '') {
+      if (name.value.trim() !== '') {
         this.APP.setPlayerName(name.value.trim());
         this.scene.start('Intro');
       }
     };
-    // this.creditsButton = new Button(this,  this.game.config.width*0.5, this.game.config.height-100, 'blueButton1', 'blueButton2', 'CONTINUE', 'Intro');
   }
 }

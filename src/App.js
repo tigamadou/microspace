@@ -1,11 +1,10 @@
+import Phaser from 'phaser';
 import Model from './Model';
-
 
 import Api from './Api';
 
 export default class App {
   constructor() {
-    
     this.model = new Model();
     this.NAME = 'MicroSpace';
     this.GAMEID = undefined;
@@ -58,21 +57,8 @@ export default class App {
 
     ];
     this.ranks = 4;
-    this.lasers = [];
+    this.lasers = this.generateLasers();
     this.stages = [];
-    for (var rank = 1; rank <= this.ranks; rank += 1) {
-      for (var level = 1; level <= 5; level += 1) {
-        const laser = {
-          name: 'Laser',
-          rank,
-          level,
-          fire: 50 * (0.5 * level * rank),
-          timerShootDelay: 30 - (5 * level),
-          speed: -(200 + (200 * level)),
-        };
-        this.lasers.push(laser);
-      }
-    }
 
     this.player = {
       name: this.model.name,
@@ -81,9 +67,38 @@ export default class App {
       rank: this.model.rank,
       weapon: this.getLaser(1),
     };
+    this.stages = this.generateStages();
+
+    this.leaders = null;
+
+    this.stageNumber = 0;
+
+    this.createGame();
+  }
+
+  generateLasers() {
+    const lasers = [];
+    for (let rank = 1; rank <= this.ranks; rank += 1) {
+      for (let level = 1; level <= 5; level += 1) {
+        const laser = {
+          name: 'Laser',
+          rank,
+          level,
+          fire: 50 * (0.5 * level * rank),
+          timerShootDelay: 30 - (5 * level),
+          speed: -(200 + (200 * level)),
+        };
+        lasers.push(laser);
+      }
+    }
+    return lasers;
+  }
+
+  generateStages() {
     let nRanks = 0;
-    for (var rank = 1; rank <= this.ranks; rank += 1) {
-      for (var level = 1; level <= 5; level += 1) {
+    const stages = [];
+    for (let rank2 = 1; rank2 <= this.ranks; rank2 += 1) {
+      for (let level = 1; level <= 5; level += 1) {
         nRanks += 1;
         const stage = {
           name: `Stage ${nRanks}`,
@@ -91,33 +106,46 @@ export default class App {
           timeLimit: 1 + (30 * (1 + (nRanks * 0.1))),
           enemies: [
             {
-              name: 'GunShip', rank: 1, maxNumber: (20 * (1 + (nRanks * 25 / 100))), createDelay: 500, speed: (75 * (1 + (level * 5 / 100))), life: (20 * (1 + (level * 25 / 100))), shootTimer: Phaser.Math.Between(2000, 5000),
+              name: 'GunShip',
+              rank: 1,
+              maxNumber: (20 * (1 + ((nRanks * 25) / 100))),
+              createDelay: 500,
+              speed: (75 * (1 + ((level * 5) / 100))),
+              life: (20 * (1 + ((level * 25) / 100))),
+              shootTimer: Phaser.Math.Between(2000, 5000),
             },
             {
-              name: 'GunShip', rank: 2, maxNumber: Math.ceil((nRanks / 2) - (1 * (1 + (level * 0.5)))), createDelay: 1000 - (1000 * 0.04 * nRanks), speed: (200 * (1 + (level * 5 / 100))), life: (20 * (1 + (level * 25 / 100))), shootTimer: Phaser.Math.Between(1500, 2000),
+              name: 'GunShip',
+              rank: 2,
+              maxNumber: Math.ceil((nRanks / 2) - (1 * (1 + (level * 0.5)))),
+              createDelay: 1000 - (1000 * 0.04 * nRanks),
+              speed: (200 * (1 + ((level * 5) / 100))),
+              life: (20 * (1 + ((level * 25) / 100))),
+              shootTimer: Phaser.Math.Between(1500, 2000),
             },
             {
-              name: 'ChaserShip', rank: 3, maxNumber: Math.ceil((nRanks / 2.5) - (1 * (1 + (level * 0.5)))), createDelay: 1000 - (1000 * 0.04 * nRanks), speed: (150 * (1 + (level * 5 / 100))), life: (20 * (1 + (level * 25 / 100))),
+              name: 'ChaserShip',
+              rank: 3,
+              maxNumber: Math.ceil((nRanks / 2.5) - (1 * (1 + (level * 0.5)))),
+              createDelay: 1000 - (1000 * 0.04 * nRanks),
+              speed: (150 * (1 + ((level * 5) / 100))),
+              life: (20 * (1 + ((level * 25) / 100))),
             },
             {
-              name: 'CarrierShip', rank: 4, maxNumber: Math.ceil((nRanks / 4) - (1 * (1 + (level * 0.5)))), createDelay: 1000 - (1000 * 0.06 * nRanks), speed: (100 * (1 + (level * 5 / 100))), life: (20 * (1 + (level * 25 / 100))),
+              name: 'CarrierShip',
+              rank: 4,
+              maxNumber: Math.ceil((nRanks / 4) - (1 * (1 + (level * 0.5)))),
+              createDelay: 1000 - (1000 * 0.06 * nRanks),
+              speed: (100 * (1 + ((level * 5) / 100))),
+              life: (20 * (1 + ((level * 25) / 100))),
             },
           ],
           player: { ...this.player, weapon: this.getLaser(nRanks) },
         };
-        this.stages.push(stage);
+        stages.push(stage);
       }
     }
-
-    // ]
-
-    this.leaders = null;
-
-    this.stageNumber = 0;
-    
-
-    this.createGame();
-    
+    return stages;
   }
 
   getLaser(level) {
@@ -131,8 +159,6 @@ export default class App {
     this.api = await new Api(this.NAME);
     this.getScores();
   }
-
-  
 
   score(value) {
     this.model.score += value;

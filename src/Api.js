@@ -3,7 +3,7 @@ export default class Api {
     this.baseProject = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games';
     this.baseMe = 'https://60615099ac47190017a70a98.mockapi.io/api/games';
     this.base = this.baseProject;
-    this.createGame()
+    this.createGame(name);
   }
 
   async createGame(name) {
@@ -13,9 +13,8 @@ export default class Api {
 
     await fetch(request)
       .then((resp) => resp.json())
-      .then((data) => this.game = data.result)
-      .catch((e) => false);
-    
+      .then((data) => { this.game = data.result; })
+      .catch(() => false);
   }
 
   async saveScrore(id, user, score) {
@@ -25,20 +24,19 @@ export default class Api {
 
     await fetch(request)
       .then((resp) => resp.json())
-      .then((data) => true)
-      .catch((e) => false);
+      .then(() => true)
+      .catch(() => false);
   }
 
   async getScores(id) {
     let leaders = [];
 
     const url = `${this.base}/${id}/scores`;
-    const request = new Request(url);
 
     leaders = await fetch(url)
       .then((resp) => resp.json())
       .then((data) => data.result)
-      .catch((e) => false);
+      .catch(() => false);
     return leaders;
   }
 }

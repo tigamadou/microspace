@@ -6,6 +6,5 @@ import Game from './Game';
 
 const APP = new App();
 
-const MyGame = new Game(config,APP)
-
-
+const MyGame = new Game(config, APP);
+window.MyGame = MyGame;

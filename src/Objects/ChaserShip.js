@@ -1,5 +1,5 @@
+import Phaser from 'phaser';
 import Entity from './Entity';
-import EnemyLaser from './EnemyLaser';
 
 export default class ChaserShip extends Entity {
   constructor(scene, x, y, params) {
@@ -24,13 +24,16 @@ export default class ChaserShip extends Entity {
         this.params.state = this.states.CHASE;
       }
 
-      if (this.params.state == this.states.CHASE) {
+      if (this.params.state === this.states.CHASE) {
         const dx = this.scene.player.x - this.x;
         const dy = this.scene.player.y - this.y;
 
         const angle = Math.atan2(dy, dx);
 
-        this.velocity = { x: Math.cos(angle) * this.params.speed, y: Math.sin(angle) * this.params.speed };
+        this.velocity = {
+          x: Math.cos(angle) * this.params.speed,
+          y: Math.sin(angle) * this.params.speed,
+        };
         this.body.setVelocity(
           this.velocity.x,
           this.velocity.y,

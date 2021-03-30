@@ -7,9 +7,11 @@ export default class StageScene extends Phaser.Scene {
   constructor() {
     super('Stage');
   }
-  preload(){
-    this.APP = this.game.APP
+
+  preload() {
+    this.APP = this.game.APP;
   }
+
   create() {
     this.game.sound.stopAll();
     this.globals = this.sys.game.globals;

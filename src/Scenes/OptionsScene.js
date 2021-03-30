@@ -6,11 +6,11 @@ export default class OptionsScene extends Phaser.Scene {
     super('Options');
   }
 
-  preload(){
-    this.APP = this.game.APP
+  preload() {
+    this.APP = this.game.APP;
   }
+
   create() {
-    
     this.add.image(400, 300, 'bgImg');
 
     this.text = this.add.text(80, 100, 'Options', { fontSize: 40 });
