@@ -14,10 +14,10 @@ export default class GameOverScene extends Phaser.Scene {
 
   create() {
     this.game.sound.stopAll();
-    
+
     this.globals = this.sys.game.globals;
     this.backgrounds = [];
-    for (let i = 0; i < 5; i += 1) { 
+    for (let i = 0; i < 5; i += 1) {
       const bg = new ScrollingBackground(this, 'sprBg0', i * 10);
       this.backgrounds.push(bg);
     }
