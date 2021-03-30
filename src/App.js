@@ -2,11 +2,11 @@ import Model from './Model';
 import Api from './Api';
 
 export default class App {
-  constructor(name) {
+  constructor(name, ID = null) {
     this.model = new Model();
     this.NAME = name;
-    this.GAMEID = undefined;
-
+    this.GAMEID = ID;
+    this.api = new Api();
     this.STATES = {
       MOVE_DOWN: 'MOVE_DOWN',
       CHASE: 'CHASE',
@@ -70,8 +70,10 @@ export default class App {
     this.leaders = null;
 
     this.stageNumber = 0;
-
-    this.createGame();
+    if (!ID) {
+      this.createGame(this.NAME);
+    }
+    this.getScores();
   }
 
   generateLasers() {
@@ -153,9 +155,8 @@ export default class App {
     return false;
   }
 
-  async createGame() {
-    this.api = await new Api(this.NAME);
-    this.getScores();
+  async createGame(name) {
+    await this.api.createGame(name);
   }
 
   score(value) {
@@ -209,6 +210,7 @@ export default class App {
     this.model.score = 0;
     this.model.gameOver = false;
     this.stageNumber = 0;
+    this.getScores();
   }
 
   setPlayerName(name) {

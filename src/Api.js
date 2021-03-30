@@ -1,44 +1,32 @@
+import axios from 'axios';
+
 require('regenerator-runtime/runtime');
 
-export default class Api {
-  constructor(name) {
-    this.baseProject = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games';
-    this.baseMe = 'https://60615099ac47190017a70a98.mockapi.io/api/games';
-    this.base = this.baseProject;
-    this.createGame(name);
-  }
+export default function Api() {
+  const baseUrl = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games';
+ 
 
-  async createGame(name) {
-    const request = new Request(this.base, {
-      method: 'POST', mode: 'cors', body: JSON.stringify({ name }), headers: new Headers(),
-    });
+  this.createGame = async (name) => {
+    const response = await axios.post(baseUrl, { name })
+      .then(response => response.data)
+      .catch(error => error.response.data);
 
-    await fetch(request)
-      .then((resp) => resp.json())
-      .then((data) => { this.game = data.result; })
-      .catch(() => false);
-  }
+    return response.result;
+  };
 
-  async saveScrore(id, user, score) {
-    const data = { user, score };
-    const url = `${this.base}/${id}/${user}`;
-    const request = new Request(url, { method: 'POST', body: JSON.stringify(data), headers: new Headers() });
+  this.saveScrore = async (id, user, score) => {
+    const url = `${baseUrl}/${id}/scores`;
 
-    await fetch(request)
-      .then((resp) => resp.json())
-      .then(() => true)
-      .catch(() => false);
-  }
-
-  async getScores(id) {
-    let leaders = [];
-
-    const url = `${this.base}/${id}/scores`;
-
-    leaders = await fetch(url)
-      .then((resp) => resp.json())
-      .then((data) => data.result)
-      .catch(() => false);
-    return leaders;
-  }
+    const data = await axios.post(url, { user, score })
+      .then(response => response.data).catch(error => error);
+    return data.resul;
+  };
+  
+  this.getScores = async (id) => {
+    let arr = [];
+    const url = `${baseUrl}/${id}/scores`;
+    arr = await axios.get(url)
+    .then(response => response.data).catch(error => error);;
+    return arr;
+  };
 }

@@ -48,11 +48,8 @@ export default class Model {
   }
 
   set gameOver(value) {
-    if (value) {
-      this.data.gameOver = value;
-      return true;
-    }
-    return false;
+    this.data.gameOver = value;
+    return this.data.gameOver;
   }
 
   get gameOver() {

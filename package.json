@@ -51,8 +51,9 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "regenerator-runtime": "^0.13.7",
     "@babel/runtime": "^7.13.10",
-    "phaser": "^3.24.1"
+    "axios": "^0.21.1",
+    "phaser": "^3.24.1",
+    "regenerator-runtime": "^0.13.7"
   }
 }
