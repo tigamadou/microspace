@@ -12,7 +12,11 @@ export default class Model {
   }
 
   set leaders(value) {
-    this.data.leaders = value;
+    if (value) {
+      this.data.leaders = value;
+      return true;
+    }
+    return false;
   }
 
   get leaders() {
@@ -20,7 +24,11 @@ export default class Model {
   }
 
   set score(value) {
-    this.data.score = value;
+    if (value) {
+      this.data.score = value;
+      return true
+    }
+    return false
   }
 
   get score() {
@@ -28,7 +36,11 @@ export default class Model {
   }
 
   set level(value) {
-    this.data.level = value;
+    if (value) {
+      this.data.level = value;
+      return true
+    }
+    return false
   }
 
   get level() {
@@ -36,7 +48,11 @@ export default class Model {
   }
 
   set gameOver(value) {
-    this.data.gameOver = value;
+    if(value){
+
+      this.data.gameOver = value;
+      return true
+    }
   }
 
   get gameOver() {

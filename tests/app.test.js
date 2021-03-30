@@ -4,7 +4,7 @@ import Model from '../src/Model';
 const name = 'MicroSpace';
 const app = new App(name);
 
-test('Should have a not empty model ', () => {
+test('Should have a model', () => {
   expect(app.model).toBeInstanceOf(Model);
 });
 

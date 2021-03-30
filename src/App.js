@@ -213,6 +213,7 @@ export default class App {
 
   setPlayerName(name) {
     this.player.name = name;
+    return this.player.name;
   }
 
   async getScores() {
