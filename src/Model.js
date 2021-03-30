@@ -24,11 +24,7 @@ export default class Model {
   }
 
   set score(value) {
-    if (value) {
-      this.data.score = value;
-      return true;
-    }
-    return false;
+    this.data.score = value;
   }
 
   get score() {

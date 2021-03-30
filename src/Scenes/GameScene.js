@@ -262,6 +262,7 @@ export default class GameScene extends Phaser.Scene {
   gameOver() {
     if (!this.APP.model.gameOver) {
       this.APP.model.gameOver = true;
+
       setTimeout(() => {
         this.scene.start('GameOver');
       }, 3000);

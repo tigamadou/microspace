@@ -161,7 +161,7 @@ export default class App {
   }
 
   score(value) {
-    if (value && Number.isInteger(value) && value > 0) {
+    if (value && Number.isInteger(value) && value >= 0) {
       this.model.score += value;
       return this.model.score;
     }
@@ -208,9 +208,10 @@ export default class App {
 
   gameOver() {
     this.api.saveScrore(this.GAMEID, this.player.name, this.model.score);
-    this.model.score = 0;
     this.model.gameOver = false;
+    this.model.score = 0;
     this.stageNumber = 0;
+
     this.getScores();
   }
 
