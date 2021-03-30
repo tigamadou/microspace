@@ -4,7 +4,6 @@ import config from './Config/config';
 import App from './App';
 import Game from './Game';
 
-
 const APP = new App('MicroSpace');
 
 const MyGame = new Game(config, APP);

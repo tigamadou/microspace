@@ -159,11 +159,11 @@ export default class App {
   }
 
   score(value) {
-    if(value && Number.isInteger(value) && value > 0){
-      return this.model.score += value
+    if (value && Number.isInteger(value) && value > 0) {
+      this.model.score += value;
+      return this.model.score;
     }
-    return false
-
+    return false;
   }
 
   getStage() {
@@ -171,8 +171,8 @@ export default class App {
   }
 
   levelUp() {
-    
-    return this.model.level += 1;
+    this.model.level += 1;
+    return this.model.level;
   }
 
   canLevelUp(time) {
@@ -189,11 +189,10 @@ export default class App {
       return true;
     }
     return false;
-  } 
+  }
 
   getEnemies(stageEnemy) {
-    if(stageEnemy && typeof stageEnemy ==='object'){
-
+    if (stageEnemy && typeof stageEnemy === 'object') {
       this.enemies.forEach((enemy) => {
         if (stageEnemy.rank === enemy.rank) {
           stageEnemy = { ...enemy, ...stageEnemy };
@@ -202,7 +201,7 @@ export default class App {
       return stageEnemy;
     }
 
-    return false
+    return false;
   }
 
   gameOver() {
@@ -222,9 +221,11 @@ export default class App {
     this.model.leaders = this.model.leaders.slice(0, 10);
     return this.model.leaders;
   }
+
   getRandomIntInclusive(min, max) {
+    this.random = { min, max };
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+    return Math.floor(Math.random() * (max - min + 1) + min);
   }
 }

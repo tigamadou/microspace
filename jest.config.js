@@ -1,7 +1,7 @@
 module.exports = {
-    verbose: true,
-    transform: {
-      
-      "^.+\\.(js|jsx)$": "babel-jest",
-    }
-  };
+  verbose: true,
+  transform: {
+
+    '^.+\\.(js|jsx)$': 'babel-jest',
+  },
+};
