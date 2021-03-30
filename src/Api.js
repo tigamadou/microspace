@@ -26,6 +26,6 @@ export default function Api() {
     const url = `${baseUrl}/${id}/scores`;
     arr = await axios.get(url)
       .then(response => response.data).catch(error => error);
-    return arr;
+    return arr.result;
   };
 }

@@ -157,6 +157,7 @@ export default class App {
 
   async createGame(name) {
     await this.api.createGame(name);
+    this.getScores();
   }
 
   score(value) {
