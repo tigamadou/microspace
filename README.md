@@ -175,7 +175,7 @@ Assets Needed
 -   2D
     --
 
-1.  Textures
+1.  Textures 
 
 -   Player ship
 

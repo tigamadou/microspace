@@ -22,7 +22,7 @@ canvas {
   background-image: url('../../assets/ui/blue_button03.png');
   background-size: cover;
   border-radius: 5px;
-  color: white;
+  color: #000;
   padding: 8px 16px;
   width: 101px;
   height: 26px;

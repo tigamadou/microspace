@@ -19,6 +19,8 @@ export default class LeaderBoardScene extends Phaser.Scene {
       const bg = new ScrollingBackground(this, 'sprBg0', i * 10);
       this.backgrounds.push(bg);
     }
+    this.text = this.add.text(this.game.config.width * 0.5, 80, 'Top 10 Players', { fontSize: 40,fontWeight:'bold',color:'#26ff02' });
+    this.text.setOrigin(0.5)
     const div = document.createElement('div');
     div.classList.add('leaderboard');
     const ul = document.createElement('ul');
