@@ -26,9 +26,9 @@ export default class Model {
   set score(value) {
     if (value) {
       this.data.score = value;
-      return true
+      return true;
     }
-    return false
+    return false;
   }
 
   get score() {
@@ -38,9 +38,9 @@ export default class Model {
   set level(value) {
     if (value) {
       this.data.level = value;
-      return true
+      return true;
     }
-    return false
+    return false;
   }
 
   get level() {
@@ -48,11 +48,11 @@ export default class Model {
   }
 
   set gameOver(value) {
-    if(value){
-
+    if (value) {
       this.data.gameOver = value;
-      return true
+      return true;
     }
+    return false;
   }
 
   get gameOver() {
