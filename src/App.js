@@ -1,12 +1,10 @@
-import Phaser from 'phaser';
 import Model from './Model';
-
 import Api from './Api';
 
 export default class App {
-  constructor() {
+  constructor(name) {
     this.model = new Model();
-    this.NAME = 'MicroSpace';
+    this.NAME = name;
     this.GAMEID = undefined;
 
     this.STATES = {
@@ -112,7 +110,7 @@ export default class App {
               createDelay: 500,
               speed: (75 * (1 + ((level * 5) / 100))),
               life: (20 * (1 + ((level * 25) / 100))),
-              shootTimer: Phaser.Math.Between(2000, 5000),
+              shootTimer: this.getRandomIntInclusive(2000, 5000),
             },
             {
               name: 'GunShip',
@@ -121,7 +119,7 @@ export default class App {
               createDelay: 1000 - (1000 * 0.04 * nRanks),
               speed: (200 * (1 + ((level * 5) / 100))),
               life: (20 * (1 + ((level * 25) / 100))),
-              shootTimer: Phaser.Math.Between(1500, 2000),
+              shootTimer: this.getRandomIntInclusive(1500, 2000),
             },
             {
               name: 'ChaserShip',
@@ -152,7 +150,7 @@ export default class App {
     if (this.lasers && this.lasers[level - 1] !== undefined) {
       return this.lasers[level - 1];
     }
-    return {};
+    return false;
   }
 
   async createGame() {
@@ -161,7 +159,11 @@ export default class App {
   }
 
   score(value) {
-    this.model.score += value;
+    if(value && Number.isInteger(value) && value > 0){
+      return this.model.score += value
+    }
+    return false
+
   }
 
   getStage() {
@@ -170,7 +172,7 @@ export default class App {
 
   levelUp() {
     this.model.level += 1;
-    // this.updateEnemies()
+    
   }
 
   canLevelUp(time) {
@@ -220,5 +222,10 @@ export default class App {
     this.model.leaders.sort((a, b) => b.score - a.score);
     this.model.leaders = this.model.leaders.slice(0, 10);
     return this.model.leaders;
+  }
+  getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
   }
 }

@@ -8,10 +8,12 @@
             "not op_mini all"
           ]
         },
-        "modules": false
+        "modules": "auto"
       }],
       
+      
     ],
+
     "plugins": [
       [
         "@babel/plugin-transform-runtime",
