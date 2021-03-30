@@ -171,8 +171,8 @@ export default class App {
   }
 
   levelUp() {
-    this.model.level += 1;
     
+    return this.model.level += 1;
   }
 
   canLevelUp(time) {
@@ -189,21 +189,20 @@ export default class App {
       return true;
     }
     return false;
-  }
-
-  updateEnemies() {
-    this.enemies.forEach((enemy) => {
-      enemy.createDelay -= (enemy.createDelay / 0.01);
-    });
-  }
+  } 
 
   getEnemies(stageEnemy) {
-    this.enemies.forEach((enemy) => {
-      if (stageEnemy.rank === enemy.rank) {
-        stageEnemy = { ...enemy, ...stageEnemy };
-      }
-    });
-    return stageEnemy;
+    if(stageEnemy && typeof stageEnemy ==='object'){
+
+      this.enemies.forEach((enemy) => {
+        if (stageEnemy.rank === enemy.rank) {
+          stageEnemy = { ...enemy, ...stageEnemy };
+        }
+      });
+      return stageEnemy;
+    }
+
+    return false
   }
 
   gameOver() {

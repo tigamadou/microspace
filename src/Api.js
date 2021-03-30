@@ -1,3 +1,4 @@
+require("regenerator-runtime/runtime");
 export default class Api {
   constructor(name) {
     this.baseProject = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games';

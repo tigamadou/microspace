@@ -1,6 +1,6 @@
+
 import App from '../src/App';
 import Model from '../src/Model';
-
 const name = 'MicroSpace'
 const app = new App(name);
 
@@ -75,7 +75,7 @@ test('Should retreive laser with level 5 ', () => {
 
 test('Should not retreive laser and return false ', () => {
     
-    expect(app.getLaser(50)).toBe(false);
+    expect(app.getLaser(50)).toBeFalsy();
 });
 
 test('Should update the score ', () => {
@@ -84,7 +84,7 @@ test('Should update the score ', () => {
 });
 
 test('Should not update the score and be false ', () => {
-    expect(app.score('sdsd')).toBe(false);
+    expect(app.score('sdsd')).toBeFalsy();
 });
 
 test('Should retreive the current stage', () => {
@@ -96,6 +96,28 @@ test('Should retreive the current stage', () => {
 test('Should Not retreive the stage index greater than 19', () => {
     app.stageNumber = 20
     app.stage = null
-    expect(app.loadStage()).toBe(false);
-    expect(app.getStage()).toBe(null);
+    expect(app.loadStage()).toBeFalsy();
+    expect(app.getStage()).toBeFalsy();
+});
+
+test('Should return the new level', () => {
+    let level = app.model.level+1
+    expect(app.levelUp()).toEqual(level);    
+});
+
+
+test('Should be true if time is time is greater than stage time', () => {
+    let time = 60
+    app.stageNumber = 0
+    app.loadStage()
+    app.stage.timeLimit = 55
+    expect(app.canLevelUp(time)).toBeTruthy();    
+});
+
+test('Should be false if time is less than stage timeLimit', () => {
+    let time = 55
+    app.stageNumber = 0
+    app.loadStage()
+    app.stage.timeLimit = 60
+    expect(app.canLevelUp(time)).toBeFalsy();    
 });
