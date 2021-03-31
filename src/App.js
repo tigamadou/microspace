@@ -16,7 +16,7 @@ export default class App {
         rank: 1,
         createDelay: 1500,
         life: 50,
-        score: 25,
+        score: 20,
         shootTimer: 4000,
         maxNumber: 10,
         state: this.STATES.MOVE_DOWN,
@@ -52,6 +52,20 @@ export default class App {
           speed: 100,
         },
       },
+      ,
+      {
+        rank: 4,
+        createDelay: 1000,
+        life: 800,
+        score: 200,
+        shootTimer: 200,
+        maxNumber: 5,
+        state: this.STATES.MOVE_DOWN,
+        speed: 200,
+        weapon: {
+          speed: 500,
+        },
+      }
 
     ];
     this.ranks = 4;
@@ -69,7 +83,7 @@ export default class App {
 
     this.leaders = null;
 
-    this.stageNumber = 0;
+    this.stageNumber = 16;
     if (!ID) {
       this.createGame(this.NAME);
     }
@@ -84,7 +98,7 @@ export default class App {
           name: 'Laser',
           rank,
           level,
-          fire: 50 * (0.5 * level * rank),
+          fire: 50 * (1+(0.1 * level * rank)),
           timerShootDelay: 30 - (5 * level),
           speed: -(200 + (200 * level)),
         };
@@ -102,7 +116,7 @@ export default class App {
         nRanks += 1;
         const stage = {
           name: `Stage ${nRanks}`,
-          targetScore: 300 + (500 * (1 + (nRanks * 2.5))),
+          targetScore: 1000 + (1000 * (1 + (nRanks * 2.5))),
           timeLimit: 1 + (30 * (1 + (nRanks * 0.1))),
           enemies: [
             {
@@ -110,8 +124,8 @@ export default class App {
               rank: 1,
               maxNumber: (20 * (1 + ((nRanks * 25) / 100))),
               createDelay: 500,
-              speed: (75 * (1 + ((level * 5) / 100))),
-              life: (20 * (1 + ((level * 25) / 100))),
+              speed: (75 * (1 + (nRanks * 0.2))),
+              life: (20 * (1 + (nRanks * 0.2))),
               shootTimer: this.getRandomIntInclusive(2000, 5000),
             },
             {
@@ -137,7 +151,8 @@ export default class App {
               maxNumber: Math.ceil((nRanks / 4) - (1 * (1 + (level * 0.5)))),
               createDelay: 1000 - (1000 * 0.06 * nRanks),
               speed: (100 * (1 + ((level * 5) / 100))),
-              life: (20 * (1 + ((level * 25) / 100))),
+              life: (800 * (1 + ((level * 25) / 100))),
+              shootTimer: this.getRandomIntInclusive(500, 600),
             },
           ],
           player: { ...this.player, weapon: this.getLaser(nRanks) },

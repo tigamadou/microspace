@@ -28,7 +28,7 @@
   </p>
 </p>
 
-## Table of Contents
+# Table of Contents
 
 - [About the Project](#about-the-project)
 - [Built With](#built-with)
@@ -37,17 +37,19 @@
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
-  * [How to run the game](#how-to-run-the-game)
 - [What is MicroSpace](#what-is-grab-fruits)
+- [How to run the game](#how-to-run-the-game)
 - [How to play the game](#how-to-play-the-game)
-- [Rule of the game](#rule-of-the-game)
+- [Game Rules](#rule-of-the-game)
 - [Author](#author)
 - [Contributing](#contributing)
 - [Show your support](#show-your-support)
 - [License](#license)
 - [Acknowledgements](#acknowledgements)
 
-## About the Project
+
+
+# About the Project
 
 <div align="center">
 
@@ -70,21 +72,21 @@ In addition, I added the following features:
 - 20 level weapons for the player
 - 20 level stage to play
 
-## Built With
+# Built With
 
 - [CSS](https://en.wikipedia.org/wiki/CSS)
 - [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
 - [Phaser 3](https://phaser.io/phaser3)
 - [Webpack](https://phaser.io/phaser3)
 
-## Game Design Document
+# Game Design Document
 
 [Game Design Document (GDD) Link](./game-design-document.md)
 
-## Getting Started
+# Getting Started
 To get the game on your own computer, please do the following steps
 
-### Prerequisites
+## Prerequisites
 This app require: nodejs. If you don't have not installed yet, do the following commands in your terminal.
 * git
 * nodejs & npm
@@ -96,7 +98,7 @@ npm install npm@latest -g
 npm install --global yarn
 ```
 
-### Installation
+## Installation
 Once your computer meets all the requirements you can proceed to the next steps.
 
 1. Open your command terminal
@@ -120,11 +122,46 @@ npm install 'or' yarn
 ```sh
 npm run build 'or' yarn build
 ```
-### How to run the Game
+
+## What is MicroSpace
+MicraoSpace is a Space shooter browser game. To score points, the player need to shoot the enemies and proceed to the next Stage.
+
+## How to run the Game
 Once all the precious steps completed, run the following command
+1. Run the start command in your terminal
 ```sh
 npm run start 'or' yarn start
 ```
+2. Your browser will automatically open with the address http://127.0.0.1:8051
+
+## How to Play the Game
+1. Run The game using the instructions above
+2. On the Title Scene
+    - Start to start a new game
+    - Options to enter the game options
+    - LeaderBoard to see the top players
+    - Credits to see the closing credits of the game
+4. Click Start to run a new game
+    - Chose a name and click save
+    - Read your mission details and instructions. Click Accept to proceed
+        * You can move with both  W S A D keys and UP DOWN LEF RIGHT arrows key
+        * Use space to shoot
+        * Good Luck
+    - If you complete the stage you'll progress to the next Stage
+
+## Game RUles
+1. A player can be moved using arrow keys but also common w a s d keys.
+2. There are 4 rank of enemies. Each enemy destroyed increase the score according to its rank:
+    - Rank 1 : +20
+    - Rank 2 : +50
+    - Rank 3 : +100
+    - Rank 4 : +200
+3. The enemies have lives score according to their rank and the current stage/level
+    - Stage 1 : 20 + 20*0.25*1 
+    - Stage 2 : 20 + 20*0.25*2
+      
+
+
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
