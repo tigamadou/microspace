@@ -20,8 +20,8 @@ export default class TitleScene extends Phaser.Scene {
       this.backgrounds.push(bg);
     }
     this.globals = this.sys.game.globals;
-    this.text = this.add.text(this.game.config.width * 0.5, 100, this.APP.NAME, { fontSize: 40,fontWeight:'bold' });
-    this.text.setOrigin(0.5)
+    this.text = this.add.text(this.game.config.width * 0.5, 100, this.APP.NAME, { fontSize: 40, fontWeight: 'bold' });
+    this.text.setOrigin(0.5);
     // Game
     this.gameButton = new Button(this, this.game.config.width * 0.5, this.game.config.height - 150, 'blueButton1', 'blueButton2', 'START', 'Registration');
 

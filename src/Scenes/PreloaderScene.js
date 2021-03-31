@@ -10,8 +10,8 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   preload() {
-    // add logo 
-    
+    // add logo
+
     this.add.image(250, 300, 'space');
 
     // display progress bar
@@ -87,8 +87,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('box', 'assets/ui/grey_box.png');
     this.load.image('checkedBox', 'assets/ui/blue_boxCheckmark.png');
     this.load.image('bgImg', ['assets/ui/background.jpg']);
-    
-    
+
     this.load.image('sprBg0', 'assets/sprites/sprBg0.png');
     this.load.image('sprBg1', 'assets/sprites/sprBg1.png');
     this.load.spritesheet('sprExplosion', 'assets/sprites/explode2.png', {
