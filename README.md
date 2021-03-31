@@ -152,13 +152,15 @@ npm run start 'or' yarn start
 ## Game RUles
 1. A player can be moved using arrow keys but also common w a s d keys.
 2. There are 4 rank of enemies. Each enemy destroyed increase the score according to its rank:
-    - Rank 1 : +20
-    - Rank 2 : +50
-    - Rank 3 : +100
-    - Rank 4 : +200
+    - Rank 1 : +100
+    - Rank 2 : +250
+    - Rank 3 : +500
+    - Rank 4 : +1000
 3. The enemies have lives score according to their rank and the current stage/level
-    - Stage 1 : 20 + 20*0.25*1 
-    - Stage 2 : 20 + 20*0.25*2
+    - Rank 1 : 20 + 20*0.25* Level
+    - Rank 2 : 20 + 20*0.25*2
+    - and so
+4. 
       
 
 
