@@ -52,7 +52,6 @@ export default class App {
           speed: 100,
         },
       },
-      ,
       {
         rank: 4,
         createDelay: 1000,
@@ -65,7 +64,7 @@ export default class App {
         weapon: {
           speed: 500,
         },
-      }
+      },
 
     ];
     this.ranks = 4;
@@ -100,7 +99,7 @@ export default class App {
           name: 'Laser',
           rank,
           level,
-          fire: 50 *nRanks*1.3,
+          fire: 50 * nRanks * 1.3,
           timerShootDelay: 30 - (5 * level),
           speed: -(200 + (200 * level)),
         };
@@ -124,10 +123,10 @@ export default class App {
             {
               name: 'GunShip',
               rank: 1,
-              maxNumber: (20 *nRanks*1.25),
+              maxNumber: (20 * nRanks * 1.25),
               createDelay: 500,
               speed: 80 + (80 * nRanks * 0.2),
-              life: (50 *nRanks * 1.2),
+              life: (50 * nRanks * 1.2),
               shootTimer: this.getRandomIntInclusive(2000, 5000),
             },
             {
@@ -135,8 +134,8 @@ export default class App {
               rank: 2,
               maxNumber: Math.ceil((nRanks / 2) - (1 * (1 + (nRanks * 0.2)))),
               createDelay: 1000 - (1000 * 0.04 * nRanks),
-              speed: 50 + (50*nRanks*0.4),
-              life: (80 *nRanks*1.2),
+              speed: 50 + (50 * nRanks * 0.4),
+              life: (80 * nRanks * 1.2),
               shootTimer: this.getRandomIntInclusive(1000, 3000),
             },
             {
@@ -144,8 +143,8 @@ export default class App {
               rank: 3,
               maxNumber: Math.ceil((nRanks / 2.5) - (1 * (1 + (level * 0.5)))),
               createDelay: 1000 - (1000 * 0.04 * nRanks),
-              speed: (150 * nRanks *0.05),
-              life: (100 *nRanks*1.2),
+              speed: (150 * nRanks * 0.05),
+              life: (100 * nRanks * 1.2),
             },
             {
               name: 'CarrierShip',
@@ -153,7 +152,7 @@ export default class App {
               maxNumber: Math.ceil((nRanks / 4) - (1 * (1 + (level * 0.5)))),
               createDelay: 1000 - (1000 * 0.06 * nRanks),
               speed: this.getRandomIntInclusive(100, 500),
-              life: (400 *1.2* nRanks),
+              life: (400 * 1.2 * nRanks),
               shootTimer: this.getRandomIntInclusive(500, 1500),
             },
           ],

@@ -2,6 +2,7 @@
 import Phaser from 'phaser';
 import Entity from './Entity';
 import EnemyLaser from './EnemyLaser';
+
 export default class CarrierShip extends Entity {
   constructor(scene, x, y, params) {
     super(scene, x, y, 'sprEnemy2', 'CarrierShip');
@@ -18,7 +19,7 @@ export default class CarrierShip extends Entity {
         const laser = new EnemyLaser(
           this.scene,
           this.x,
-          this.y+16,
+          this.y + 16,
           params.weapon,
         );
         laser.setScale(this.scaleX);
@@ -28,6 +29,7 @@ export default class CarrierShip extends Entity {
       loop: true,
     });
   }
+
   onDestroy() {
     if (this.shootTimer !== undefined) {
       if (this.shootTimer) {
@@ -35,6 +37,7 @@ export default class CarrierShip extends Entity {
       }
     }
   }
+
   update() {
     this.body.velocity.x = this.velocity.x;
     this.body.velocity.y = this.velocity.y;
