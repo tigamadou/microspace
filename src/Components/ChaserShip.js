@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolveds
 import Phaser from 'phaser';
 import Entity from './Entity';
 
