@@ -122,7 +122,7 @@ export default class PreloaderScene extends Phaser.Scene {
       frameHeight: 16,
     });
     this.load.image('sprEnemy1', sprEnemy1);
-    this.load.spritesheet('sprEnemy2',sprEnemy2, {
+    this.load.spritesheet('sprEnemy2', sprEnemy2, {
       frameWidth: 16,
       frameHeight: 16,
     });
@@ -139,7 +139,6 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.audio('sndExplode0', sndExplode0);
     this.load.audio('sndExplode1', sndExplode1);
     this.load.audio('sndLaser', sndLaser);
-   
   }
 
   create() {

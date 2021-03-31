@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import Logo from '../assets/ui/space.png';
+
 export default class BootScene extends Phaser.Scene {
   constructor() {
     super('Boot');

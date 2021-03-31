@@ -7,7 +7,7 @@
   "description": "A Javascript shooter Game",
   "main": "src/index.js",
   "scripts": {
-    "stylelint": "stylelint '**/*.scss'",
+    "stylelint": "stylelint '**/*.{css,scss}'",
     "eslint": "eslint .",
     "dev": "webpack serve",
     "build": "webpack",
