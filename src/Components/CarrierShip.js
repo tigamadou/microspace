@@ -11,14 +11,14 @@ export default class CarrierShip extends Entity {
 
     this.life = params.life;
     this.score = params.score;
-    this.setScale((params.rank / 100) + 2);
+    this.setScale((params.rank / 80) + 2);
     this.shootTimer = this.scene.time.addEvent({
       delay: params.shootTimer,
       callback() {
         const laser = new EnemyLaser(
           this.scene,
           this.x,
-          this.y,
+          this.y+16,
           params.weapon,
         );
         laser.setScale(this.scaleX);

@@ -16,7 +16,7 @@ export default class GunShip extends Entity {
         const laser = new EnemyLaser(
           this.scene,
           this.x,
-          this.y,
+          this.y+16,
           params.weapon,
         );
         laser.setScale(this.scaleX);
