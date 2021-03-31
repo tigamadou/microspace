@@ -32,10 +32,12 @@
 
 - [About the Project](#about-the-project)
 - [Built With](#built-with)
-- [Live Demo](#live-demo)
 - [Game Design Document(GDD)](#game-design-document)
-- [Getting Started](#getting-started)
-- [How to run the game](#how-to-run-the-game)
+
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+  * [How to run the game](#how-to-run-the-game)
 - [What is MicroSpace](#what-is-grab-fruits)
 - [How to play the game](#how-to-play-the-game)
 - [Rule of the game](#rule-of-the-game)
@@ -74,6 +76,56 @@ In addition, I added the following features:
 - [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
 - [Phaser 3](https://phaser.io/phaser3)
 - [Webpack](https://phaser.io/phaser3)
+
+## Game Design Document
+
+[Game Design Document (GDD) Link](./game-design-document.md)
+
+## Getting Started
+To get the game on your own computer, please do the following steps
+
+### Prerequisites
+This app require: nodejs. If you don't have not installed yet, do the following commands in your terminal.
+* git
+* nodejs & npm
+```sh
+npm install npm@latest -g
+```
+* yarn (Optional)
+```sh
+npm install --global yarn
+```
+
+### Installation
+Once your computer meets all the requirements you can proceed to the next steps.
+
+1. Open your command terminal
+
+2. Clone the repo from github
+
+```sh
+git clone https://github.com/tigamadou/microspace
+```
+
+3. Browse to the cloned folder
+```sh
+cd microspace
+```
+
+3. Install NPM packages using npm or yarn
+```sh
+npm install 'or' yarn 
+```
+4. Build the game
+```sh
+npm run build 'or' yarn build
+```
+### How to run the Game
+Once all the precious steps completed, run the following command
+```sh
+npm run start 'or' yarn start
+```
+
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
