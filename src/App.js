@@ -92,13 +92,15 @@ export default class App {
 
   generateLasers() {
     const lasers = [];
+    let nRanks = 0;
     for (let rank = 1; rank <= this.ranks; rank += 1) {
       for (let level = 1; level <= 5; level += 1) {
+        nRanks += 1;
         const laser = {
           name: 'Laser',
           rank,
           level,
-          fire: 50 * (1+(0.1 * level * rank)),
+          fire: 50 * (1+(0.5 *nRanks)),
           timerShootDelay: 30 - (5 * level),
           speed: -(200 + (200 * level)),
         };
@@ -125,7 +127,7 @@ export default class App {
               maxNumber: (20 * (1 + ((nRanks * 25) / 100))),
               createDelay: 500,
               speed: (75 * (1 + (nRanks * 0.2))),
-              life: (20 * (1 + (nRanks * 0.2))),
+              life: (50 * (1 + (nRanks * 0.2))),
               shootTimer: this.getRandomIntInclusive(2000, 5000),
             },
             {
@@ -134,7 +136,7 @@ export default class App {
               maxNumber: Math.ceil((nRanks / 2) - (1 * (1 + (level * 0.5)))),
               createDelay: 1000 - (1000 * 0.04 * nRanks),
               speed: (200 * (1 + ((level * 5) / this.getRandomIntInclusive(50, 100)))),
-              life: (50 * (1 + ((level * 25) / this.getRandomIntInclusive(50, 100)))),
+              life: (200 * (1 + ((level * 0.125) / this.getRandomIntInclusive(50, 100)))),
               shootTimer: this.getRandomIntInclusive(800, 1000),
             },
             {
@@ -143,7 +145,7 @@ export default class App {
               maxNumber: Math.ceil((nRanks / 2.5) - (1 * (1 + (level * 0.5)))),
               createDelay: 1000 - (1000 * 0.04 * nRanks),
               speed: (150 * (1 + ((level * 5) / 100))),
-              life: (20 * (1 + ((level * 25) / 100))),
+              life: (200 * (1 + ((level * 25) / 100))),
             },
             {
               name: 'CarrierShip',
@@ -151,7 +153,7 @@ export default class App {
               maxNumber: Math.ceil((nRanks / 4) - (1 * (1 + (level * 0.5)))),
               createDelay: 1000 - (1000 * 0.06 * nRanks),
               speed: this.getRandomIntInclusive(100, 300),
-              life: (500 * (1 + ((level * 25) / 100))),
+              life: (800 * (1 + ((level * 25) / 100))),
               shootTimer: this.getRandomIntInclusive(500, 1500),
             },
           ],
