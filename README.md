@@ -6,7 +6,7 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-![](https://github.com/tigamadou/miscrospace/workflows/Linters/badge.svg)
+![](https://github.com/tigamadou/microspace/workflows/Linters/badge.svg)
 
 <!-- PROJECT LOGO -->
 <br />
@@ -212,16 +212,16 @@ This project is [MIT](./LICENSE) licensed.
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/tigamadou/miscrospace.svg?style=flat-square
-[contributors-url]: https://github.com/tigamadou/miscrospace/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/tigamadou/miscrospace.svg?style=flat-square
+[contributors-shield]: https://img.shields.io/github/contributors/tigamadou/microspace.svg?style=flat-square
+[contributors-url]: https://github.com/tigamadou/microspace/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/tigamadou/microspace.svg?style=flat-square
 [forks-url]: https://github.com/tigamadou/miscrospace/network/members
-[stars-shield]: https://img.shields.io/github/stars/tigamadou/miscrospace.svg?style=flat-square
-[stars-url]: https://github.com/tigamadou/miscrospace/stargazers
-[issues-shield]: https://img.shields.io/github/issues/tigamadou/miscrospace.svg?style=flat-square
-[issues-url]: https://github.com/tigamadou/miscrospace/issues
-[license-shield]: https://img.shields.io/github/license/tigamadou/miscrospace.svg?style=flat-square
-[license-url]: https://github.com/tigamadou/miscrospace/blob/master/LICENSE.txt
+[stars-shield]: https://img.shields.io/github/stars/tigamadou/microspace.svg?style=flat-square
+[stars-url]: https://github.com/tigamadou/microspace/stargazers
+[issues-shield]: https://img.shields.io/github/issues/tigamadou/microspace.svg?style=flat-square
+[issues-url]: https://github.com/tigamadou/microspace/issues
+[license-shield]: https://img.shields.io/github/license/tigamadou/microspace.svg?style=flat-square
+[license-url]: https://github.com/tigamadou/microspace/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/amadou-ibrahim
 [product-screenshot]: images/screenshot.png
