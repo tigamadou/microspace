@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import Entity from './Entity';
 
 export default class EnemyLaser extends Entity {

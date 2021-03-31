@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
 import axios from 'axios';
-
+// eslint-disable-next-line import/no-unresolved
 require('regenerator-runtime/runtime');
 
 export default function Api() {
