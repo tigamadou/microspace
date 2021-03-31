@@ -100,7 +100,7 @@ export default class App {
           name: 'Laser',
           rank,
           level,
-          fire: 50 * (1+(0.5 *nRanks)),
+          fire: 50 *nRanks*1.3,
           timerShootDelay: 30 - (5 * level),
           speed: -(200 + (200 * level)),
         };
@@ -124,10 +124,10 @@ export default class App {
             {
               name: 'GunShip',
               rank: 1,
-              maxNumber: (20 * (1 + ((nRanks * 25) / 100))),
+              maxNumber: (20 *nRanks*1.25),
               createDelay: 500,
-              speed: (75 * (1 + (nRanks * 0.2))),
-              life: (50 * (1 + (nRanks * 0.2))),
+              speed: 80 + (80 * nRanks * 0.2),
+              life: (50 *nRanks * 1.2),
               shootTimer: this.getRandomIntInclusive(2000, 5000),
             },
             {
@@ -135,9 +135,9 @@ export default class App {
               rank: 2,
               maxNumber: Math.ceil((nRanks / 2) - (1 * (1 + (nRanks * 0.2)))),
               createDelay: 1000 - (1000 * 0.04 * nRanks),
-              speed: (300 * (1 + ((level * 5) / this.getRandomIntInclusive(50, 100)))),
-              life: (200 * (1 + ((level * 0.125) / this.getRandomIntInclusive(50, 100)))),
-              shootTimer: this.getRandomIntInclusive(800, 1000),
+              speed: 50 + (50*nRanks*0.4),
+              life: (200 * (1 + ((nRanks * 0.125) / this.getRandomIntInclusive(50, 100)))),
+              shootTimer: this.getRandomIntInclusive(1000, 3000),
             },
             {
               name: 'ChaserShip',
