@@ -10,8 +10,9 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   preload() {
-    // add logo image
-    this.add.image(250, 300, 'logo');
+    // add logo 
+    
+    this.add.image(250, 300, 'space');
 
     // display progress bar
     const progressBar = this.add.graphics();
@@ -82,43 +83,42 @@ export default class PreloaderScene extends Phaser.Scene {
     // load ui
     this.load.image('blueButton1', 'assets/ui/blue_button02.png');
     this.load.image('blueButton2', 'assets/ui/blue_button03.png');
-    this.load.image('phaserLogo', 'assets/space.png');
+    this.load.image('phaserLogo', 'assets/ui/space.png');
     this.load.image('box', 'assets/ui/grey_box.png');
     this.load.image('checkedBox', 'assets/ui/blue_boxCheckmark.png');
-    this.load.image('bgImg', ['assets/background.jpg']);
-    this.load.image('gameoverImg', ['assets/gameover.jpg']);
-    // this.load.image('sprBtnRestart', 'assets/sprBtnRestart');
-    // load game sprites
-    this.load.image('sprBg0', 'assets/sprBg0.png');
-    this.load.image('sprBg1', 'assets/sprBg1.png');
-    this.load.spritesheet('sprExplosion', 'assets/explode2.png', {
+    this.load.image('bgImg', ['assets/ui/background.jpg']);
+    
+    
+    this.load.image('sprBg0', 'assets/sprites/sprBg0.png');
+    this.load.image('sprBg1', 'assets/sprites/sprBg1.png');
+    this.load.spritesheet('sprExplosion', 'assets/sprites/explode2.png', {
       frameWidth: 16,
       frameHeight: 13,
     });
-    this.load.spritesheet('sprEnemy0', 'assets/sprEnemy0.png', {
+    this.load.spritesheet('sprEnemy0', 'assets/sprites/sprEnemy0.png', {
       frameWidth: 16,
       frameHeight: 16,
     });
-    this.load.image('sprEnemy1', 'assets/sprEnemy1.png');
-    this.load.spritesheet('sprEnemy2', 'assets/sprEnemy2.png', {
+    this.load.image('sprEnemy1', 'assets/sprites/sprEnemy1.png');
+    this.load.spritesheet('sprEnemy2', 'assets/sprites/sprEnemy2.png', {
       frameWidth: 16,
       frameHeight: 16,
     });
-    this.load.image('sprLaserEnemy0', 'assets/sprLaserEnemy0.png');
-    this.load.image('sprLaserPlayer', 'assets/sprLaserPlayer.png');
-    this.load.spritesheet('sprPlayer', 'assets/sprPlayer.png', {
+    this.load.image('sprLaserEnemy0', 'assets/sprites/sprLaserEnemy0.png');
+    this.load.image('sprLaserPlayer', 'assets/sprites/sprLaserPlayer.png');
+    this.load.spritesheet('sprPlayer', 'assets/sprites/sprPlayer.png', {
       frameWidth: 16,
       frameHeight: 16,
     });
     // load audios
-    this.load.audio('battleMusic', ['assets/battleThemeA.mp3']);
-    this.load.audio('GameMusic', ['assets/war.mp3']);
-    this.load.audio('gameOver', ['assets/gameOver.mp3']);
-    this.load.audio('sndExplode0', 'assets/sndExplode0.wav');
-    this.load.audio('sndExplode1', 'assets/sndExplode1.wav');
-    this.load.audio('sndLaser', 'assets/sndLaser.wav');
-    this.load.audio('sndBtnOver', 'assets/sndBtnOver.wav');
-    this.load.audio('sndBtnDown', 'assets/sndBtnDown.wav');
+    this.load.audio('battleMusic', ['assets/sfx/battleThemeA.mp3']);
+    this.load.audio('GameMusic', ['assets/sfx/war.mp3']);
+    this.load.audio('gameOver', ['assets/sfx/gameOver.mp3']);
+    this.load.audio('sndExplode0', 'assets/sfx/sndExplode0.wav');
+    this.load.audio('sndExplode1', 'assets/sfx/sndExplode1.wav');
+    this.load.audio('sndLaser', 'assets/sfx/sndLaser.wav');
+    this.load.audio('sndBtnOver', 'assets/sfx/sndBtnOver.wav');
+    this.load.audio('sndBtnDown', 'assets/sfx/sndBtnDown.wav');
   }
 
   create() {

@@ -1,9 +1,9 @@
 import Phaser from 'phaser';
-import Player from '../Objects/Player';
-import GunShip from '../Objects/GunShip';
-import ChaserShip from '../Objects/ChaserShip';
-import CarrierShip from '../Objects/CarrierShip';
-import ScrollingBackground from '../Objects/ScrollingBackground';
+import Player from '../Components/Player';
+import GunShip from '../Components/GunShip';
+import ChaserShip from '../Components/ChaserShip';
+import CarrierShip from '../Components/CarrierShip';
+import ScrollingBackground from '../Components/ScrollingBackground';
 
 const score = 0;
 export default class GameScene extends Phaser.Scene {

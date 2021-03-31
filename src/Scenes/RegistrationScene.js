@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import ScrollingBackground from '../Objects/ScrollingBackground';
+import ScrollingBackground from '../Components/ScrollingBackground';
 
 export default class RegistrationScene extends Phaser.Scene {
   constructor() {

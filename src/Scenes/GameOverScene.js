@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import config from '../Config/config';
-import Button from '../Objects/Button';
-import ScrollingBackground from '../Objects/ScrollingBackground';
+import Button from '../Components/Button';
+import ScrollingBackground from '../Components/ScrollingBackground';
 
 export default class GameOverScene extends Phaser.Scene {
   constructor() {

@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import config from '../Config/config';
-import ScrollingBackground from '../Objects/ScrollingBackground';
+import ScrollingBackground from '../Components/ScrollingBackground';
 
 export default class CreditsScene extends Phaser.Scene {
   constructor() {

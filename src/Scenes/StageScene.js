@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
-import Button from '../Objects/Button';
-import ScrollingBackground from '../Objects/ScrollingBackground';
-import Player from '../Objects/Player';
+import Button from '../Components/Button';
+import ScrollingBackground from '../Components/ScrollingBackground';
+import Player from '../Components/Player';
 
 export default class StageScene extends Phaser.Scene {
   constructor() {
