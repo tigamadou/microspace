@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import Phaser from 'phaser';
 import Player from '../Components/Player';
 import GunShip from '../Components/GunShip';
