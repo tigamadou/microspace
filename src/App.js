@@ -82,7 +82,7 @@ export default class App {
 
     this.leaders = null;
 
-    this.stageNumber = 19;
+    this.stageNumber = 0;
     if (!ID) {
       this.createGame(this.NAME);
     }

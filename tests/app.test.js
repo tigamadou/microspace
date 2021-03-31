@@ -19,8 +19,8 @@ test('Should have STATES ', () => {
   });
 });
 
-test('Should have 3 Enemies types', () => {
-  expect(app.enemies.length).toEqual(3);
+test('Should have 4 Enemies types', () => {
+  expect(app.enemies.length).toEqual(4);
 });
 
 test('All  Enemies type should have the given properties', () => {
@@ -37,8 +37,8 @@ test('All  Enemies type should have the given properties', () => {
   });
 });
 
-test('Should have 3 Enemies types', () => {
-  expect(app.enemies.length).toEqual(3);
+test('Should have 4 Enemies types', () => {
+  expect(app.enemies.length).toEqual(4);
 });
 
 test('Should have 4 Ranks', () => {
