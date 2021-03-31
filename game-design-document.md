@@ -7,20 +7,6 @@
 * Design: [Amadou Ibrahim](https://github.com/microspace)
 * QA:[Amadou Ibrahim](https://github.com/microspace)
 
-2. There are 4 rank of enemies. Each enemy destroyed increase the score according to its rank:
-    - Rank 1 : +100
-    - Rank 2 : +250
-    - Rank 3 : +500
-    - Rank 4 : +1000
-3. The enemies have lives score according to their rank and the current stage/level
-    - Rank 1 : 50 * level * l.2
-    - Rank 2 : 80 * level * l.2
-    - Rank 3 : 100 * level * 1.2
-    - Rank 4 : 800 * level * 1.2
-4.The Player fire rate and power is calculated according to the level
-    - Power : 50 * level * 1.3
-    - Rate : 30 - (5 * level)
-    - Speed : 200 + ( level *200)
 
 ## Game Design Document
 
@@ -108,6 +94,22 @@
 1.  The player has to survive in 20 different scenarios with a time set  per scene at the same time scores as many points as it can. 
 
 2.  The game finishes when the player completes the last scenario or receives an impact from the enemies.
+
+3. There are 4 rank of enemies. Each enemy destroyed increase the score according to its rank:
+    - Rank 1 : +100
+    - Rank 2 : +250
+    - Rank 3 : +500
+    - Rank 4 : +1000
+4. The enemies have lives score according to their rank and the current stage/level
+    - Rank 1 : 50 * level * l.2
+    - Rank 2 : 80 * level * l.2
+    - Rank 3 : 100 * level * 1.2
+    - Rank 4 : 800 * level * 1.2
+
+4. The Player fire rate and power is calculated according to the level
+    - Power : 50 * level * 1.3
+    - Rate : 30 - (5 * level)
+    - Speed : 200 + ( level *200)
 
 ### Assets
 
