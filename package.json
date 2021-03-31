@@ -1,6 +1,9 @@
 {
   "name": "shooterGame",
   "version": "1.0.0",
+  "engines": {
+    "node": "14.x"
+  },
   "description": "A Javascript shooter Game",
   "main": "src/index.js",
   "scripts": {
@@ -46,7 +49,7 @@
     "stylelint-scss": "^3.17.2",
     "terser-webpack-plugin": "^2.2.1",
     "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10",
+    "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.9.0",
     "webpack-merge": "^4.2.2"
   },
