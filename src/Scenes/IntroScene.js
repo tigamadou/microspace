@@ -30,7 +30,7 @@ export default class IntroScene extends Phaser.Scene {
     <br/>
     Your mission, if you accept it, is to save the universe and stop the fleet of the Galactic Empire.
     <br/>
-    You are their only hope.
+    You are our only hope.
     <br/>
     
    

@@ -151,18 +151,60 @@ npm run start 'or' yarn start
 
 ## Game RUles
 1. A player can be moved using arrow keys but also common w a s d keys.
-2. There are 4 rank of enemies. Each enemy destroyed increase the score according to its rank:
-    - Rank 1 : +100
-    - Rank 2 : +250
-    - Rank 3 : +500
-    - Rank 4 : +1000
-3. The enemies have lives score according to their rank and the current stage/level
-    - Rank 1 : 50*leve*l.2
-    - Rank 2 : 80*leve*l.2
-    - Rank 3 : 100*level*1.2
-    - Rank 4 : 800*level*1.2
-4. 
+2. The Player use the space bar to shoot lasers. 
+3. There are 4 types of lasers each one having 5 speed level.
+4. There are 4 types or enemies
+5. The score is increased each time an enemy is destroyed. The score gained depends on the enemy and the level.
+6. The game is over when the player is destroyed by a laser shoot or a colision with an enemy
+
+
       
+## Author
+
+👤 **Amadou Ibrahim**
+
+- GitHub: [@tigamadou](https://github.com/tigamadou)
+- Twitter: [@tigamadou](https://twitter.com/tigamadou)
+- Linkedin: [Amadou IBRAHIM](https://www.linkedin.com/in/amadou-ibrahim/)
+
+
+## Contributing
+
+Contributions, issues, and feature requests are welcome!
+Feel free to check the [issues page](../../issues).
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+
+## License
+
+This project is [MIT](./LICENSE) licensed.
+
+
+## Acknowledgements
+* [Microverse](https://microverse.org)
+* [WebPack](https://getbootstrap.com)
+* [Javascript ES6](https://github.com/facebook/react/)
+* [Eslint](https://eslint.org/)
+* [GitHub Actions](https://github.com/features/actions)
+* [Heroku](https://heroku.com)
+* [Phaser3](https://phaser.io/phaser3)
+* [axios](https://github.com/axios/axios)
+* [Opengameart.com](https://opengameart.org/)
+* [SFX](https://opengameart.org/)
+* [Cute astronaut flying with planet balloons in space cartoon created by catalyststuff - www.freepik.com -](https://www.freepik.com/free-vector/cute-astronaut-flying-with-planet-balloons-space-cartoon_11766657.htm#&position=26)
+* [Build a Space Shooter with Phaser 3](https://learn.yorkcs.com/category/tutorials/gamedev/phaser-3/build-a-space-shooter-with-phaser-3/)
+* [How (And Why) to Write a Great Game Design Document](https://gamedevelopment.tutsplus.com/articles/how-and-why-to-write-a-great-game-design-document--cms-23545)
+* [Creating a Phaser 3 Template](https://phasertutorials.com/creating-a-phaser-3-template-part-1/)
 
 
 
