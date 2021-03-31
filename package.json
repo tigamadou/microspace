@@ -11,7 +11,8 @@
     "eslint": "eslint .",
     "dev": "webpack serve",
     "build": "webpack",
-    "test": "jest"
+    "test": "jest",
+    "start": "http-server ./dist"
   },
   "repository": {
     "type": "git",
@@ -58,6 +59,7 @@
   "dependencies": {
     "@babel/runtime": "^7.13.10",
     "axios": "^0.21.1",
+    "http-server": "^0.12.3",
     "phaser": "^3.24.1",
     "regenerator-runtime": "^0.13.7"
   }
