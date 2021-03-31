@@ -1,5 +1,5 @@
 import 'phaser';
-import './Styles/style.css';
+import './style/style.css';
 import config from './Config/config';
 import App from './App';
 import Game from './Game';

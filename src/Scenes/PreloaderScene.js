@@ -1,4 +1,27 @@
 import Phaser from 'phaser';
+import blueButton1 from '../assets/ui/blue_button02.png';
+import blueButton2 from '../assets/ui/blue_button03.png';
+import phaserLogo from '../assets/ui/space.png';
+import box from '../assets/ui/grey_box.png';
+import checkedBox from '../assets/ui/blue_boxCheckmark.png';
+import bgImg from '../assets/ui/background.jpg';
+
+import sprBg0 from '../assets/sprites/sprBg0.png';
+import sprBg1 from '../assets/sprites/sprBg1.png';
+import sprExplosion from '../assets/sprites/explode.png';
+import sprEnemy0 from '../assets/sprites/sprEnemy0.png';
+import sprEnemy1 from '../assets/sprites/sprEnemy1.png';
+import sprEnemy2 from '../assets/sprites/sprEnemy2.png';
+import sprLaserEnemy0 from '../assets/sprites/sprLaserEnemy0.png';
+import sprLaserPlayer from '../assets/sprites/sprLaserPlayer.png';
+import sprPlayer from '../assets/sprites/sprPlayer.png';
+
+import battleMusic from '../assets/sfx/battleMusic.mp3';
+import GameMusic from '../assets/sfx/GameMusic.mp3';
+import gameOver from '../assets/sfx/gameOver.mp3';
+import sndExplode0 from '../assets/sfx/sndExplode0.wav';
+import sndExplode1 from '../assets/sfx/sndExplode1.wav';
+import sndLaser from '../assets/sfx/sndLaser.wav';
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
@@ -81,43 +104,42 @@ export default class PreloaderScene extends Phaser.Scene {
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
 
     // load ui
-    this.load.image('blueButton1', 'src/Componentsui/blue_button02.png');
-    this.load.image('blueButton2', 'src/Componentsui/blue_button03.png');
-    this.load.image('phaserLogo', 'src/Componentsui/space.png');
-    this.load.image('box', 'src/Componentsui/grey_box.png');
-    this.load.image('checkedBox', 'src/Componentsui/blue_boxCheckmark.png');
-    this.load.image('bgImg', ['src/Componentsui/background.jpg']);
-
-    this.load.image('sprBg0', 'src/Componentssprites/sprBg0.png');
-    this.load.image('sprBg1', 'src/Componentssprites/sprBg1.png');
-    this.load.spritesheet('sprExplosion', 'src/Componentssprites/explode2.png', {
+    this.load.image('blueButton1', blueButton1);
+    this.load.image('blueButton2', blueButton2);
+    this.load.image('phaserLogo', phaserLogo);
+    this.load.image('box', box);
+    this.load.image('checkedBox', checkedBox);
+    this.load.image('bgImg', [bgImg]);
+    // sprites
+    this.load.image('sprBg0', sprBg0);
+    this.load.image('sprBg1', sprBg1);
+    this.load.spritesheet('sprExplosion', sprExplosion, {
       frameWidth: 16,
       frameHeight: 13,
     });
-    this.load.spritesheet('sprEnemy0', 'src/Componentssprites/sprEnemy0.png', {
+    this.load.spritesheet('sprEnemy0', sprEnemy0, {
       frameWidth: 16,
       frameHeight: 16,
     });
-    this.load.image('sprEnemy1', 'src/Componentssprites/sprEnemy1.png');
-    this.load.spritesheet('sprEnemy2', 'src/Componentssprites/sprEnemy2.png', {
+    this.load.image('sprEnemy1', sprEnemy1);
+    this.load.spritesheet('sprEnemy2',sprEnemy2, {
       frameWidth: 16,
       frameHeight: 16,
     });
-    this.load.image('sprLaserEnemy0', 'src/Componentssprites/sprLaserEnemy0.png');
-    this.load.image('sprLaserPlayer', 'src/Componentssprites/sprLaserPlayer.png');
-    this.load.spritesheet('sprPlayer', 'src/Componentssprites/sprPlayer.png', {
+    this.load.image('sprLaserEnemy0', sprLaserEnemy0);
+    this.load.image('sprLaserPlayer', sprLaserPlayer);
+    this.load.spritesheet('sprPlayer', sprPlayer, {
       frameWidth: 16,
       frameHeight: 16,
     });
     // load audios
-    this.load.audio('battleMusic', ['src/Componentssfx/battleThemeA.mp3']);
-    this.load.audio('GameMusic', ['src/Componentssfx/war.mp3']);
-    this.load.audio('gameOver', ['src/Componentssfx/gameOver.mp3']);
-    this.load.audio('sndExplode0', 'src/Componentssfx/sndExplode0.wav');
-    this.load.audio('sndExplode1', 'src/Componentssfx/sndExplode1.wav');
-    this.load.audio('sndLaser', 'src/Componentssfx/sndLaser.wav');
-    this.load.audio('sndBtnOver', 'src/Componentssfx/sndBtnOver.wav');
-    this.load.audio('sndBtnDown', 'src/Componentssfx/sndBtnDown.wav');
+    this.load.audio('battleMusic', [battleMusic]);
+    this.load.audio('GameMusic', [GameMusic]);
+    this.load.audio('gameOver', [gameOver]);
+    this.load.audio('sndExplode0', sndExplode0);
+    this.load.audio('sndExplode1', sndExplode1);
+    this.load.audio('sndLaser', sndLaser);
+   
   }
 
   create() {

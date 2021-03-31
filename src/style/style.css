@@ -19,7 +19,7 @@ canvas {
 }
 
 .startBtn {
-  background-image: url('../../src/Componentsui/blue_button03.png');
+  background-image: url('../assets/ui/blue_button03.png');
   background-size: cover;
   border-radius: 5px;
   color: #000;
