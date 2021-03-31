@@ -83,7 +83,7 @@ export default class App {
 
     this.leaders = null;
 
-    this.stageNumber = 16;
+    this.stageNumber = 19;
     if (!ID) {
       this.createGame(this.NAME);
     }
@@ -145,7 +145,7 @@ export default class App {
               maxNumber: Math.ceil((nRanks / 2.5) - (1 * (1 + (level * 0.5)))),
               createDelay: 1000 - (1000 * 0.04 * nRanks),
               speed: (150 * nRanks *0.05),
-              life: (200 *nRanks*0.2),
+              life: (100 *nRanks*1.2),
             },
             {
               name: 'CarrierShip',
@@ -153,7 +153,7 @@ export default class App {
               maxNumber: Math.ceil((nRanks / 4) - (1 * (1 + (level * 0.5)))),
               createDelay: 1000 - (1000 * 0.06 * nRanks),
               speed: this.getRandomIntInclusive(100, 500),
-              life: (800 *0.25* nRanks),
+              life: (400 *1.2* nRanks),
               shootTimer: this.getRandomIntInclusive(500, 1500),
             },
           ],

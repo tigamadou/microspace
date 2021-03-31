@@ -157,9 +157,10 @@ npm run start 'or' yarn start
     - Rank 3 : +500
     - Rank 4 : +1000
 3. The enemies have lives score according to their rank and the current stage/level
-    - Rank 1 : 20 + 20*0.25* Level
-    - Rank 2 : 20 + 20*0.25*2
-    - and so
+    - Rank 1 : 50*leve*l.2
+    - Rank 2 : 80*leve*l.2
+    - Rank 3 : 100*level*1.2
+    - Rank 4 : 800*level*1.2
 4. 
       
 
