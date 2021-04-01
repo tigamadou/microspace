@@ -33,10 +33,11 @@
 - [About the Project](#about-the-project)
 - [Built With](#built-with)
 - [Game Design Document(GDD)](#game-design-document)
-
+- [Live Demo](#live-demo)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
+  * [Tests](#tests)
 - [What is MicroSpace](#what-is-grab-fruits)
 - [How to run the game](#how-to-run-the-game)
 - [How to play the game](#how-to-play-the-game)
@@ -83,6 +84,11 @@ In addition, I added the following features:
 
 [Game Design Document (GDD) Link](./game-design-document.md)
 
+
+# Live Demo
+The demo is deployed on Heroku. You can access it [here](https://micr0space.herokuapp.com/).
+
+
 # Getting Started
 To get the game on your own computer, please do the following steps
 
@@ -118,21 +124,34 @@ cd microspace
 ```sh
 npm install 'or' yarn 
 ```
-4. Build the game
+4. All the game files will be installed. You'll be now able to build the game and run it.
+### Tests
+All the tests in this project are done with [Jest](https://jestjs.io/). To run the tests, do
+```sh
+npm test 'or' yarn test
+```
+
+
+## What is MicroSpace
+MicroSpace is a Space shooter browser game. To score points, the player need to shoot the enemies and proceed to the next Stage.
+
+## How to run the Game
+Once all the precious steps completed, and you have built the game, run the following command
+1. Build the game
 ```sh
 npm run build 'or' yarn build
 ```
-
-## What is MicroSpace
-MicraoSpace is a Space shooter browser game. To score points, the player need to shoot the enemies and proceed to the next Stage.
-
-## How to run the Game
-Once all the precious steps completed, run the following command
-1. Run the start command in your terminal
+2. Run the start command in your terminal
 ```sh
 npm run start 'or' yarn start
 ```
-2. Your browser will automatically open with the address http://127.0.0.1:8051
+3. Your browser will automatically open with the address http://127.0.0.1:8050
+
+4. If you don't want to build the game first, you can run the Development server:
+```sh
+npm run dev 'or' yarn dev
+```
+5. The development server will start and  automatically open a new tab in your browser with the address http://127.0.0.1:8051
 
 ## How to Play the Game
 1. Run The game using the instructions above
@@ -195,6 +214,7 @@ This project is [MIT](./LICENSE) licensed.
 * [WebPack](https://getbootstrap.com)
 * [Javascript ES6](https://github.com/facebook/react/)
 * [Eslint](https://eslint.org/)
+* [Jest](https://jestjs.io/)
 * [GitHub Actions](https://github.com/features/actions)
 * [Heroku](https://heroku.com)
 * [Phaser3](https://phaser.io/phaser3)
