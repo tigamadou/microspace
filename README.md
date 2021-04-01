@@ -38,10 +38,10 @@
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
   * [Tests](#tests)
-- [What is MicroSpace](#what-is-grab-fruits)
+- [What is MicroSpace](#what-is-microspace)
 - [How to run the game](#how-to-run-the-game)
 - [How to play the game](#how-to-play-the-game)
-- [Game Rules](#rule-of-the-game)
+- [Game Rules](#game-rules)
 - [Author](#author)
 - [Contributing](#contributing)
 - [Show your support](#show-your-support)
@@ -168,7 +168,7 @@ npm run dev 'or' yarn dev
         * Good Luck
     - If you complete the stage you'll progress to the next Stage
 
-## Game RUles
+## Game Rules
 1. A player can be moved using arrow keys but also common w a s d keys.
 2. The Player use the space bar to shoot lasers. 
 3. There are 4 types of lasers each one having 5 speed level.
