@@ -12,7 +12,7 @@
     "dev": "webpack serve",
     "build": "webpack",
     "test": "jest",
-    "start": "http-server ./dist -p 8050 -g -o"
+    "start": "http-server ./dist"
   },
   "repository": {
     "type": "git",
